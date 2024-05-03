@@ -1,0 +1,587 @@
+<div [hidden]="virtualRouter.routerActive!=='profile'" class="row" style="--bs-gutter-x:0; padding-top: 72px;">
+  <div class="col-4" *ngIf="global.device==='Desktop' && virtualRouter.routerActive=='login'">
+  </div>
+  <div class="col-md-1 col-lg-2" *ngIf="global.device==='Desktop'"></div>
+  <div class="col-md-4 col-lg-4 col-sm-12">
+    <section class="section-b-space">
+      <div class="custom-container">
+        <div class="profile-section">
+          <div class="profile-banner">
+            <div class="profile-image">
+              <img class="img-fluid profile-pic" src="assets/mpay/images/person/p2.png" alt="p3" />
+            </div>
+          </div>
+          <h2>Survana Williams</h2>
+          <h5>Self-Regenerative Genetic Engineering student.</h5>
+          <h5> 23 years old</h5>
+          <h5> Venezuela<img
+              src="https://image.similarpng.com/very-thumbnail/2020/06/Venezuela-flag-icon-on-transparent-background-PNG.png"
+              style="width: 32px;" alt=""></h5>
+          <div class="row" style="padding-left: 5%; padding-right: 5%;" *ngIf="global.device==='Mobile'">
+            <div class="col-1"></div>
+            <div class="col-9">
+              <div class="transaction-box">
+                <a href="element-card.html#transaction-detail" data-bs-toggle="modal" class="d-flex gap-3">
+                  <div class="categories-image color1">
+                    <img class="img-fluid icon" src="assets/mpay/images/svg/16.svg" alt="p16" />
+                  </div>
+                  <div class="transaction-details">
+                    <div class="transaction-name pb-0" style="width: 150px;">
+                      <h5>15 Assessments Followed</h5>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="row" style="padding-left: 5%; padding-right: 5%;" *ngIf="global.device==='Desktop'">
+            <div class="col-2"></div>
+            <div class="col-8">
+              <div class="transaction-box">
+                <a href="element-card.html#transaction-detail" data-bs-toggle="modal" class="d-flex gap-3">
+                  <div class="categories-image color1">
+                    <img class="img-fluid icon" src="assets/mpay/images/svg/16.svg" alt="p16" />
+                  </div>
+                  <div class="transaction-details">
+                    <div class="transaction-name pb-0" style="width: 120px;">
+                      <h5>15 Assessments Followed</h5>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="row" style="padding-left: 15%; padding-right: 15%;" *ngIf="global.device==='Desktop'">
+            <div class="col-6">
+              <div class="transaction-box">
+                <a href="element-card.html#transaction-detail" data-bs-toggle="modal" class="d-flex gap-3">
+                  <div class="categories-image color1">
+                    <i class="sidebar-icon" style="color: #642cfd;" data-feather="user"></i>
+                  </div>
+                  <div class="transaction-details">
+                    <div class="transaction-name pb-0">
+                      <h5>Following</h5><br />
+                    </div>
+                    <h5 class="dark-text fw-semibold"> 15 K</h5>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="transaction-box">
+                <a href="element-card.html#transaction-detail" data-bs-toggle="modal" class="d-flex gap-3">
+                  <div class="categories-image color1">
+                    <i class="sidebar-icon" style="color: #642cfd;" data-feather="user"></i>
+                  </div>
+                  <div class="transaction-details">
+                    <div class="transaction-name pb-0">
+                      <h5>Followers</h5><br />
+                    </div>
+                    <h5 class="dark-text fw-semibold">22 K</h5>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="row" style="padding-left: 5%; padding-right: 5%;" *ngIf="global.device==='Mobile'">
+            <div class="col-6">
+              <div class="transaction-box">
+                <a href="element-card.html#transaction-detail" data-bs-toggle="modal" class="d-flex gap-3">
+                  <div class="categories-image color1">
+                    <i class="sidebar-icon" style="color: #642cfd;" data-feather="user"></i>
+                  </div>
+                  <div class="transaction-details">
+                    <div class="transaction-name pb-0">
+                      <h5>Following</h5><br />
+                    </div>
+                    <h5 class="dark-text fw-semibold"> 15 K</h5>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="transaction-box">
+                <a href="element-card.html#transaction-detail" data-bs-toggle="modal" class="d-flex gap-3">
+                  <div class="categories-image color1">
+                    <i class="sidebar-icon" style="color: #642cfd;" data-feather="user"></i>
+                  </div>
+                  <div class="transaction-details">
+                    <div class="transaction-name pb-0">
+                      <h5>Followers</h5><br />
+                    </div>
+                    <h5 class="dark-text fw-semibold">22 K</h5>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ul class="nav nav-pills tab-style1 mt-0" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link " id="home-tab" (click)="setProfileOption('biografy')" data-bs-toggle="pill" data-bs-target="#home" type="button"
+              role="tab">Biografy</button>
+          </li>
+          <li class="nav-item" role="presentation" (click)="setProfileOption('social')" >
+            <button class="nav-link" id="profile-tab" data-bs-toggle="pill" data-bs-target="#social" type="button"
+              role="tab">Social</button>
+          </li>
+          <li class="nav-item" role="presentation" (click)="setProfileOption('favorites')" >
+            <button class="nav-link" id="profile-tab" data-bs-toggle="pill" data-bs-target="#favorites" type="button"
+              role="tab">Favorites</button>
+          </li>
+          <li class="nav-item" role="presentation" (click)="setProfileOption('attempts')" >
+            <button class="nav-link active" id="profile-tab" data-bs-toggle="pill" data-bs-target="#attempts"
+              type="button" role="tab">My attempts</button>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade p-2 " id="home" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+            <div *ngIf="global.device==='Mobile'">
+              Hi! I'm Survana, passionate about genetic engineering and biotechnology. I focus on developing self-healing
+              systems for innovative medical applications. My curiosity at a young age for the transformative potential of
+              biology led me to delve into genetic engineering, where I discovered my passion for creating solutions that
+              revolutionize medicine.
+  
+              I have been involved in exciting projects such as the creation of regenerative human organs and advanced
+              therapies using gene editing techniques. I also collaborate on research to address chronic diseases through
+              the application of genetics.
+  
+              In addition to my love for science, I enjoy competing and participating in genetics and biotechnology
+              evaluations. I love to challenge myself and learn more every day.
+  
+              I'm excited to share my knowledge and experiences! Together, we can explore the endless possibilities that
+              self-healing genetic engineering offers for a healthier and brighter future.
+  
+              Translated with DeepL.com (free version)
+            </div>
+          </div>
+          <div class="tab-pane fade p-2" id="social" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+            <section *ngIf="global.device==='Mobile'">
+              <div class="custom-container">
+        
+        
+            <ul class="element-list transfer-list p-0">
+            <li class="w-100">
+                <div class="transfer-box">
+                    <div class="transfer-img">
+                        <img class="img-fluid icon" src="assets/mpay/images/person/p1.png" alt="p1" />
+                    </div>
+                    <div class="transfer-details">
+                        <div>
+                            <a >
+                                <h5 class="fw-semibold dark-text">Mike Williams</h5>
+                            </a>
+                            <h6 class="fw-normal light-text mt-2">Following  ago 45 weeks</h6>
+                        </div>
+                        <div class="dropdown">
+                            <a role="button" data-bs-toggle="dropdown">
+                                <i class="icon dark-text" data-feather="more-vertical"></i>
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item w-100" >unfollow
+                                        </a></li>
+                                <li><a class="dropdown-item w-100" >view profile</a></li>
+                                <li><a class="dropdown-item w-100" >chat</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="w-100">
+              <div class="transfer-box">
+                  <div class="transfer-img">
+                      <img class="img-fluid icon" src="assets/mpay/images/person/p3.png" alt="p1" />
+                  </div>
+                  <div class="transfer-details">
+                      <div>
+                          <a >
+                              <h5 class="fw-semibold dark-text">Daniela Agudelo</h5>
+                          </a>
+                          <h6 class="fw-normal light-text mt-2">Following  ago 87 weeks</h6>
+                      </div>
+                      <div class="dropdown">
+                          <a role="button" data-bs-toggle="dropdown">
+                              <i class="icon dark-text" data-feather="more-vertical"></i>
+                          </a>
+
+                          <ul class="dropdown-menu">
+                              <li><a class="dropdown-item w-100" >unfollow
+                                      </a></li>
+                              <li><a class="dropdown-item w-100" >view profile</a></li>
+                              <li><a class="dropdown-item w-100" >chat</a></li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </li>
+          <li class="w-100">
+            <div class="transfer-box">
+                <div class="transfer-img">
+                    <img class="img-fluid icon" src="assets/mpay/images/person/p4.png" alt="p1" />
+                </div>
+                <div class="transfer-details">
+                    <div>
+                        <a >
+                            <h5 class="fw-semibold dark-text">Jacob Misraha</h5>
+                        </a>
+                        <h6 class="fw-normal light-text mt-2">Following  ago 145 weeks</h6>
+                    </div>
+                    <div class="dropdown">
+                        <a role="button" data-bs-toggle="dropdown">
+                            <i class="icon dark-text" data-feather="more-vertical"></i>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item w-100" >unfollow
+                                    </a></li>
+                            <li><a class="dropdown-item w-100" >view profile</a></li>
+                            <li><a class="dropdown-item w-100" >chat</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="w-100">
+          <div class="transfer-box">
+              <div class="transfer-img">
+                  <img class="img-fluid icon" src="assets/mpay/images/person/p5.png" alt="p1" />
+              </div>
+              <div class="transfer-details">
+                  <div>
+                      <a >
+                          <h5 class="fw-semibold dark-text">Robert Penrose</h5>
+                      </a>
+                      <h6 class="fw-normal light-text mt-2">Following  ago 1 week</h6>
+                  </div>
+                  <div class="dropdown">
+                      <a role="button" data-bs-toggle="dropdown">
+                          <i class="icon dark-text" data-feather="more-vertical"></i>
+                      </a>
+
+                      <ul class="dropdown-menu">
+                          <li><a class="dropdown-item w-100" >unfollow
+                                  </a></li>
+                          <li><a class="dropdown-item w-100" >view profile</a></li>
+                          <li><a class="dropdown-item w-100" >chat</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </li>
+        </ul>
+          </div></section>
+          </div>
+          <div class="tab-pane fade p-2" id="favorites" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+            <p class="dark-text">When you click on the linked content for tab <span
+                style="font-weight: bold;">favorites</span>, it changes the visibility of
+              the next
+              tab's placeholder content.</p>
+          </div>
+          <div class="tab-pane fade p-2 show active" id="attempts" role="tabpanel" aria-labelledby="profile-tab"
+            tabindex="0">
+            <section *ngIf="global.device==='Mobile'">
+              <div class="custom-container">
+                <div class="title">
+                  <h2>My Attempts</h2>
+                  <a>See all</a>
+                </div>
+                <div class="row gy-3">
+                  <div class="col-12 personalizedCard" *ngFor="let assetsment of global.assetments; let i = index">
+                    <div class="transaction-box">
+                      <a class="d-flex gap-3">
+                        <div class="transaction-image color1">
+                          <img class="img-fluid " src="{{assetsment.image}}" alt="bitcoins"
+                            style="border-radius: 15px;" />
+                        </div>
+                        <div class="transaction-details">
+                          <div class="transaction-name">
+                            <h5>{{assetsment.name}}</h5>
+                            <h5 class="success-color">{{assetsment.rankin}} ({{assetsment.minScore}}) </h5>
+                          </div>
+                          <a href="#info" (click)="setAttempt(i)" class="btn btn-outline btn-sm "
+                            style="color: #642cfd;" data-bs-toggle="modal">
+                            more details</a>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+        <div class="app-title mt-5 mb-3">
+          <h2>Advertising banner</h2>
+        </div>
+        <div class="swiper banner">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img class="img-fluid banner-img" src="assets/mpay/images/banner/banner1.png" alt="banner1" />
+            </div>
+            <div class="swiper-slide">
+              <img class="img-fluid banner-img" src="assets/mpay/images/banner/banner2.png" alt="banner2" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+  <div class="col-md-4 col-lg-4 col-sm-12" *ngIf="global.device==='Desktop'">
+    <section [hidden]="global.profileOption!=='attempts'"> 
+      <div class="custom-container">
+        <div class="title">
+          <h2>My Attempts</h2>
+          <a>See all</a>
+        </div>
+        <div class="row gy-3">
+          <div class="col-12 personalizedCard" *ngFor="let assetsment of global.assetments, let i = index">
+            <div class="transaction-box" data-bs-toggle="modal">
+              <a class="d-flex gap-3" style="padding: 3%;">
+                <div class="transaction-image color1">
+                  <img class="img-fluid icon" src="{{assetsment.image}}" alt="bitcoins"
+                    style="  border-radius: 10px;" />
+                </div>
+                <div class="transaction-details">
+                  <div class="transaction-name">
+                    <h5>{{assetsment.name}}</h5>
+                    <h3 class="dark-text">{{assetsment.category}}</h3>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <h5 class="success-color">{{assetsment.rankin}} ({{assetsment.minScore}}) </h5>
+                    <!-- <h5 class="light-text">{{assetsment.lenguage}}</h5>        -->
+                    <!-- ({{assetsment.minScore}})  -->
+                    <!-- <h5 class="success-color">{{assetsment.rankin}}  -->
+                    <a href="#info" (click)="setAttempt(i)" class="btn btn-outline btn-sm " style="color: #642cfd;"
+                      data-bs-toggle="modal">
+                      more details</a>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section [hidden]="global.profileOption!=='biografy'"> 
+      <div class="custom-container">
+        <div class="title">
+          <h2>My biografy</h2>
+        </div>
+        <div  class="dark-text fs-5 pt-3"><em>
+          Hi! I'm Survana, passionate about genetic engineering and biotechnology. I focus on developing self-healing
+          systems for innovative medical applications. My curiosity at a young age for the transformative potential of
+          biology led me to delve into genetic engineering, where I discovered my passion for creating solutions that
+          revolutionize medicine.
+
+          I have been involved in exciting projects such as the creation of regenerative human organs and advanced
+          therapies using gene editing techniques. I also collaborate on research to address chronic diseases through
+          the application of genetics.
+
+          In addition to my love for science, I enjoy competing and participating in genetics and biotechnology
+          evaluations. I love to challenge myself and learn more every day.
+
+          I'm excited to share my knowledge and experiences! Together, we can explore the endless possibilities that
+          self-healing genetic engineering offers for a healthier and brighter future.
+
+          Translated with DeepL.com (free version)</em>
+        </div>
+      </div>
+    </section>
+    <section [hidden]="global.profileOption!=='social'"> 
+      <div class="custom-container">
+        <div class="title">
+          <h2>Social</h2>
+        </div>
+        <div >
+          <ul class="element-list transfer-list p-0">
+            <li class="w-100">
+                <div class="transfer-box">
+                    <div class="transfer-img">
+                        <img class="img-fluid icon" src="assets/mpay/images/person/p1.png" alt="p1" />
+                    </div>
+                    <div class="transfer-details">
+                        <div>
+                            <a >
+                                <h5 class="fw-semibold dark-text">Mike Williams</h5>
+                            </a>
+                            <h6 class="fw-normal light-text mt-2">Following  ago 45 weeks</h6>
+                        </div>
+                        <div class="dropdown">
+                            <a role="button" data-bs-toggle="dropdown">
+                                <i class="icon dark-text" data-feather="more-vertical"></i>
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item w-100" >unfollow
+                                        </a></li>
+                                <li><a class="dropdown-item w-100" >view profile</a></li>
+                                <li><a class="dropdown-item w-100" >chat</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="w-100">
+              <div class="transfer-box">
+                  <div class="transfer-img">
+                      <img class="img-fluid icon" src="assets/mpay/images/person/p3.png" alt="p1" />
+                  </div>
+                  <div class="transfer-details">
+                      <div>
+                          <a >
+                              <h5 class="fw-semibold dark-text">Daniela Agudelo</h5>
+                          </a>
+                          <h6 class="fw-normal light-text mt-2">Following  ago 87 weeks</h6>
+                      </div>
+                      <div class="dropdown">
+                          <a role="button" data-bs-toggle="dropdown">
+                              <i class="icon dark-text" data-feather="more-vertical"></i>
+                          </a>
+
+                          <ul class="dropdown-menu">
+                              <li><a class="dropdown-item w-100" >unfollow
+                                      </a></li>
+                              <li><a class="dropdown-item w-100" >view profile</a></li>
+                              <li><a class="dropdown-item w-100" >chat</a></li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </li>
+          <li class="w-100">
+            <div class="transfer-box">
+                <div class="transfer-img">
+                    <img class="img-fluid icon" src="assets/mpay/images/person/p4.png" alt="p1" />
+                </div>
+                <div class="transfer-details">
+                    <div>
+                        <a >
+                            <h5 class="fw-semibold dark-text">Jacob Misraha</h5>
+                        </a>
+                        <h6 class="fw-normal light-text mt-2">Following  ago 145 weeks</h6>
+                    </div>
+                    <div class="dropdown">
+                        <a role="button" data-bs-toggle="dropdown">
+                            <i class="icon dark-text" data-feather="more-vertical"></i>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item w-100" >unfollow
+                                    </a></li>
+                            <li><a class="dropdown-item w-100" >view profile</a></li>
+                            <li><a class="dropdown-item w-100" >chat</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="w-100">
+          <div class="transfer-box">
+              <div class="transfer-img">
+                  <img class="img-fluid icon" src="assets/mpay/images/person/p5.png" alt="p1" />
+              </div>
+              <div class="transfer-details">
+                  <div>
+                      <a >
+                          <h5 class="fw-semibold dark-text">Robert Penrose</h5>
+                      </a>
+                      <h6 class="fw-normal light-text mt-2">Following  ago 1 week</h6>
+                  </div>
+                  <div class="dropdown">
+                      <a role="button" data-bs-toggle="dropdown">
+                          <i class="icon dark-text" data-feather="more-vertical"></i>
+                      </a>
+
+                      <ul class="dropdown-menu">
+                          <li><a class="dropdown-item w-100" >unfollow
+                                  </a></li>
+                          <li><a class="dropdown-item w-100" >view profile</a></li>
+                          <li><a class="dropdown-item w-100" >chat</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </li>
+
+
+        </ul>
+        </div>
+      </div>
+    </section>
+    <section class="panel-space"></section>
+  </div>
+</div>
+<div class="modal pay-modal fade" id="info" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" *ngIf="global.device==='Mobile'">{{global.attemptPrev.name}}</h2>
+      </div>
+      <div class="modal-body">
+        <div class="row" *ngIf="global.device==='Desktop'">
+          <div class="col-6">
+            <div class="done-img centered">
+              <h2 class="modal-title" style="color: black; padding-bottom: 10%;">{{global.attemptPrev.name}}</h2>
+              <img class="img-fluid" src="{{global.attemptPrev.image}}" style="border-radius:10px;" alt="done" />
+            </div>
+          </div>
+          <div class="col-6">
+            {{global.attemptPrev.description}}
+          </div>
+        </div>
+        <div class="row" *ngIf="global.device==='Mobile'">
+          <div class="col-3"></div>
+          <div class="col-6">
+            <div class="done-img centered">
+              <img class="img-fluid" src="{{global.attemptPrev.image}}" style="border-radius:10px;" alt="done" />
+            </div>
+          </div>
+          <div class="col-12">
+            {{global.attemptPrev.description}}
+          </div>
+        </div>
+        <ul class="details-list">
+          <li>
+            <h3 class="fw-normal dark-text">Minimun Score</h3>
+            <h3 class="fw-semibold theme-color">15</h3>
+          </li>
+          <li>
+            <h3 class="fw-normal dark-text">Average Score</h3>
+            <h3 class="fw-semibold theme-color">78</h3>
+          </li>
+          <li>
+            <h3 class="fw-normal dark-text">Dificulty</h3>
+            <h3 class="fw-normal light-text">medium</h3>
+          </li>
+          <li>
+            <h3 class="fw-normal dark-text">lenguage</h3>
+            <h3 class="fw-semibold theme-color"><img src="https://www.svgrepo.com/show/248851/united-states.svg"
+                style="width: 32px;  "> English</h3>
+          </li>
+          <li>
+            <h3 class="fw-normal dark-text">Category</h3>
+            <h3 class="fw-semibold theme-color">-</h3>
+          </li>
+          <li>
+            <h3 class="fw-normal dark-text">Allowed attempts</h3>
+            <h3 class="fw-semibold theme-color">9</h3>
+          </li>
+          <li>
+            <h3 class="fw-normal dark-text">time limit</h3>
+            <h3 class="fw-semibold theme-color">49 min</h3>
+          </li>
+          <li>
+            <h3 class="fw-normal dark-text">Number of questions</h3>
+            <h3 class="fw-semibold theme-color">49</h3>
+          </li>
+
+        </ul>
+      </div>
+      <button type="button" class="btn close-btn" data-bs-dismiss="modal">
+        <i class="icon" data-feather="x"></i>
+      </button>
+    </div>
+  </div>
+</div>

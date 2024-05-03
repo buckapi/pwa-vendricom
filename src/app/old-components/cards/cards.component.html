@@ -1,0 +1,27 @@
+<div class="row col-10" style="margin-left: 15%; margin-top: -10%; ">
+    <div class="col-md-3 personalizedCard" *ngFor="let category of global.categories" (click)="global.setRoute('assetsments')">
+        <!-- start category -->
+        <div class="align-items-center bg-blur border-0 card-hover d-flex flex-fill flex-wrap p-3 p-sm-3 rounded-4 shadow-sm w-100">
+            <div class="flex-shrink-0">
+                <div class="align-items-center bg-dark category-icon-box d-flex fs-4 justify-content-center rounded-3 text-primary">
+                    <i class="fa-solid fa-building-user"></i>
+                </div>
+            </div>
+            <div class="flex-grow-1 ms-2 ms-md-3">
+                <h3 class="fs-19 fw-semibold mb-1"><a >{{category.nameCategory}}</a></h3>
+                <p class="mb-0 small">
+                    
+                   
+                     <span style="font-weight: bold;" *ngFor="let subCategory of category.subCategory">{{subCategory.name}} ,</span></p>
+            </div>
+            <a  class="align-items-center d-flex fw-semibold gap-2 link-hover">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z"></path>
+                </svg>
+            </a>
+        </div>
+        <!-- end /. category -->
+    </div>
+    
+   
+</div>

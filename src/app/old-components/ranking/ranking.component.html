@@ -1,0 +1,83 @@
+
+    <div class="col-12" style="padding-top: 60px; " >
+      <section>
+        <div class="custom-container">
+          <div class="title">
+            <h2>Top 10 by categories</h2>
+            <!-- <a ¿>See all</a> -->
+          </div>
+        </div>
+        <div class="quick-send" style="margin-left: 15px;">
+          
+            <div class="profile">
+            <a >
+              <!-- <img class="img-fluid person-img" src="assets/images/person/p2.png" alt="p2" /> -->
+              <h5 class="bg" style="font-weight: bold; color: white; background-color: #7030fe; padding: 10px; border-radius: 15px; margin-left: 5px;" (click)="setCat(0)">Programing...</h5>
+              </a>
+            </div>
+          
+      
+            <div class="profile">
+              <a >
+                <!-- <img class="img-fluid person-img" src="assets/images/person/p2.png" alt="p2" /> -->
+                <h5 class="bg" style="font-weight: bold; color: white; background-color: #7030fe; padding: 10px; border-radius: 15px; margin-left: 5px;" (click)="setCat(1)" >Exact Sciences...</h5>
+              </a>
+            </div>
+      
+            <div class="profile">
+              <a >
+                <!-- <img class="img-fluid person-img" src="assets/images/person/p3.png" alt="p3" /> -->
+                <h5 class="bg" style="font-weight: bold; color: white; background-color: #7030fe; padding: 10px; border-radius: 15px; margin-left: 5px;" (click)="setCat(2)">Earth...</h5>
+              </a>
+            </div>
+      
+            <div class="profile">
+              <a >
+                <!-- <img class="img-fluid person-img" src="assets/images/person/p4.png" alt="p4" /> -->
+                <h5 class="bg" style="font-weight: bold; color: white; background-color: #7030fe; padding: 10px; border-radius: 15px; margin-left: 5px;" (click)="setCat(3)" >Lenguages...</h5>
+              </a>
+            </div>
+      
+            <div class="profile">
+              <a >
+                <!-- <img class="img-fluid person-img" src="assets/images/person/p5.png" alt="p5" /> -->
+                <h5 class="bg" style="font-weight: bold; color: white; background-color: #7030fe; padding: 10px; border-radius: 15px; margin-left: 5px;" (click)="setCat(4)" >Business..</h5>
+              </a>
+            </div>
+            <div class="profile">
+              <a >
+                <!-- <img class="img-fluid person-img" src="assets/images/person/p5.png" alt="p5" /> -->
+                <h5 class="bg" style="font-weight: bold; color: white; background-color: #7030fe; padding: 5px; border-radius: 25px; margin-left: 5px;"(click)="setCat(5)" >others</h5>
+              </a>
+            </div>
+          </div>
+        </section>
+        <section  >
+         <div class="table-responsive">
+
+         
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Country</th>
+          <th>Points</th>
+          <th>Average</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dato of datos;let i = index">
+          <td>{{ i+1 }}</td>
+          <td>{{ dato.nombre }}</td>
+          <td>{{ dato.pais }}</td>
+          <td>{{ dato.puntos }}</td>
+          <td>{{ dato.promedio }}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+  
+    </section>
+    </div>
+    

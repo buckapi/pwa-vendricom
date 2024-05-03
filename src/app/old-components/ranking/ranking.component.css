@@ -1,0 +1,50 @@
+/* .bg {
+    border-color: #8736fe !important;
+    cursor: pointer;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #f2f2f2;
+  } */
+  /* Estilos para elementos de clase .bg */
+.bg {
+  border-color: #8736fe;
+  cursor: pointer;
+}
+
+/* Estilos para tablas */
+table {
+  margin-bottom: 20px;
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ccc; /* Añadido borde a la tabla */
+  border-radius: 5px; /* Añadida esquina redondeada */
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px; /* Incrementado el relleno para mejorar la legibilidad */
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold; /* Resaltado de encabezados */
+}
+th:hover {
+  background-color: #8736fe;
+  color:white;
+}
+/* Hover para filas de la tabla */
+tr:hover {
+  background-color: #8736fe;
+  color:white;
+}

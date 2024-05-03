@@ -1,0 +1,14 @@
+<div [hidden]="virtualRouter.routerActive==='login' || virtualRouter.routerActive==='register' " class="hk-wrapper" data-layout="vertical"
+  data-layout-style="default" data-menu="light" data-footer="simple" data-hover="active">
+  <app-top-navbar [hidden]="virtualRouter.routerActive=='settings'"></app-top-navbar>
+  <app-vertical-nav [hidden]="virtualRouter.routerActive=='settings'"></app-vertical-nav>
+  <app-settings [hidden]="virtualRouter.routerActive!=='settings'"></app-settings>
+  <app-user-home [hidden]="virtualRouter.routerActive!=='user-home'"></app-user-home>
+  <app-admin-home [hidden]="virtualRouter.routerActive!=='admin-home'"></app-admin-home>
+  <app-user-payments [hidden]="virtualRouter.routerActive!=='user-payments'"></app-user-payments>
+  <app-user-requests [hidden]="virtualRouter.routerActive!=='user-requests'"></app-user-requests>
+</div>
+<div class="hk-wrapper hk-pg-auth" data-footer="simple" [hidden]="virtualRouter.routerActive!=='login'&& virtualRouter.routerActive!=='register' ">
+  <app-login [hidden]="virtualRouter.routerActive!=='login'"></app-login>
+  <app-register [hidden]="virtualRouter.routerActive!=='register'"></app-register>
+</div>

@@ -1,0 +1,290 @@
+
+
+<div  [hidden]="virtualRouter.routerActive!=='home'"  class="row" style="--bs-gutter-x:0; padding-top: 72px;" >
+  <div class="col-4" *ngIf="global.device==='Desktop' && virtualRouter.routerActive=='login'">
+  
+  </div>
+  <!-- <div [ngClass]="{'col-4': global.device === 'Desktop', 'col-12': global.device === 'Mobile'}"> -->
+
+ 
+ 
+<div class="col-md-4 col-lg-4 col-sm-12">
+
+
+  
+
+<section *ngIf="global.device==='Mobile'"  >
+  <div class="custom-container">
+    <div class="col-12" style="padding-left: 5%; padding-right: 2%;">
+      <span style="font-size: 50px; font-weight: 300;" *ngIf="global.info[0]!==undefined">
+       {{global.info[0].slogan}}
+      </span>
+    </div>
+    <img class="img-fluid banner-img" src="assets/mpay/images/background/podium2.png" alt="banner1"  />
+
+  
+    <div class="title">
+      <h2>My attemps</h2>
+      <a >See all</a>
+    </div>
+  </div>
+  <div class="quick-send" style="margin-left: 15px;">
+    
+      <div class="profile">
+      <a (click)="setCat(0)">
+        <h5 class="bg" style="color: white;" >Programing...</h5>
+        </a>
+      </div>
+    
+
+      <div class="profile">
+        <a (click)="setCat(1)">
+           <h5 class="bg" style="color: black;" >Exact Sciences...</h5>
+        </a>
+      </div>
+
+      <div class="profile">
+        <a (click)="setCat(2)">
+           <h5 class="bg" style="color: black;" >Earth...</h5>
+        </a>
+      </div>
+
+      <div class="profile">
+        <a (click)="setCat(0)">
+           <h5 class="bg" style="color: black;" >Lenguages...</h5>
+        </a>
+      </div>
+
+      <div class="profile">
+        <a (click)="setCat(1)">
+          <h5 class="bg" style="color: black;" >Business..</h5>
+        </a>
+      </div>
+      <div class="profile">
+        <a (click)="setCat(2)">
+          <h5 class="bg" style="color: black;" >others</h5>
+        </a>
+      </div>
+    </div>
+  </section>
+<section class="section-b-space" *ngIf="global.device==='Desktop' ">
+  <div class="custom-container mt-5">
+    <div class="profile-section">
+      <div class="profile-banner">
+        <div class="profile-image">
+          <img class="img-fluid profile-pic" src="assets/mpay/images/person/p2.png" alt="p3" />
+        </div>
+      </div>
+      <h2>Survana Williams</h2>
+      <h5>Self-Regenerative Genetic Engineering student.</h5>
+      <h5> 23 years old</h5>
+      <h5> Venezuela  <img src="https://image.similarpng.com/very-thumbnail/2020/06/Venezuela-flag-icon-on-transparent-background-PNG.png" style="width: 32px;" alt=""></h5>
+      
+      <div class="row" style="padding-left: 15%; padding-right: 15%;">
+        <div class="col-6"><div class="transaction-box">
+          <a data-bs-toggle="modal" class="d-flex gap-3">
+              <div class="categories-image color1">
+                <i class="sidebar-icon" style="color: #642cfd;" data-feather="user"></i>  
+                <!-- <img class="img-fluid icon" src="assets/mpay/images/svg/16.svg" alt="p16" /> -->
+              </div>
+              <div class="transaction-details">
+                  <div class="transaction-name pb-0">
+                      <h5>Following</h5><br/>
+                     
+                  </div>
+                  <h5 class="dark-text fw-semibold"> 15 K</h5>
+              </div>
+          </a>
+      </div></div>
+        <div class="col-6"><div class="transaction-box">
+          <a data-bs-toggle="modal" class="d-flex gap-3">
+              <div class="categories-image color1">
+                <i class="sidebar-icon" style="color: #642cfd;" data-feather="user"></i> 
+                <!-- <img class="img-fluid icon" src="assets/mpay/images/svg/16.svg" alt="p16" /> -->
+              </div>
+              <div class="transaction-details">
+                  <div class="transaction-name pb-0">
+                      <h5>Followers</h5><br/>
+                     
+                  </div>
+                  <h5 class="dark-text fw-semibold">22 K</h5>
+              </div>
+          </a>
+      </div></div>
+      </div>
+      <div class="row" style="padding-left: 20%; padding-right: 20%;">
+        <div class="col-1"></div>
+        
+    
+        <div class="col-9"><div class="transaction-box">
+          <a data-bs-toggle="modal" class="d-flex gap-3">
+              <div class="categories-image color1">
+                  <img class="img-fluid icon" src="assets/mpay/images/svg/16.svg" alt="p16" />
+              </div>
+              <div class="transaction-details">
+                  <div class="transaction-name pb-0" style="width: 100px;">
+                      <h5>15 Assessments Followed</h5>
+                  <br/>
+                     
+                  </div>
+                  <!-- <h5 class="dark-text fw-semibold"> 15</h5> -->
+              </div>
+          </a>
+      </div></div>
+      </div>
+    </div>
+
+    <!-- <ul class="profile-list">
+      <li>
+        <a href="my-account.html" class="profile-box">
+          <div class="profile-img">
+            <i class="icon" data-feather="user"></i>
+          </div>
+          <div class="profile-details">
+            <h4>Followers</h4>
+            <img class="img-fluid arrow" src="assets/mpay/images/svg/arrow.svg" alt="arrow" />
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="cards.html" class="profile-box">
+          <div class="profile-img">
+            <i class="icon" data-feather="credit-card"></i>
+          </div>
+          <div class="profile-details">
+            <h4>Following</h4>
+            <img class="img-fluid arrow" src="assets/mpay/images/svg/arrow.svg" alt="arrow" />
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="change-password.html" class="profile-box">
+          <div class="profile-img">
+            <i class="icon" data-feather="settings"></i>
+          </div>
+          <div class="profile-details">
+            <h4>Assessments Followed</h4>
+            <img class="img-fluid arrow" src="assets/mpay/images/svg/arrow.svg" alt="arrow" />
+          </div>
+        </a>
+      </li>
+    
+    </ul> -->
+    <div class="custom-container">
+      <div class="title">
+        <!-- <h2>Categorissses</h2> -->
+        <a (click)="virtualRouter.setRoute('profile')" style="color :blue; cursor: pointer;">See more</a>
+      </div>
+    </div>
+    <div class="app-title  mb-3">
+      <h2>Advertising banner</h2>
+  </div>
+  
+  
+  <div class="swiper banner">
+      <div class="swiper-wrapper">
+          <div class="swiper-slide">
+              <img class="img-fluid banner-img" src="assets/mpay/images/banner/banner1.png" alt="banner1" />
+          </div>
+          <div class="swiper-slide">
+              <img class="img-fluid banner-img" src="assets/mpay/images/banner/banner2.png" alt="banner2" />
+          </div>
+      </div>
+  </div>
+  </div>
+  
+</section>
+  <!-- card start -->
+  
+</div>
+<div class="col-md-8 col-lg-8 col-sm-12" >
+  <section *ngIf="global.device==='Desktop'" style="padding-top: 66px;" >
+    <div class="custom-container" >
+
+  
+    <app-podium></app-podium>
+
+
+    <div *ngIf="global.device==='Desktop'" style="margin-top: 11%; margin-left: 12%; margin-right: 15%;" >
+   
+        <div class="title">
+          
+          <h2>Top 10 by categories</h2>
+          <a style="cursor: pointer; color: #642cfd;" (click)="virtualRouter.setRoute('ranking')">See all</a>
+        </div>
+      </div>
+
+
+    <div class="row "  style="margin-bottom: 30px;   ; --bs-gutter-x:0;">
+      <div class="col-12" style="padding-left: 15%;">
+        <span style="font-size: 60px; font-weight: 300;" *ngIf="global.info[0]!==undefined">
+          {{global.info[0].slogan}}
+        </span>
+      </div>
+      
+      <div class="col-12">
+        <div class="bg-white d-flex position-relative search-wrapper"  style="margin: 50px 150px 150px 150px; padding: 2%; border-radius: 25px;border-style: solid; border-color: #7234f0;">
+          <div class="align-items-center d-flex search-field w-100">
+              <div class="svg-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+                  </svg>
+              </div>
+              <!-- start input -->
+              <input type="email" class="form-control search-input" placeholder="What are you looking for?">
+              <!-- end /. input -->
+          </div>
+          <div class="vertical-divider"></div>
+          <div class="align-items-center d-flex search-field w-100">
+              <!-- <div class="svg-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                      <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"></path>
+                      <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                  </svg>
+              </div> -->
+              <!-- start select -->
+              <select class="form-select search-select-field" style="margin-left: 10px;">
+                  <option selected="">Programming</option>
+                  <option value="1">Exacts Science</option>
+                  <option value="2">Business</option>
+                  <option value="3"> Others</option>
+              </select>
+              <!-- end /. select -->
+          </div>
+          <input type="submit" value="Search " class="btn btn-primary rounded-5 mt-3 mt-md-0" (click)="virtualRouter.setRoute('assetsments')" style="background: linear-gradient(142.56deg, #8f3aff -1.68%, #642cfd 62.12%) !important; margin-left: 15px;">
+      </div>
+        <!-- <div class="form-group" style="margin: 150px;">
+          <div class="form-input">
+              <input type="email" class="form-control sa" id="inputusername" placeholder="Buscar" />
+          </div>
+      </div> -->
+      </div>
+
+    </div>
+   
+<app-cards ></app-cards>
+</div>
+</section>
+
+
+<!-- <section>
+  <div class="custom-container">
+    <div class="statistics-banner">
+      <div class="d-flex justify-content-center gap-3">
+        <div class="statistics-image">
+          <i class="icon" data-feather="bar-chart-2"></i>
+        </div>
+        <div class="statistics-content d-block">
+          <h5>Monthly Statistics</h5>
+          <h6>30% better performance than previous</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<section class="panel-space"></section>
+</div>
+</div>
+
+

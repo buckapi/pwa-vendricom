@@ -1,0 +1,298 @@
+<div class="col-12 " style="padding-top: 90px;" *ngIf="global.device==='Desktop'">
+    
+
+
+  <section>
+      
+      <div class="custom-container">
+        <div class="title">
+          <h2>Articulos</h2>
+          <!-- <a href="saving-plans.html">See all</a> -->
+        </div>
+        <div class="row" style="margin-top: 90px;">
+          <div class="col-3" *ngFor="let product of global.products">
+            <div class="saving-plan-box">
+              <div class="saving-plan-icon">
+                <!-- Suponiendo que tienes una imagen para cada producto en product.imagen -->
+                <!-- <img class="img-fluid" [src]="product.imagen" [alt]="product.arnombre" /> -->
+              </div>
+              <h3>{{ product.arnombre }}</h3>
+              <h6>{{ product.arprecio }}</h6>
+              <!-- <h6>Amount left</h6> -->
+              <!-- La barra de progreso puede ser dinámica según alguna propiedad del producto -->
+              <div class="progress" role="progressbar" aria-label="progressbar" aria-valuenow="0" aria-valuemin="0"
+                aria-valuemax="100">
+             
+                <div class="progress-bar bar1" [style.width]="product.progreso + '%'"></div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <!-- Suponiendo que tienes un precio para cada producto en product.precio -->
+                <h5 class="theme-color">{{ product.precio | currency }}</h5>
+                <img class="img-fluid arrow" src="assets/mpay/images/svg/arrow.svg" alt="arrow" />
+              </div>
+            </div>
+          </div>
+          <!-- <div class="col-3">
+            <div class="saving-plan-box">
+              <div class="saving-plan-icon">
+                <img class="img-fluid" src="assets/mpay/images/svg/11.svg" alt="p11" />
+              </div>
+              <h3>Grand Home</h3>
+              <h6>Amount left</h6>
+              <div class="progress" role="progressbar" aria-label="progressbar" aria-valuenow="0" aria-valuemin="0"
+                aria-valuemax="100">
+                <div class="progress-bar bar2"></div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <h5 class="theme-color">$2,000.00</h5>
+                <img class="img-fluid arrow" src="assets/mpay/images/svg/arrow.svg" alt="arrow" />
+              </div > 
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <div class="row">
+                  <div class="col-4"
+                  > <h5 class="theme-color"> 5+ </h5>
+                </div>
+                  <div class="col-4"
+                  > <h5 class="theme-color">10% </h5></div>
+                  <div class="col-4"
+                  > <h5 class="theme-color">5.und </h5>.</div>
+                </div>
+               
+                <img class="img-fluid arrow" src="assets/mpay/images/svg/arrow.svg" alt="arrow" />
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="saving-plan-box">
+              <div class="saving-plan-icon">
+                <img class="img-fluid" src="assets/mpay/images/svg/11.svg" alt="p11" />
+              </div>
+              <h3>Grand Home</h3>
+              <h6>Amount left</h6>
+              <div class="progress" role="progressbar" aria-label="progressbar" aria-valuenow="0" aria-valuemin="0"
+                aria-valuemax="100">
+                <div class="progress-bar bar2"></div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <h5 class="theme-color">$2,000.00</h5>
+                <img class="img-fluid arrow" src="assets/mpay/images/svg/arrow.svg" alt="arrow" />
+              </div > 
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <div class="row">
+                  <div class="col-4"
+                  > <h5 class="theme-color"> 5+ </h5>
+                </div>
+                  <div class="col-4"
+                  > <h5 class="theme-color">10% </h5></div>
+                  <div class="col-4"
+                  > <h5 class="theme-color">5.und </h5>.</div>
+                </div>
+               
+                <img class="img-fluid arrow" src="assets/mpay/images/svg/arrow.svg" alt="arrow" />
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="saving-plan-box">
+              <div class="saving-plan-icon">
+                <img class="img-fluid" src="assets/mpay/images/svg/11.svg" alt="p11" />
+              </div>
+              <h3>Grand Home</h3>
+              <h6>Amount left</h6>
+              <div class="progress" role="progressbar" aria-label="progressbar" aria-valuenow="0" aria-valuemin="0"
+                aria-valuemax="100">
+                <div class="progress-bar bar2"></div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <h5 class="theme-color">$2,000.00</h5>
+                <img class="img-fluid arrow" src="assets/mpay/images/svg/arrow.svg" alt="arrow" />
+              </div > 
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <div class="row">
+                  <div class="col-4"
+                  > <h5 class="theme-color"> 5+ </h5>
+                </div>
+                  <div class="col-4"
+                  > <h5 class="theme-color">10% </h5></div>
+                  <div class="col-4"
+                  > <h5 class="theme-color">5.und </h5>.</div>
+                </div>
+               
+                <img class="img-fluid arrow" src="assets/mpay/images/svg/arrow.svg" alt="arrow" />
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </section>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-start">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li class="page-item" *ngFor="let page of global.pagesArray">
+          <a class="page-link" [class.active]="global.currentPage === page" href="#">
+            {{ page }}
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <section class="section-b-space">
+      <div class="custom-container">
+        <div class="title">
+          <h2>News Update</h2>
+          <a href="news-update.html">See all</a>
+        </div>
+        <div class="row gy-3">
+          <div class="col-12">
+            <div class="news-update-box">
+              <div class="d-flex align-items-center gap-3">
+                <a href="news-update-details.html">
+                  <img class="img-fluid news-update-image" src="assets/mpay/images/1.jpg" alt="img1" />
+                </a>
+                <div class="news-update-content">
+                  <a href="news-update-details.html">
+                    <h3>Save and invest to obtain more</h3>
+                  </a>
+                  <div class="news-writer">
+                    <h6>13 May, 23</h6>
+                    <h6>-Smith</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="news-update-box">
+              <div class="d-flex align-items-center gap-3">
+                <a href="news-update-details.html">
+                  <img class="img-fluid news-update-image" src="assets/mpay/images/2.jpg" alt="img2" />
+                </a>
+                <div class="news-update-content">
+                  <a href="news-update-details.html">
+                    <h3>How to get more money from savings</h3>
+                  </a>
+                  <div class="news-writer">
+                    <h6>10 May, 23</h6>
+                    <h6>-Laila</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="news-update-box">
+              <div class="d-flex align-items-center gap-3">
+                <a href="news-update-details.html">
+                  <img class="img-fluid news-update-image" src="assets/mpay/images/3.jpg" alt="img3" />
+                </a>
+                <div class="news-update-content">
+                  <a href="news-update-details.html">
+                    <h3>5 Tips on expand your business</h3>
+                  </a>
+                  <div class="news-writer">
+                    <h6>6 May, 23</h6>
+                    <h6>-Brunt</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="col-12" style="padding-top: 90px;" *ngIf="global.device==='Mobile'">
+    <section>
+      <div class="custom-container">
+        <div class="title">
+          <h2>Categories</h2>
+          <a href="scan-pay.html">See all</a>
+        </div>
+      </div>
+      <div class="quick-send" style="margin-left: 15px;">
+        
+          <div class="profile">
+          <a >
+            <!-- <img class="img-fluid person-img" src="assets/images/person/p2.png" alt="p2" /> -->
+            <h5 class="bg" style="color: black;" (click)="setCat(0)">Programing...</h5>
+            </a>
+          </div>
+        
+    
+          <div class="profile">
+            <a >
+              <!-- <img class="img-fluid person-img" src="assets/images/person/p2.png" alt="p2" /> -->
+              <h5 class="bg" style="color: black;"  (click)="setCat(1)" >Exact Sciences...</h5>
+            </a>
+          </div>
+    
+          <div class="profile">
+            <a >
+              <!-- <img class="img-fluid person-img" src="assets/images/person/p3.png" alt="p3" /> -->
+              <h5 class="bg" style="color: black;"  (click)="setCat(2)">Earth...</h5>
+            </a>
+          </div>
+    
+          <div class="profile">
+            <a >
+              <!-- <img class="img-fluid person-img" src="assets/images/person/p4.png" alt="p4" /> -->
+              <h5 class="bg" style="color: black;"  (click)="setCat(3)" >Lenguages...</h5>
+            </a>
+          </div>
+    
+          <div class="profile">
+            <a >
+              <!-- <img class="img-fluid person-img" src="assets/images/person/p5.png" alt="p5" /> -->
+              <h5 class="bg" style="color: black;"  (click)="setCat(4)" >Business..</h5>
+            </a>
+          </div>
+          <div class="profile">
+            <a >
+              <!-- <img class="img-fluid person-img" src="assets/images/person/p5.png" alt="p5" /> -->
+              <h5 class="bg" style="color: black;" (click)="setCat(5)" >others</h5>
+            </a>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="custom-container">
+      <div class="title">
+        <h2>Today</h2>
+      </div>
+
+      <div class="row gy-3">
+        <div class="col-12" *ngFor="let subCategory of global.categoryPrev.subCategory">
+          <div class="transaction-box">
+            <a  data-bs-toggle="modal" class="d-flex gap-3">
+              <div class="transaction-image">
+                <img class="img-fluid transaction-icon" src="{{subCategory.image}}" alt="p1" />
+              </div>
+              <div class="transaction-details">
+                <div class="transaction-name">
+                  <h5> {{subCategory.name}} </h5>
+                  <!-- <h3 class="error-color">$199.<span>99</span></h3> -->
+                </div>
+                <div class="d-flex justify-content-between">
+                  <!-- <h5 class="light-text">Subscription</h5> -->
+                  <!-- <h5 class="light-text">8:45 am</h5> -->
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+  </div>
+  </div>
+
+  
+
+  </section>
+  </div>
+  

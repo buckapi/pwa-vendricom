@@ -1,0 +1,27 @@
+2024-03-23 12:18:03.116 [info] Started local extension host with pid 196650.
+2024-03-23 12:18:03.242 [info] Started initializing default profile extensions in extensions installation folder. file:///root/.vscode/extensions
+2024-03-23 12:18:03.522 [info] Completed initializing default profile extensions in extensions installation folder. file:///root/.vscode/extensions
+2024-03-23 12:18:30.766 [info] [perf] Render performance baseline is 142ms
+2024-03-23 12:18:32.040 [error] XHR failed: Failed: XHR failed
+    at ie.B (vscode-file://vscode-app/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:781:28456)
+    at async ie.z (vscode-file://vscode-app/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:781:25333)
+    at async ne (vscode-file://vscode-app/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:781:24336)
+    at async ie.query (vscode-file://vscode-app/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:781:24557)
+    at async o.y (vscode-file://vscode-app/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:1659:59073)
+2024-03-23 12:18:40.322 [info] Started local extension host with pid 196774.
+2024-03-23 12:19:09.165 [error] XHR failed: Failed: XHR failed
+    at ie.B (vscode-file://vscode-app/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:781:28456)
+    at async ie.z (vscode-file://vscode-app/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:781:25333)
+    at async ie.getExtensions (vscode-file://vscode-app/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:781:22267)
+    at async Y.getExtensions (vscode-file://vscode-app/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:2941:12529)
+    at async g.N (vscode-file://vscode-app/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:2865:72563)
+    at async g.D (vscode-file://vscode-app/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:2865:69557)
+    at async g.promptWorkspaceRecommendations (vscode-file://vscode-app/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:2865:68633)
+    at async f.O (vscode-file://vscode-app/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:2001:27648)
+2024-03-23 12:19:09.166 [error] XHR failed: Failed: XHR failed
+    at ie.B (vscode-file://vscode-app/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:781:28456)
+    at async ie.z (vscode-file://vscode-app/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:781:25333)
+    at async ne (vscode-file://vscode-app/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:781:24336)
+    at async ie.query (vscode-file://vscode-app/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:781:24557)
+    at async o.y (vscode-file://vscode-app/usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:1659:59073)
+2024-03-23 12:19:22.660 [info] [perf] Render performance baseline is 150ms

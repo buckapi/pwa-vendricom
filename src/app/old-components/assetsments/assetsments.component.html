@@ -1,0 +1,240 @@
+
+
+<div  [hidden]="virtualRouter.routerActive!=='assetsments'"  class="row" style="--bs-gutter-x:0; padding-top: 72px;" >
+    <div class="col-4" *ngIf="global.device==='Desktop' && virtualRouter.routerActive=='login'">
+    
+    </div>
+    <!-- <div [ngClass]="{'col-4': global.device === 'Desktop', 'col-12': global.device === 'Mobile'}"> -->
+  
+   
+   <div class="col-lg-1 col-md-1"></div>
+  <div class="col-md-3 col-lg-3 col-sm-12">
+  
+  
+    
+  
+  <section *ngIf="global.device==='Mobile'"  >
+    <div class="custom-container">
+      <div class="title">
+        <h2>Categories</h2>
+        <a href="scan-pay.html">See all</a>
+      </div>
+    </div>
+    <div class="quick-send">
+      
+        <div class="profile">
+        <a href="pay-money.html">
+          <!-- <img class="img-fluid person-img" src="assets/images/person/p2.png" alt="p2" /> -->
+          <h5 class="bg" style="color: white;" >Programing...</h5>
+          </a>
+        </div>
+      
+  
+        <div class="profile">
+          <a href="pay-money.html">
+            <!-- <img class="img-fluid person-img" src="assets/images/person/p2.png" alt="p2" /> -->
+            <h5 class="bg" style="color: black;" >Exact Sciences...</h5>
+          </a>
+        </div>
+  
+        <div class="profile">
+          <a href="pay-money.html">
+            <!-- <img class="img-fluid person-img" src="assets/images/person/p3.png" alt="p3" /> -->
+            <h5 class="bg" style="color: black;" >Earth...</h5>
+          </a>
+        </div>
+  
+        <div class="profile">
+          <a href="pay-money.html">
+            <!-- <img class="img-fluid person-img" src="assets/images/person/p4.png" alt="p4" /> -->
+            <h5 class="bg" style="color: black;" >Lenguages...</h5>
+          </a>
+        </div>
+  
+        <div class="profile">
+          <a href="pay-money.html">
+            <!-- <img class="img-fluid person-img" src="assets/images/person/p5.png" alt="p5" /> -->
+            <h5 class="bg" style="color: black;" >Business..</h5>
+          </a>
+        </div>
+        <div class="profile">
+          <a href="pay-money.html">
+            <!-- <img class="img-fluid person-img" src="assets/images/person/p5.png" alt="p5" /> -->
+            <h5 class="bg" style="color: black;" >others</h5>
+          </a>
+        </div>
+      </div>
+    </section>
+  <section class="section-b-space" *ngIf="global.device==='Desktop' ">
+    <div class="custom-container">
+      <form class="auth-form pt-0" target="_blank">
+        <div class="app-title mt-4 mb-3">
+          <h2>Order by</h2>
+      </div>
+      <div class="form-group">
+        <!-- <label for="inputcards" class="form-label mb-2">Order by</label> -->
+        <div class="d-flex gap-2">
+          <select id="inputcards" class="form-select">
+            <option selected>Popularity</option>
+            <option>Dificulty</option>
+    
+          </select>
+        </div>
+      </div>
+     
+       
+        <div class="app-title mt-4 mb-3">
+          <h2>Filter by Name</h2>
+      </div>
+        <div class="form-group">
+            <!-- <label for="inputusername" class="form-label">Filter by name</label> -->
+            <div class="form-input">
+                <input type="text" class="form-control" id="inputusername" placeholder="name" />
+            </div>
+        </div>
+
+      
+
+      
+        <div class="app-title mt-4 mb-3">
+            <h2>Filter by lenguage</h2>
+        </div>
+
+
+        <div class="option d-block mt-3">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheck1" checked />
+                <label class="form-check-label" for="flexCheck1">English</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheck2" />
+                <label class="form-check-label" for="flexCheck2">Spanish</label>
+            </div>
+          
+        </div>
+
+       
+
+        <div class="app-title mt-4 mb-3">
+            <h2>Filter by Category</h2>
+        </div>
+
+        <!-- <ul class="toogle-switch border-0 pt-0">
+            <li>
+                <h3>Item 1</h3>
+                <div class="switch-btn">
+                    <input type="checkbox" />
+                </div>
+            </li>
+            <li>
+                <h3>Item 2</h3>
+                <div class="switch-btn">
+                    <input type="checkbox" />
+                </div>
+            </li>
+        </ul> -->
+
+    </form>
+    </div>
+  </section>
+    <!-- card start -->
+
+  </div>
+  <div class="col-md-8 col-lg-8 col-sm-12" >
+    <section *ngIf="global.device==='Desktop'" style="padding-top: 66px;" >
+      <div class="row "  style="margin-bottom: 30px; --bs-gutter-x:0;">
+        <div class="title">
+          <h2>Results</h2>
+        </div>
+  <div class="col-md-6 col-lg-6">
+
+ 
+        <div class="row ">
+          <div class="col-md-8 col-lg-8 personalizedCard" *ngFor="let result of global.categories" (click)="global.setPrev(result)">
+            <div class="transaction-box" >
+              <a  data-bs-toggle="modal" class="d-flex gap-3" >
+                <div class="transaction-image" style="width: 150px; height: 150px;">
+                  <img class="img-fluid transaction-icon" src="{{result.image}}" alt="p1" />
+                </div>
+                <div class="transaction-details">
+                  <div class="transaction-name">
+                    <h5>{{result.nameCategory}}</h5>
+                    <!-- <h3 class="error-color">$199.<span>99</span></h3> -->
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <h5 class="light-text">Subscription</h5>
+                    <!-- <h5 class="light-text">8:45 am</h5> -->
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          
+          
+        </div>
+  </div>
+  <div class="col-md-4 col-lg-4 ">
+         
+    <div class="custom-container">
+      <div class="news-details">
+        <img class="img-fluid news-img w-50" src="{{global.categoryPrev.image}}" alt="imagen" />
+        <div class="news-content">
+          <h2>{{global.categoryPrev.nameCategory}}</h2>
+          <!-- <h5>13 May, 2023 | Smith</h5> -->
+          <div class="news-description" [hidden]="global.categoryPrev.subCategory[0]===undefined">
+            <div class="app-title mt-4 mb-3">
+              <h2>Sub-categories</h2>
+          </div>
+            <p>
+              
+              <span *ngFor="let subCategory of global.categoryPrev.subCategory" style="cursor: pointer;">
+               
+               
+        <img class="img-fluid news-img " style="max-width: 32px; max-height: 32px;" src="{{subCategory.image}}" alt="imagen" />
+               {{subCategory.name}} ,
+            </span>
+          </p>
+
+
+            <!-- <div class="investment-banner">
+              <div class="investment-content">
+                <h5>How to earn more cash so you may invest more</h5>
+                <h6>Earn 50% with this investment.</h6>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+</div>
+      </div>
+     
+  <!-- <app-cards ></app-cards> -->
+      </section>
+  
+  
+  <!-- <section>
+    <div class="custom-container">
+      <div class="statistics-banner">
+        <div class="d-flex justify-content-center gap-3">
+          <div class="statistics-image">
+            <i class="icon" data-feather="bar-chart-2"></i>
+          </div>
+          <div class="statistics-content d-block">
+            <h5>Monthly Statistics</h5>
+            <h6>30% better performance than previous</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+  
+  <section class="panel-space"></section>
+  </div>
+ 
+  </div>
+  
+  
+  

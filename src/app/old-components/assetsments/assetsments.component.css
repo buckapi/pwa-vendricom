@@ -1,0 +1,15 @@
+.personalizedCard {
+    border-style: solid !important;
+    margin: 10px;
+    border-color: #8736fe !important;
+    color: black;
+    border: 0.5px;
+    border-radius: 15px;
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.personalizedCard:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}

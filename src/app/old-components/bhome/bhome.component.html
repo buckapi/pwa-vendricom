@@ -1,0 +1,181 @@
+
+
+<div  [hidden]="virtualRouter.routerActive!=='bhome'"  class="row" style="--bs-gutter-x:0; padding-top: 72px;" >
+  <div class="col-4" *ngIf="global.device==='Desktop' && virtualRouter.routerActive=='login'"></div>
+ 
+    <div class="col-md-7 col-lg-7 col-sm-12" >
+ 
+      <section *ngIf="global.device==='Desktop'" style="padding-top: 66px;" >
+        <div class="row "  style="margin-bottom: 30px; --bs-gutter-x:0;">
+          
+    
+    
+          <div class="col-12" style="padding-left: 15%;">
+            <span style="font-size: 50px; font-weight: 300;" *ngIf="global.info[0]!==undefined">
+             <!-- {{global.info[0].slogan}} -->
+            </span>
+          </div>
+          
+          <div class="col-12">
+            <!-- <div class="bg-white d-flex position-relative search-wrapper"  style="margin: 50px 150px 150px 150px; padding: 2%; border-radius: 25px;border-style: solid; border-color: #7234f0;">
+              <div class="align-items-center d-flex search-field w-100">
+                  <div class="svg-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+                      </svg>
+                  </div>
+                  <input type="text" class="form-control search-input" placeholder="What are you looking for?">
+              </div>
+              <div class="vertical-divider"></div>
+              <div class="align-items-center d-flex search-field w-100">
+                  <select class="form-select search-select-field" style="margin-left: 10px;">
+                      <option selected="">Programming</option>
+                      <option value="1">Exacts Science</option>
+                      <option value="2">Business</option>
+                      <option value="3"> Others</option>
+                  </select>
+              </div>
+              <input type="submit" value="Search " class="btn btn-primary rounded-5 mt-3 mt-md-0" (click)="global.setRoute('assetsments')" style="background: linear-gradient(142.56deg, #8f3aff -1.68%, #642cfd 62.12%) !important; margin-left: 15px;">
+          </div> -->
+          </div>
+  
+        </div>
+       
+  <app-cards ></app-cards>
+  
+        </section>
+   
+  
+  </div>
+  <div class="col-md-6 col-lg-6 col-sm-12" *ngIf="global.device==='Mobile'">
+    <section  style="padding-top: 0px;" >
+      <div class="row "  style="margin-bottom: 30px; --bs-gutter-x:0;">
+        <div class="col-12" style="padding-left: 10%; padding-right: 5%;">
+          <span style="font-size: 50px; font-weight: 300;" *ngIf="global.info[0]!==undefined">
+            <!-- {{global.info[0].slogan}} -->
+          </span>
+        </div>
+        
+        
+        <div class="col-12">
+          <!-- <div class="bg-white d-flex position-relative search-wrapper"  style="margin: 10px 10px 10px 10px; padding: 2%; border-radius: 25px;border-style: solid; border-color: #7234f0;">
+            <div class="align-items-center d-flex search-field w-100">
+                <div class="svg-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+                    </svg>
+                </div>
+                <input type="text" class="form-control search-input" placeholder="What are you looking for?">
+            </div>
+            <div class="vertical-divider"></div>
+            <div class="align-items-center d-flex search-field w-100">
+                <select class="form-select search-select-field" style="margin-left: 10px;">
+                    <option selected="">Programming</option>
+                    <option value="1">Exacts Science</option>
+                    <option value="2">Business</option>
+                    <option value="3"> Others</option>
+                </select>
+            </div>
+            <input type="submit" value="Search " class="btn btn-primary rounded-5 mt-3 mt-md-0" (click)="global.setRoute('add-order')" style="background: linear-gradient(142.56deg, #8f3aff -1.68%, #642cfd 62.12%) !important; margin-left: 15px;">
+        </div> -->
+        </div>
+
+      </div>
+     
+      </section>
+  </div>
+<div class="col-md-5 col-lg-4 col-sm-12">
+
+  <div class="custom-container" style="margin-top: -5%;" *ngIf="global.device==='Mobile'" >
+  <!-- <img class="img-fluid banner-img" src="assets/mpay/images/background/podium2.png" alt="banner1"  /> -->
+
+    <div class="title">
+      
+      <!-- <h2>Top 10 by categories</h2>
+      <a style="cursor: pointer;" (click)="global.setRoute('ranking')">See all</a> -->
+    </div>
+  </div>
+  <div class="custom-container" *ngIf="global.device==='Desktop'" style="margin-top: 4%;" >
+    <!-- <img class="img-fluid banner-img" src="assets/mpay/images/background/podium2.png" alt="banner1"  /> -->
+  
+      <div class="title">
+        
+        <!-- <h2>Top 10 by categories</h2> -->
+        <!-- <a style="cursor: pointer;" (click)="global.setRoute('ranking')">See all</a> -->
+      </div>
+    </div>
+
+<!-- <section class="section-b-space">
+  <div class="custom-container">
+    <div class="app-title  mb-3">
+      <h2>Banner de anuncios</h2>
+    </div>
+    <div class="swiper banner">
+      <div class="swiper-wrapper">
+          <div class="swiper-slide">
+              <img class="img-fluid banner-img" src="assets/mpay/images/banner/banner1.png" alt="banner1" />
+          </div>
+          <div class="swiper-slide">
+              <img class="img-fluid banner-img" src="assets/mpay/images/banner/banner2.png" alt="banner2" />
+          </div>
+      </div>
+    </div>
+    <div class="title">
+    </div>
+  
+  </div>
+</section> -->
+  
+ 
+<section *ngIf="global.device==='Mobile'"  >
+  <div class="custom-container">
+    <div class="title">
+      <!-- <h2>Categorissses</h2> -->
+      <!-- <a href="scan-pay.html">See all</a> -->
+    </div>
+  </div>
+  <!-- <div class="quick-send">
+    
+      <div class="profile">
+      <a >
+        <h5 class="bg" style="color: white;" >Programing...</h5>
+        </a>
+      </div>
+    
+
+      <div class="profile">
+        <a >
+          <h5 class="bg" style="color: black;" >Exact Sciences...</h5>
+        </a>
+      </div>
+
+      <div class="profile">
+        <a >
+          <h5 class="bg" style="color: black;" >Earth...</h5>
+        </a>
+      </div>
+
+      <div class="profile">
+        <a >
+          <h5 class="bg" style="color: black;" >Lenguages...</h5>
+        </a>
+      </div>
+
+      <div class="profile">
+        <a >
+          <h5 class="bg" style="color: black;" >Business..</h5>
+        </a>
+      </div>
+      <div class="profile">
+        <a >
+          <h5 class="bg" style="color: black;" >others</h5>
+        </a>
+      </div>
+    </div> -->
+  </section>
+
+</div>
+
+</div>
+
+
