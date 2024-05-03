@@ -49,6 +49,10 @@ export class AuthRESTService {
 	getToken(){
 	 	return localStorage.getItem("accessToken");
 	  }
+	getStatus(){
+		return localStorage.getItem("status");
+
+	}
 	getCurrentUser(): UserInterface {
     let user_string = localStorage.getItem("currentUser");
 	    if (user_string ) {
@@ -58,7 +62,9 @@ export class AuthRESTService {
 		      return null!;
 			}
   		}
+	
 		
+
 	 logoutUser(){
 	  	let accessToken = localStorage.getItem('accessToken');
 		  	const url_api = 'http://localhost:7777/api/users/logout?access_token=${accessToken}';

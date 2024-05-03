@@ -9,7 +9,7 @@
             
             </nav>
             <div class="todoapp-content">
-                <div class="todoapp-detail-wrap">
+                <div class="todoapp-detail-wrap" [hidden]="global.status!='active'" >
                     <header class="todo-header">
                         <div class="d-flex align-items-center">
                             <a class="todoapp-title dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">

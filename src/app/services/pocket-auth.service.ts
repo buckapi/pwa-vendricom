@@ -13,19 +13,41 @@ export class PocketAuthService {
     this.pb = new PocketBase('https://db.buckapi.com:8090');
   }
 
-
-  
-  registerUser(email: string, password: string, type:string, name:string): Observable<any> {
-    const data = {
-        "email": email,
-        "password": password,
-        "passwordConfirm": password,
-        "type": type,
-        "username": name,
-        "name":name
+  registerUser(email: string, password: string, type: string, name: string): Observable<any> {
+    const userData = {
+      "email": email,
+      "password": password,
+      "passwordConfirm": password,
+      "type": type,
+      "username": name,
+      "name": name
     };
-    return from(this.pb.collection('users').create(data));
-}
+
+    // Crear usuario y luego crear el registro en vendricomClients
+    return from(this.pb.collection('users').create(userData).then((user) => {
+      const data = {
+        "name": name,
+        "address": "", // Agrega los campos correspondientes aquí
+        "phone": "", // Agrega los campos correspondientes aquí
+        "userId": user.id, // Utiliza el ID del usuario recién creado
+        "status": "pending", // Opcional, establece el estado del cliente
+        "images": {} // Agrega los campos correspondientes aquí
+      };
+      return this.pb.collection('vendricomClients').create(data);
+    }));
+  }
+  
+//   registerUser(email: string, password: string, type:string, name:string): Observable<any> {
+//     const data = {
+//         "email": email,
+//         "password": password,
+//         "passwordConfirm": password,
+//         "type": type,
+//         "username": name,
+//         "name":name
+//     };
+//     return from(this.pb.collection('users').create(data));
+// }
 
   loginUser(email: string, password: string): Observable<any> {
     return from(this.pb.collection('users').authWithPassword(email, password));

@@ -9,7 +9,7 @@ export class virtualRouter {
   ){
 
   }
-   routerActive:string= "register";
+   routerActive:string= "login";
 
     setRoute(route: string) {
       const userType = this.authRESTService.getType();

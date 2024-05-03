@@ -22,7 +22,7 @@ export class GlobalService {
   private apirestUrl = 'https://db.buckapi.com:8090/api/';
   clientes: any[] = [];
   configs: any[] = [];
-
+status:string="";
   info: any[] = [];
   categories: any[] = [];
   currentPage: number = 1;
