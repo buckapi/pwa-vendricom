@@ -10,7 +10,7 @@ RUN npm install -g
 COPY . .
 
 # Construir la aplicación
-RUN npm run build 
+RUN npm ng build 
 
 # Usar una imagen más liviana como servidor web para servir la aplicación
 FROM nginx:stable-alpine3.17-slim
