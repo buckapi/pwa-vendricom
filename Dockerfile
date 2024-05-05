@@ -15,5 +15,5 @@ RUN npm install
 COPY . .
 
 # Comando de construcción personalizado
+CMD ["npm", "run", "build"]
 
-CMD [ "start"]
