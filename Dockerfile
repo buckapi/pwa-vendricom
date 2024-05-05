@@ -1,5 +1,5 @@
 # Install Node.js
-FROM node:18
+FROM node:latest
 
 # Install Angular CLI globally
 RUN npm install -g @angular/cli
