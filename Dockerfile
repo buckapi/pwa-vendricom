@@ -1,22 +1,20 @@
+# Install Node.js
+FROM node:18
 
-FROM node:latest AS builder
+# Install Angular CLI globally
+RUN npm install -g @angular/cli
 
-RUN mkdir -p /home/pwa-clientes
-# Establecer el directorio de trabajo dentro del contenedor
-WORKDIR /home/pwa-clientes
+# Set working directory
+WORKDIR /app
 
-COPY package*.json /home/pwa-clientes
-RUN npm install -g
+# Copy package.json and install dependencies
+COPY package.json .
+RUN npm install
+
+# Copy the rest of the application code
 COPY . .
 
-# Construir la aplicación
-RUN npm run build 
+# Build the application
+RUN ng build
 
-# Usar una imagen más liviana como servidor web para servir la aplicación
-FROM nginx:stable-alpine3.17-slim
-
-# Copiar los archivos generados de la compilación de Angular a la imagen del servidor web
-COPY --from=builder /home/pwa-clientes/dist/pwa-clientes/browser /usr/share/nginx/html
-
-# Exponer el puerto 80 (puerto predeterminado de HTTP) para que la aplicación esté disponible
-EXPOSE 80
+# Your remaining Dockerfile commands...
