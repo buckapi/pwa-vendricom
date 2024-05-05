@@ -16,4 +16,5 @@ COPY . .
 
 # Comando de construcción personalizado
 CMD ["npm", "run", "build"]
+RUN npm start
 
