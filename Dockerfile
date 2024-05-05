@@ -1,20 +1,22 @@
-# Install Node.js
-FROM node:latest
 
-# Install Angular CLI globally
-RUN npm install -g @angular/cli
+FROM node:latest AS builder
 
-# Set working directory
-WORKDIR /app
+RUN mkdir -p /home/vendricom
+# Establecer el directorio de trabajo dentro del contenedor
+WORKDIR /home/vendricom
 
-# Copy package.json and install dependencies
-COPY package.json .
-RUN npm install
-
-# Copy the rest of the application code
+COPY package*.json /home/vendricom
+RUN npm install -g
 COPY . .
 
-# Build the application
-RUN ng build
+# Construir la aplicación
+RUN npm run build 
 
-# Your remaining Dockerfile commands...
+# Usar una imagen más liviana como servidor web para servir la aplicación
+FROM nginx:stable-alpine3.17-slim
+
+# Copiar los archivos generados de la compilación de Angular a la imagen del servidor web
+COPY --from=builder /home/vendricom/dist/vendricom/browser /usr/share/nginx/html
+
+# Exponer el puerto 80 (puerto predeterminado de HTTP) para que la aplicación esté disponible
+EXPOSE 80
