@@ -1,5 +1,5 @@
 # Utilizar una imagen base específica para Node.js
-FROM node:14
+FROM node:18
 
 # Instalar Angular CLI globalmente
 RUN npm install -g @angular/cli
