@@ -33,18 +33,24 @@
                         <a class="nav-link" (click)="virtualRouter.setRoute('home')" style="cursor: pointer;">
                             <span class="nav-icon-wrap">
                                 <span class="svg-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-template" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                                        <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+                                        <path d="M9 15l2 2l4 -4" />
+                                    </svg>
+                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-template" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                         <rect x="4" y="4" width="16" height="4" rx="1" />
                                         <rect x="4" y="12" width="6" height="8" rx="1" />
                                         <line x1="14" y1="12" x2="20" y2="12" />
                                         <line x1="14" y1="16" x2="20" y2="16" />
                                         <line x1="14" y1="20" x2="20" y2="20" />
-                                    </svg>
+                                    </svg> -->
                                 </span>
                             </span>
-                            <span class="nav-link-text">Inicio</span>
-                            <span class="badge badge-sm badge-soft-pink ms-auto">Hot</span>
+                            <span class="nav-link-text">Documentos</span>
+                            <!-- <span class="badge badge-sm badge-soft-pink ms-auto">Hot</span> -->
                         </a>
                     </li>
                 </ul>	
@@ -56,7 +62,7 @@
                 </div>
                 <ul class="navbar-nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" style="cursor: crosshair;">
+                        <a class="nav-link" style="cursor: pointer" (click)="virtualRouter.setRoute('support')">
                             <span class="nav-icon-wrap position-relative">
                                 <span class="badge badge-sm badge-primary badge-sm badge-pill position-top-end-overflow">!</span>
                                 <!-- <span class="svg-icon">
@@ -78,7 +84,7 @@
                                     </svg>
                                 </span>
                             </span>
-                            <span class="nav-link-text">Mensajería</span>
+                            <span class="nav-link-text">Soporte</span>
                         </a>
                         <ul id="dash_chat" class="nav flex-column collapse  nav-children">
                             <li class="nav-item">
@@ -106,21 +112,25 @@
                             </li>
                         </ul>	
                     </li>	
-                    <li class="nav-item">
-                        <a class="nav-link" (click)="virtualRouter.setRoute('payments')" style="cursor: pointer;">
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" (click)="virtualRouter.setRoute('file-manager')" style="cursor: pointer;">
                             <span class="nav-icon-wrap">
-                                <i class="icon" data-icon="&#xe062;"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                                    <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+                                    <path d="M9 15l2 2l4 -4" />
+                                </svg>
                             </span>
                             <div [ngSwitch]="auth.getType()">
-                                <span *ngSwitchCase="'cliente'" class="nav-link-text">Mis pagos</span>
-                                <span *ngSwitchCase="'admin'" class="nav-link-text">Pagos</span>
+                                <span *ngSwitchCase="'cliente'" class="nav-link-text">Documentos</span>
+                                <span *ngSwitchCase="'admin'" class="nav-link-text">Documentos</span>
                             </div>
                         </a>
-                    </li>
-                    <li class="nav-item">
+                    </li> -->
+                    <!-- <li class="nav-item">
                         <a class="nav-link"  (click)="virtualRouter.setRoute('requests')" style="cursor: pointer;" >
                             <span class="nav-icon-wrap position-relative">
-                                <!-- <span class="badge badge-sm badge-primary badge-sm badge-pill position-top-end-overflow">3</span> -->
                                 <span class="svg-icon">
                                     
                                         <span class="svg-icon">
@@ -155,7 +165,7 @@
                                 </ul>	
                             </li>	
                         </ul>	
-                    </li>
+                    </li> -->
                     
                 </ul>
             </div>

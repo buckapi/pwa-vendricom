@@ -9,7 +9,7 @@ export class virtualRouter {
   ){
 
   }
-   routerActive:string= "login";
+   routerActive:string= "home ";
 
     setRoute(route: string) {
       const userType = this.authRESTService.getType();
@@ -27,13 +27,13 @@ export class virtualRouter {
               console.error('Tipo de usuario no reconocido');
           }
           break;
-        case 'payments':
+        case 'file-manager':
           switch (userType) {
             case 'admin':
-              this.routerActive = 'admin-payments';
+              this.routerActive = 'file-manager';
               break;
             case 'cliente':
-              this.routerActive = 'user-payments';
+              this.routerActive = 'file-manager';
               break;
             default:
               console.error('Tipo de usuario no reconocido');
@@ -42,13 +42,13 @@ export class virtualRouter {
         case 'settings':
           this.routerActive = 'settings';
           break;
-        case 'requests':
+        case 'support':
           switch (userType) {
             case 'admin':
-              this.routerActive = 'admin-requests';
+              this.routerActive = 'admin-support';
               break;
             case 'cliente':
-              this.routerActive = 'user-requests';
+              this.routerActive = 'user-support';
               break;
             default:
               console.error('Tipo de usuario no reconocido');

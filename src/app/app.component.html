@@ -6,7 +6,10 @@
   <app-user-home [hidden]="virtualRouter.routerActive!=='user-home'"></app-user-home>
   <app-admin-home [hidden]="virtualRouter.routerActive!=='admin-home'"></app-admin-home>
   <app-user-payments [hidden]="virtualRouter.routerActive!=='user-payments'"></app-user-payments>
+  <app-file-manager [hidden]="virtualRouter.routerActive!=='file-manager'"></app-file-manager>
   <app-user-requests [hidden]="virtualRouter.routerActive!=='user-requests'"></app-user-requests>
+  <app-admin-support [hidden]="virtualRouter.routerActive!=='app-admin-support'"></app-admin-support>
+  <app-user-support [hidden]="virtualRouter.routerActive!=='app-user-support'"></app-user-support>
 </div>
 <div class="hk-wrapper hk-pg-auth" data-footer="simple" [hidden]="virtualRouter.routerActive!=='login'&& virtualRouter.routerActive!=='register' ">
   <app-login [hidden]="virtualRouter.routerActive!=='login'"></app-login>

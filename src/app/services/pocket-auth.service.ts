@@ -36,29 +36,23 @@ export class PocketAuthService {
       return this.pb.collection('vendricomClients').create(data);
     }));
   }
-  
-//   registerUser(email: string, password: string, type:string, name:string): Observable<any> {
-//     const data = {
-//         "email": email,
-//         "password": password,
-//         "passwordConfirm": password,
-//         "type": type,
-//         "username": name,
-//         "name":name
-//     };
-//     return from(this.pb.collection('users').create(data));
-// }
 
   loginUser(email: string, password: string): Observable<any> {
     return from(this.pb.collection('users').authWithPassword(email, password));
   }
-
+  isLoggedIn(): boolean {
+    // Verificar si hay un token de acceso almacenado en localStorage
+    const accessToken = localStorage.getItem('pocketbase_auth');
+    // Verificar si el usuario está autenticado según el token
+    return !!accessToken;
+  }
   logoutUser(): Observable<any> {
     // Limpiar la autenticación almacenada
     localStorage.removeItem('accessToken');
     localStorage.removeItem('currentUser');
     localStorage.removeItem('isLoggedin');
     localStorage.removeItem('dist');
+    localStorage.removeItem('status');
     localStorage.removeItem('userId');
     localStorage.removeItem('type');
     localStorage.removeItem('clientCard');

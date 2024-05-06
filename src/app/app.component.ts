@@ -15,6 +15,9 @@ import { UserPaymentsComponent } from './components/user-payments/user-payments.
 import { UserRequestsComponent } from './components/user-requests/user-requests.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { RegisterComponent } from './components/register/register.component';
+import { FileManagerComponent } from './components/file-manager/file-manager.component';
+import { AdminSupportComponent } from './components/admin-support/admin-support.component';
+import { UserSupportComponent } from './components/user-support/user-support.component';
 
 
 @Component({
@@ -32,7 +35,10 @@ import { RegisterComponent } from './components/register/register.component';
     LoginComponent,
     UserRequestsComponent,
     SettingsComponent,
-    RegisterComponent
+    RegisterComponent,
+    FileManagerComponent,
+    AdminSupportComponent,
+    UserSupportComponent
     
   ],
   templateUrl: './app.component.html',

@@ -123,6 +123,7 @@ export class LoginComponent implements OnInit {
         const record = resultList.items[0]; // Tomar el primer registro
         console.log('Datos del cliente:', JSON.stringify(record));
         localStorage.setItem('status', record.status);
+        localStorage.setItem('clientCard', JSON.stringify(record));
         // Redirigir al usuario al home del cliente
         this.virtualRouter.routerActive = "user-home";
       } else {

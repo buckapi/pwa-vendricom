@@ -19,6 +19,7 @@
     "@angular/platform-browser": "^17.0.0",
     "@angular/platform-browser-dynamic": "^17.0.0",
     "@angular/router": "^17.0.0",
+    "ngx-awesome-uploader": "^17.0.2",
     "@apollo/client": "^3.0.0",
     "apollo-angular": "^6.0.0",
     "graphql": "^16.8.1",
