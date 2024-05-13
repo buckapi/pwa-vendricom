@@ -66,6 +66,9 @@ export class PocketAuthService {
   setToken(token:any): void{
     localStorage.setItem("accessToken",token);
   }
+  getType(): string | null {
+		return localStorage.getItem("type");
+	  }
   setUser(user:UserInterface):void{
     let user_string = JSON.stringify(user);
     let type = JSON.stringify(user.type);

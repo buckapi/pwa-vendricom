@@ -4,15 +4,10 @@
         <div class="fmapp-wrap">
             <nav class="fmapp-sidebar">
                 <div data-simplebar class="nicescroll-bar">
-                    <div class="menu-content-wrap">
-                        <div class="btn btn-primary btn-rounded btn-block btn-file mb-4">
-                            Upload
-                            <input type="file" class="upload">
-                        </div>
-                        
+                    <div class="menu-content-wrap"  >
                         <div class="menu-group">
                             <ul class="nav nav-light navbar-nav flex-column">
-                                <li class="nav-item active">
+                                <!-- <li class="nav-item active">
                                     <a class="nav-link" href="javascript:void(0);">
                                         <span class="nav-icon-wrap"><span class="feather-icon"><i data-feather="hard-drive"></i></span></span>
                                         <span class="nav-link-text">My Space</span>
@@ -29,14 +24,17 @@
                                         <span class="nav-icon-wrap"><span class="feather-icon"><i data-feather="folder"></i></span></span>
                                         <span class="nav-link-text">Folders</span>
                                     </a>
-                                </li>
+                                </li> -->
                                 <li class="nav-item">
+                                       
+
+
                                     <a class="nav-link" href="javascript:void(0);">
                                         <span class="nav-icon-wrap"><span class="feather-icon"><i data-feather="upload"></i></span></span>
-                                        <span class="nav-link-text">Shared</span>
+                                        <span class="nav-link-text">Subir documento a VENDRICOM</span>
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a class="nav-link" href="javascript:void(0);">
                                         <span class="nav-icon-wrap"><span class="feather-icon"><i data-feather="star"></i></span></span>
                                         <span class="nav-link-text">Starred</span>
@@ -47,12 +45,37 @@
                                         <span class="nav-icon-wrap"><span class="feather-icon"><i data-feather="trash-2"></i></span></span>
                                         <span class="nav-link-text">Trash</span>
                                     </a>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
+                        <button class="btn btn-primary btn-rounded btn-block btn-file mb-4"     (click)="global.onUpload()">Subir documento</button>
+                        <form (ngSubmit)="submitForm()">
+                            <div class="form-group">
+                              <label for="fechaEmision">Fecha de Emisión:</label>
+                              <input type="date" class="form-control" id="fechaEmision" name="fechaEmision" [(ngModel)]="formData.fechaEmision" required>
+                            </div>
+                            <div class="form-group">
+                              <label for="entidadRegulatoria">Entidad Regulatoria:</label>
+                              <input type="text" class="form-control" id="entidadRegulatoria" name="entidadRegulatoria" [(ngModel)]="formData.entidadRegulatoria" required>
+                            </div>
+                            <div class="form-group">
+                              <label for="asunto">Asunto:</label>
+                              <input type="text" class="form-control" id="asunto" name="asunto" [(ngModel)]="formData.asunto" required>
+                            </div>
+                            <div class="form-group">
+                              <label for="nombreReceptor">Nombre de la Persona Receptora:</label>
+                              <input type="text" class="form-control" id="nombreReceptor" name="nombreReceptor" [(ngModel)]="formData.nombreReceptor" required>
+                            </div>
+                            <div class="form-group">
+                              <label for="serial">Serial:</label>
+                              <input type="text" class="form-control" id="serial" name="serial" [(ngModel)]="formData.serial" required>
+                            </div>
+                            <!-- <button type="submit" class="btn btn-primary">Enviar</button> -->
+                          </form>
+                          
                         <div class="separator separator-light"></div>
                         <div class="menu-group">
-                            <ul class="nav nav-light navbar-nav flex-column">
+                            <!-- <ul class="nav nav-light navbar-nav flex-column">
                                 <li class="nav-item">
                                     <a class="nav-link" href="javascript:void(0);">
                                         <span class="nav-icon-wrap"><span class="feather-icon"><i data-feather="image"></i></span></span>
@@ -77,11 +100,16 @@
                                         <span class="nav-link-text">Documents</span>
                                     </a>
                                 </li>
-                            </ul>
+                            </ul> -->
+                        </div>
+                        <div class="btn btn-primary btn-rounded btn-block btn-file mb-4" >
+                            Guardar
+                            <input type="file" (change)="global.onFileChanged($event)">
+                            <!-- <input type="file" class="upload"> -->
                         </div>
                     </div>
                 </div>
-                <div class="fmapp-storage">
+                <!-- <div class="fmapp-storage">
                     <p class="p-sm">Storage is 85% full. 78.5 GB of 1 TB used. You can buy more space.</p>
                     <div class="progress-lb-wrap my-2">
                         <label class="progress-label text-uppercase fs-8 fw-medium">78.5 GB of 1 TB</label>
@@ -90,7 +118,7 @@
                         </div>
                     </div>
                     <a href="#" class="fs-7"><u>Buy Storage</u></a>
-                </div>
+                </div> -->
                 <!--Sidebar Fixnav-->
                 <div class="fmapp-fixednav">
                     <div class="hk-toolbar">
@@ -114,7 +142,7 @@
                     <header class="fm-header">
                         <div class="d-flex align-items-center flex-grow-1">
                             <a class="fmapp-title dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                <h1>My Space</h1>
+                                <h1>Todos los documentos</h1>
                             </a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="file"></i></span><span>All Files</span></a>
@@ -122,7 +150,7 @@
                                 <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="upload-cloud"></i></span><span>Cloud Document</span></a>
                             </div>
                             <form class="mx-3 flex-grow-1 mw-400p" role="search">
-                                <input type="text" class="form-control" placeholder="Search files and folders">
+                                <input type="text" class="form-control" placeholder="Buscar entre los documentos">
                             </form>
                         </div>
                         <div class="fm-options-wrap">	
@@ -161,7 +189,7 @@
                                     <div class="card">
                                         <div class="card-header">
                                             <a role="button" data-bs-toggle="collapse" href="#fm_collapse_1" aria-expanded="true">
-                                                <h5 class="mb-0">Quick Access</h5>
+                                                <h5 class="mb-0">Documentos recientes</h5>
                                             </a>
                                         </div>
                                         <div id="fm_collapse_1" class="collapse show">
@@ -318,458 +346,6 @@
                                                                 </div>
                                                             </div>
                                                             <p class="text-truncate p-xs">Last Access: 2 hours ago</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="collapse-simple mt-4">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <a role="button" data-bs-toggle="collapse" href="#fm_collapse_2" aria-expanded="true">
-                                                <h5 class="mb-0">Folders</h5>
-                                            </a>
-                                        </div>
-                                        <div id="fm_collapse_2" class="collapse show">
-                                            <div class="row gx-3 row-cols-xxl-5 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-1 mt-4">
-                                                <div class="col">
-                                                    <div class="card file-compact-card card-border">
-                                                        <div class="card-body d-flex justify-content-between">
-                                                            <div class="media fmapp-info-trigger">
-                                                                <div class="media-head me-3">
-                                                                    <div class="avatar avatar-icon avatar-sm avatar-soft-warning">
-                                                                        <span class="initial-wrap"><i class="ri-folder-2-fill"></i></span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <div class="file-name">Jampack - HTML - v1.0</div>
-                                                                    <div class="text-truncate fs-8 mb-2">1.6 GB</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="d-flex">
-                                                                <span class="file-star marked"><span class="feather-icon"><i data-feather="star"></i></span></span>
-                                                                <a class="btn btn-xs btn-icon btn-flush-dark btn-rounded flush-soft-hover flex-shrink-0" href="#" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="icon"><span class="feather-icon"><i data-feather="more-horizontal"></i></span></span></a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="eye"></i></span><span>Preview</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="copy"></i></span><span>Duplicate</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="skip-forward"></i></span><span>Move</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="user-plus"></i></span><span>Invite</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="link-2"></i></span><span>Share Link</span></a>
-                                                                    <div class="dropdown-divider"></div>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="info"></i></span><span>View Details</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="download"></i></span><span>Download</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="trash-2"></i></span><span>Delete</span></a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="card file-compact-card card-border">
-                                                        <div class="card-body d-flex justify-content-between">
-                                                            <div class="media fmapp-info-trigger">
-                                                                <div class="media-head me-3">
-                                                                    <div class="avatar avatar-icon avatar-sm avatar-soft-warning">
-                                                                        <span class="initial-wrap"><i class="ri-folder-2-fill"></i></span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <div class="file-name">Jampack - Angular</div>
-                                                                    <div class="text-truncate fs-8 mb-2">2,635 KB</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="d-flex">
-                                                                <span class="file-star marked"><span class="feather-icon"><i data-feather="star"></i></span></span>
-                                                                <a class="btn btn-xs btn-icon btn-flush-dark btn-rounded flush-soft-hover flex-shrink-0" href="#" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="icon"><span class="feather-icon"><i data-feather="more-horizontal"></i></span></span></a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="eye"></i></span><span>Preview</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="copy"></i></span><span>Duplicate</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="skip-forward"></i></span><span>Move</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="user-plus"></i></span><span>Invite</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="link-2"></i></span><span>Share Link</span></a>
-                                                                    <div class="dropdown-divider"></div>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="info"></i></span><span>View Details</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="download"></i></span><span>Download</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="trash-2"></i></span><span>Delete</span></a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="card file-compact-card card-border">
-                                                        <div class="card-body d-flex justify-content-between">
-                                                            <div class="media fmapp-info-trigger">
-                                                                <div class="media-head me-3">
-                                                                    <div class="avatar avatar-icon avatar-sm avatar-soft-warning">
-                                                                        <span class="initial-wrap"><i class="ri-folder-2-fill"></i></span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <div class="file-name">Designs</div>
-                                                                    <div class="text-truncate fs-8 mb-2">1.48 GB</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="d-flex">
-                                                                <span class="file-star"><span class="feather-icon"><i data-feather="star"></i></span></span>
-                                                                <a class="btn btn-xs btn-icon btn-flush-dark btn-rounded flush-soft-hover flex-shrink-0" href="#" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="icon"><span class="feather-icon"><i data-feather="more-horizontal"></i></span></span></a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="eye"></i></span><span>Preview</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="copy"></i></span><span>Duplicate</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="skip-forward"></i></span><span>Move</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="user-plus"></i></span><span>Invite</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="link-2"></i></span><span>Share Link</span></a>
-                                                                    <div class="dropdown-divider"></div>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="info"></i></span><span>View Details</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="download"></i></span><span>Download</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="trash-2"></i></span><span>Delete</span></a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="card file-compact-card card-border">
-                                                        <div class="card-body d-flex justify-content-between">
-                                                            <div class="media fmapp-info-trigger">
-                                                                <div class="media-head me-3">
-                                                                    <div class="avatar avatar-icon avatar-sm avatar-soft-warning">
-                                                                        <span class="initial-wrap"><i class="ri-folder-2-fill"></i></span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <div class="file-name">Inspiration</div>
-                                                                    <div class="text-truncate fs-8 mb-2">3.5 GB</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="d-flex">
-                                                                <span class="file-star"><span class="feather-icon"><i data-feather="star"></i></span></span>
-                                                                <a class="btn btn-xs btn-icon btn-flush-dark btn-rounded flush-soft-hover flex-shrink-0" href="#" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="icon"><span class="feather-icon"><i data-feather="more-horizontal"></i></span></span></a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="eye"></i></span><span>Preview</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="copy"></i></span><span>Duplicate</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="skip-forward"></i></span><span>Move</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="user-plus"></i></span><span>Invite</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="link-2"></i></span><span>Share Link</span></a>
-                                                                    <div class="dropdown-divider"></div>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="info"></i></span><span>View Details</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="download"></i></span><span>Download</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="trash-2"></i></span><span>Delete</span></a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="collapse-simple mt-4">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <a role="button" data-bs-toggle="collapse" href="#fm_collapse_3" aria-expanded="true">
-                                                <h5 class="mb-0">Files</h5>
-                                            </a>
-                                        </div>
-                                        <div id="fm_collapse_3" class="collapse show">
-                                            <div class="row gx-3 row-cols-xxl-5 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-1 mt-4">
-                                                <div class="col">
-                                                    <div class="card file-compact-card card-border">
-                                                        <div class="card-body d-flex justify-content-between">
-                                                            <div class="media fmapp-info-trigger">
-                                                                <div class="media-head me-3">
-                                                                    <div class="avatar avatar-icon avatar-soft-blue avatar-sm">
-                                                                        <span class="initial-wrap">
-                                                                            <i class="ri-file-excel-2-fill"></i>
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <div class="file-name">Website_content.exl</div>
-                                                                    <div class="text-truncate fs-8 mb-2">2,635 KB</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="d-flex">
-                                                                <span class="file-star"><span class="feather-icon"><i data-feather="star"></i></span></span>
-                                                                <a class="btn btn-xs btn-icon btn-flush-dark btn-rounded flush-soft-hover flex-shrink-0" href="#" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="icon"><span class="feather-icon"><i data-feather="more-horizontal"></i></span></span></a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="eye"></i></span><span>Preview</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="copy"></i></span><span>Duplicate</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="skip-forward"></i></span><span>Move</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="user-plus"></i></span><span>Invite</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="link-2"></i></span><span>Share Link</span></a>
-                                                                    <div class="dropdown-divider"></div>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="info"></i></span><span>View Details</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="download"></i></span><span>Download</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="trash-2"></i></span><span>Delete</span></a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="card file-compact-card card-border">
-                                                        <div class="card-body d-flex justify-content-between">
-                                                            <div class="media fmapp-info-trigger">
-                                                                <div class="media-head me-3">
-                                                                    <div class="avatar avatar-icon avatar-soft-danger avatar-sm">
-                                                                        <span class="initial-wrap">
-                                                                            <i class="ri-file-pdf-fill"></i>
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <div class="file-name">jampack.pdf</div>
-                                                                    <div class="text-truncate fs-8 mb-2">21.73 MB</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="d-flex">
-                                                                <span class="file-star marked"><span class="feather-icon"><i data-feather="star"></i></span></span>
-                                                                <a class="btn btn-xs btn-icon btn-flush-dark btn-rounded flush-soft-hover flex-shrink-0" href="#" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="icon"><span class="feather-icon"><i data-feather="more-horizontal"></i></span></span></a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="eye"></i></span><span>Preview</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="copy"></i></span><span>Duplicate</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="skip-forward"></i></span><span>Move</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="user-plus"></i></span><span>Invite</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="link-2"></i></span><span>Share Link</span></a>
-                                                                    <div class="dropdown-divider"></div>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="info"></i></span><span>View Details</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="download"></i></span><span>Download</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="trash-2"></i></span><span>Delete</span></a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="card file-compact-card card-border">
-                                                        <div class="card-body d-flex justify-content-between">
-                                                            <div class="media fmapp-info-trigger">
-                                                                <div class="media-head me-3">
-                                                                    <img src="assets/jampack/dist/img/gallery/mock7.jpg" alt="user" class="d-block img-fluid h-50p">
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <div class="file-name">jonas-kakaroto-KIPqvvTxl</div>
-                                                                    <div class="text-truncate fs-8 mb-2">4,178 KB</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="d-flex">
-                                                                <span class="file-star"><span class="feather-icon"><i data-feather="star"></i></span></span>
-                                                                <a class="btn btn-xs btn-icon btn-flush-dark btn-rounded flush-soft-hover flex-shrink-0" href="#" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="icon"><span class="feather-icon"><i data-feather="more-horizontal"></i></span></span></a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="eye"></i></span><span>Preview</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="copy"></i></span><span>Duplicate</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="skip-forward"></i></span><span>Move</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="user-plus"></i></span><span>Invite</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="link-2"></i></span><span>Share Link</span></a>
-                                                                    <div class="dropdown-divider"></div>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="info"></i></span><span>View Details</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="download"></i></span><span>Download</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="trash-2"></i></span><span>Delete</span></a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="card file-compact-card card-border">
-                                                        <div class="card-body d-flex justify-content-between">
-                                                            <div class="media fmapp-info-trigger">
-                                                                <div class="media-head me-3">
-                                                                    <div class="avatar avatar-icon avatar-soft-blue avatar-sm">
-                                                                        <span class="initial-wrap">
-                                                                            <i class="ri-folder-zip-fill"></i>
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <div class="file-name">themeforest-pack.zip</div>
-                                                                    <div class="text-truncate fs-8 mb-2">2.45 GB</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="d-flex">
-                                                                <span class="file-star"><span class="feather-icon"><i data-feather="star"></i></span></span>
-                                                                <a class="btn btn-xs btn-icon btn-flush-dark btn-rounded flush-soft-hover flex-shrink-0" href="#" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="icon"><span class="feather-icon"><i data-feather="more-horizontal"></i></span></span></a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="eye"></i></span><span>Preview</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="copy"></i></span><span>Duplicate</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="skip-forward"></i></span><span>Move</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="user-plus"></i></span><span>Invite</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="link-2"></i></span><span>Share Link</span></a>
-                                                                    <div class="dropdown-divider"></div>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="info"></i></span><span>View Details</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="download"></i></span><span>Download</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="trash-2"></i></span><span>Delete</span></a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="card file-compact-card card-border">
-                                                        <div class="card-body d-flex justify-content-between">
-                                                            <div class="media fmapp-info-trigger">
-                                                                <div class="media-head me-3">
-                                                                    <div class="avatar avatar-icon avatar-soft-light avatar-sm">
-                                                                        <span class="initial-wrap">
-                                                                            <i class="ri-keynote-fill"></i>
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <div class="file-name">presentation.keynote</div>
-                                                                    <div class="text-truncate fs-8 mb-2">20 KB</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="d-flex">
-                                                                <span class="file-star"><span class="feather-icon"><i data-feather="star"></i></span></span>
-                                                                <a class="btn btn-xs btn-icon btn-flush-dark btn-rounded flush-soft-hover flex-shrink-0" href="#" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="icon"><span class="feather-icon"><i data-feather="more-horizontal"></i></span></span></a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="eye"></i></span><span>Preview</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="copy"></i></span><span>Duplicate</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="skip-forward"></i></span><span>Move</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="user-plus"></i></span><span>Invite</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="link-2"></i></span><span>Share Link</span></a>
-                                                                    <div class="dropdown-divider"></div>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="info"></i></span><span>View Details</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="download"></i></span><span>Download</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="trash-2"></i></span><span>Delete</span></a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="card file-compact-card card-border">
-                                                        <div class="card-body d-flex justify-content-between">
-                                                            <div class="media fmapp-info-trigger">
-                                                                <div class="media-head me-3">
-                                                                    <img src="assets/jampack/dist/img/gallery/mock5.jpg" alt="user" class="d-block img-fluid h-50p">
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <div class="file-name">joel-mott-LaK153ghdig</div>
-                                                                    <div class="text-truncate fs-8 mb-2">2,635 KB</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="d-flex">
-                                                                <span class="file-star"><span class="feather-icon"><i data-feather="star"></i></span></span>
-                                                                <a class="btn btn-xs btn-icon btn-flush-dark btn-rounded flush-soft-hover flex-shrink-0" href="#" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="icon"><span class="feather-icon"><i data-feather="more-horizontal"></i></span></span></a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="eye"></i></span><span>Preview</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="copy"></i></span><span>Duplicate</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="skip-forward"></i></span><span>Move</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="user-plus"></i></span><span>Invite</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="link-2"></i></span><span>Share Link</span></a>
-                                                                    <div class="dropdown-divider"></div>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="info"></i></span><span>View Details</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="download"></i></span><span>Download</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="trash-2"></i></span><span>Delete</span></a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="card file-compact-card card-border">
-                                                        <div class="card-body d-flex justify-content-between">
-                                                            <div class="media fmapp-info-trigger">
-                                                                <div class="media-head me-3">
-                                                                    <div class="avatar avatar-icon avatar-soft-blue avatar-sm">
-                                                                        <span class="initial-wrap">
-                                                                            <i class="ri-file-text-fill"></i>
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <div class="file-name">expenses.doc</div>
-                                                                    <div class="text-truncate fs-8 mb-2">2,635 KB</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="d-flex">
-                                                                <span class="file-star"><span class="feather-icon"><i data-feather="star"></i></span></span>
-                                                                <a class="btn btn-xs btn-icon btn-flush-dark btn-rounded flush-soft-hover flex-shrink-0" href="#" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="icon"><span class="feather-icon"><i data-feather="more-horizontal"></i></span></span></a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="eye"></i></span><span>Preview</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="copy"></i></span><span>Duplicate</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="skip-forward"></i></span><span>Move</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="user-plus"></i></span><span>Invite</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="link-2"></i></span><span>Share Link</span></a>
-                                                                    <div class="dropdown-divider"></div>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="info"></i></span><span>View Details</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="download"></i></span><span>Download</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="trash-2"></i></span><span>Delete</span></a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="card file-compact-card card-border">
-                                                        <div class="card-body d-flex justify-content-between">
-                                                            <div class="media fmapp-info-trigger">
-                                                                <div class="media-head me-3">
-                                                                    <div class="avatar avatar-icon avatar-soft-blue avatar-sm">
-                                                                        <span class="initial-wrap">
-                                                                            <i class="ri-file-text-fill"></i>
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <div class="file-name">minutes_meeting.doc</div>
-                                                                    <div class="text-truncate fs-8 mb-2">2,635 KB</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="d-flex">
-                                                                <span class="file-star"><span class="feather-icon"><i data-feather="star"></i></span></span>
-                                                                <a class="btn btn-xs btn-icon btn-flush-dark btn-rounded flush-soft-hover flex-shrink-0" href="#" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="icon"><span class="feather-icon"><i data-feather="more-horizontal"></i></span></span></a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="eye"></i></span><span>Preview</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="copy"></i></span><span>Duplicate</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="skip-forward"></i></span><span>Move</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="user-plus"></i></span><span>Invite</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="link-2"></i></span><span>Share Link</span></a>
-                                                                    <div class="dropdown-divider"></div>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="info"></i></span><span>View Details</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="download"></i></span><span>Download</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="trash-2"></i></span><span>Delete</span></a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="card file-compact-card card-border">
-                                                        <div class="card-body d-flex justify-content-between">
-                                                            <div class="media fmapp-info-trigger">
-                                                                <div class="media-head me-3">
-                                                                    <div class="avatar avatar-icon avatar-sm avatar-soft-blue">
-                                                                        <span class="initial-wrap">
-                                                                            <i class="ri-file-word-2-fill"></i>
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <div class="file-name">proposal.doc</div>
-                                                                    <div class="text-truncate fs-8 mb-2">951 KB</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="d-flex">
-                                                                <span class="file-star marked"><span class="feather-icon"><i data-feather="star"></i></span></span>
-                                                                <a class="btn btn-xs btn-icon btn-flush-dark btn-rounded flush-soft-hover flex-shrink-0" href="#" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="icon"><span class="feather-icon"><i data-feather="more-horizontal"></i></span></span></a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="eye"></i></span><span>Preview</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="copy"></i></span><span>Duplicate</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="skip-forward"></i></span><span>Move</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="user-plus"></i></span><span>Invite</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="link-2"></i></span><span>Share Link</span></a>
-                                                                    <div class="dropdown-divider"></div>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="info"></i></span><span>View Details</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="download"></i></span><span>Download</span></a>
-                                                                    <a class="dropdown-item" href="#"><span class="feather-icon dropdown-icon"><i data-feather="trash-2"></i></span><span>Delete</span></a>
-                                                                </div>
-                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>

@@ -4,7 +4,7 @@
     <div class="hk-pg-body py-0">
     <div class="contactapp-wrap">
         <nav class="contactapp-sidebar">
-            <div data-simplebar class="nicescroll-bar">
+            <!-- <div data-simplebar class="nicescroll-bar">
                 <div class="menu-content-wrap">
                     <button type="button" class="btn btn-primary btn-rounded btn-block mb-4" data-bs-toggle="modal" data-bs-target="#add_new_contact">
                         Add new contact
@@ -112,7 +112,7 @@
                         <a href="#" class="badge badge-outline badge-light">Advertisement</a>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!--Sidebar Fixnav-->
             <div class="contactapp-fixednav">
                 <div class="hk-toolbar">
@@ -148,12 +148,12 @@
                             </div>
                         </div>
                         <div class="dropdown ms-3">
-<!-- 
-                            <input type="file" (change)="global.onFileChanged($event)">
-<button (click)="global.onUpload()">Subir imagen</button>
-                            <button class="btn btn-sm btn-primary ms-3"><span><span class="icon"><span class="feather-icon"><i class="icon" data-icon="I"></i></span></span><span class="btn-text">Enviar anuncio</span></span></button>
+
+                            <!-- <input type="file" (change)="global.onFileChanged($event)">
+<button (click)="global.onUpload()">Subir imagen</button> -->
+                            <!-- <button class="btn btn-sm btn-primary ms-3"><span><span class="icon"><span class="feather-icon"><i class="icon" data-icon="I"></i></span></span><span class="btn-text">Enviar anuncio</span></span></button> -->
                             
-                             -->
+                            
                         </div>
                     </div>
                     <div class="contact-options-wrap">	
@@ -283,12 +283,13 @@
                                                 </div>
                                             </div>	
                                             <div class="avatar avatar-xl avatar-rounded">
-                                                <img src="{{cliente.images[0]}}" alt="user" class="avatar-img">
+                                                <img src="assets/jampack/dist/img/avataer10.jpg" class="avatar-img">
+                                                <!-- <img src="{{cliente.images[0]}}" alt="user" class="avatar-img"> -->
                                             </div>
                                             <div class="user-name"><span class="contact-star"><span class="feather-icon"><i data-feather="star"></i></span></span>{{cliente.name}}</div>
                                             <div class="user-email">{{cliente.type}}</div>
-                                            <div class="user-contact">+145 52 5689</div>
-                                            <div class="user-desg"><span class="badge badge-primary badge-indicator badge-indicator-lg me-2"></span> {{cliente.address}}</div>
+                                            <div class="user-contact">+{{cliente.phone}}</div>
+                                            <div class="user-desg"><span class="badge badge-primary badge-indicator badge-indicator-lg me-2"></span> {{cliente.name}}</div>
                                         </div>
                                         <div class="card-footer text-muted position-relative">
                                             <div class="v-separator-full m-0"></div>

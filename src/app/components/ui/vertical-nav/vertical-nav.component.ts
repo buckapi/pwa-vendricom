@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { AuthRESTService } from '@app/services/auth-rest.service';
 import { GlobalService } from '@app/services/global.service';
+import { PocketAuthService } from '@app/services/pocket-auth.service';
 import { virtualRouter } from '@app/services/virtualRouter.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class VerticalNavComponent {
  constructor(
   public global:GlobalService,
   public auth:AuthRESTService,
-  public virtualRouter:virtualRouter
+  public virtualRouter:virtualRouter,
+  public pocketAuthService: PocketAuthService
  ){
 
  }
