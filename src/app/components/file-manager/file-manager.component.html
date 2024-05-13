@@ -48,7 +48,11 @@
                                 </li> -->
                             </ul>
                         </div>
-                        <button class="btn btn-primary btn-rounded btn-block btn-file mb-4"     (click)="global.onUpload()">Subir documento</button>
+                        <div class="btn btn-primary btn-rounded btn-block btn-file mb-4" >
+                            Subir documento
+                            <input type="file" (change)="global.onFileChanged($event)">
+                            <!-- <input type="file" class="upload"> -->
+                        </div>
                         <form (ngSubmit)="submitForm()">
                             <div class="form-group">
                               <label for="fechaEmision">Fecha de Emisión:</label>
@@ -102,11 +106,9 @@
                                 </li>
                             </ul> -->
                         </div>
-                        <div class="btn btn-primary btn-rounded btn-block btn-file mb-4" >
-                            Guardar
-                            <input type="file" (change)="global.onFileChanged($event)">
-                            <!-- <input type="file" class="upload"> -->
-                        </div>
+                       
+                        <button class="btn btn-primary btn-rounded btn-block btn-file mb-4"     (click)="global.onUpload()">Guardar</button>
+                        
                     </div>
                 </div>
                 <!-- <div class="fmapp-storage">
