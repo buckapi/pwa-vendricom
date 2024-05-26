@@ -70318,7 +70318,8 @@ Project:	Jampack
   display: inline-flex;
 }
 .navbar.navbar-dark {
-  background: #262a2e;
+  background: #0a3b6c;
+  /* background: #262a2e; */
 }
 .navbar.navbar-dark .badge.badge-indicator {
   border-color: #262a2e;
@@ -71402,7 +71403,9 @@ Project:	Jampack
   background: #d8d8d8;
 }
 .hk-wrapper[data-layout=vertical][data-menu=dark] .hk-menu {
-  background: #262a2e;
+  background: #0a3b6c;
+  /* background: #262a2e; */
+  
 }
 .hk-wrapper[data-layout=vertical][data-menu=dark] .hk-menu .menu-content-wrap .menu-group .navbar-nav .nav-item .nav-link {
   color: rgba(255, 255, 255, 0.6);

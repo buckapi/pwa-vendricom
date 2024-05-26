@@ -18,12 +18,14 @@ import { RegisterComponent } from './components/register/register.component';
 import { FileManagerComponent } from './components/file-manager/file-manager.component';
 import { AdminSupportComponent } from './components/admin-support/admin-support.component';
 import { UserSupportComponent } from './components/user-support/user-support.component';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
+    FormsModule,
     NgxSpinnerModule,
     CommonModule, 
     RouterOutlet,
@@ -90,6 +92,35 @@ export class AppComponent {
       this.global.getClientes().subscribe(
         (data) => {
           this.global.clientes = data.items; // Asigna los registros obtenidos a la variable 'registros'
+          // console.log(data); // respuesta
+        },
+        (error) => {
+          console.error(error); // Manejo de errores si la solicitud falla
+        }
+      );
+      this.global.getCategories().subscribe(
+        (data) => {
+          this.global.categories = data.items; // Asigna los registros obtenidos a la variable 'registros'
+          // console.log(data); // respuesta
+        },
+        (error) => {
+          console.error(error); // Manejo de errores si la solicitud falla
+        }
+      );
+
+      this.global.getTemas().subscribe(
+        (data) => {
+          this.global.temas = data.items; // Asigna los registros obtenidos a la variable 'registros'
+          // console.log(data); // respuesta
+        },
+        (error) => {
+          console.error(error); // Manejo de errores si la solicitud falla
+        }
+      );
+
+      this.global.getDocuments().subscribe(
+        (data) => {
+          this.global.documents = data.items; // Asigna los registros obtenidos a la variable 'registros'
           // console.log(data); // respuesta
         },
         (error) => {

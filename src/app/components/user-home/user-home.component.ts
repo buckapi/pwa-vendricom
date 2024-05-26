@@ -49,7 +49,7 @@ export class UserHomeComponent implements OnInit {
   ngForm: FormGroup;
   submitted = false;
   public isError = false;
-  adapter = new  DemoFilePickerAdapter(this.http,this._butler);
+  adapter = new  DemoFilePickerAdapter(this.http,this._butler,this.global);
   constructor(
     private formBuilder: FormBuilder, 
     public AuthRESTService: AuthRESTService,

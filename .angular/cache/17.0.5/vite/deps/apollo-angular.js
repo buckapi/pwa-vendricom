@@ -16,10 +16,10 @@ import {
   ɵɵdefineNgModule,
   ɵɵinject
 } from "./chunk-LUCK76G5.js";
+import "./chunk-VWZL6L3B.js";
 import {
   queueScheduler
 } from "./chunk-I74UQOMN.js";
-import "./chunk-VWZL6L3B.js";
 import {
   Observable,
   from,

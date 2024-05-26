@@ -19,6 +19,17 @@ export interface CardInterface {
 
 export interface PostInterface{
 	id?:number;
+}export interface DocumentInterface{
+	categories: any[];
+	temas: any[];
+	files: string[];
+	issue: string;
+	image: string;
+	serial: string;
+	receiver: string;
+	subject: string;
+	entity: string;
+	status: string;
 }
  export interface PayInterface{
 	id?:number;
@@ -56,6 +67,12 @@ export interface BranchInterface {
 export interface CarInterface {
 }
 export interface MemberInterface {
+
+}
+export interface CategoryInterface {
+
+}
+export interface TemaInterface {
 
 }
 
@@ -113,14 +130,30 @@ export class DataApiService {
 	
 	// 	return this.http.post<string>(url, requestBody, { headers: this.headers });
 	//   }
-
+	saveDocument( document: DocumentInterface) {
+		const url_api =  'https://db.buckapi.com:8090/api/collections/vendricomDocuments/records';
+		return this.http.post<DocumentInterface>(url_api, document).pipe(
+		  map(data => data)
+		);
+	  }
 	  changePassword(userId: string, newPassword: string): Observable<any> {
 		const url = `${this.yeoman.origin.restUrl}/api/UserPasswords/changePassword`;
 		const data = { userId, newPassword };
 		return this.http.post(url, data);
 	  }
 
-
+	  saveCategory( category: CategoryInterface) {
+		const url_api = 'https://db.buckapi.com:8090/api/collections/vendricomCategories/records';
+		return this.http.post<CategoryInterface>(url_api, category).pipe(
+		  map(data => data)
+		);
+	  }
+	  saveTema( category: TemaInterface) {
+		const url_api = 'https://db.buckapi.com:8090/api/collections/vendricomTemas/records';
+		return this.http.post<TemaInterface>(url_api, category).pipe(
+		  map(data => data)
+		);
+	  }
 	deletePart(id: string){
 		const token = this.AuthRESTService.getToken();
 		const url_api=	this.yeoman.origin.restUrl+`/api/products/${id}/?access_token$={token}`;

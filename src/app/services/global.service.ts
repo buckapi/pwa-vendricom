@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 import { Apollo, gql } from 'apollo-angular';
 import { PocketAuthService } from '@services/pocket-auth.service';
 import { ImageUploadService } from '@services/image-upload.service';
+import { Butler } from './butler.service';
 
 @Injectable({
   providedIn: 'root',
@@ -18,21 +19,25 @@ export class GlobalService {
 
   private apiUrl = 'http://localhost:8090/api/collections/images/records';
 
-  
+  isInfoActive=false;
   private apirestUrl = 'https://db.buckapi.com:8090/api/';
   clientes: any[] = [];
+  documents: any[] = [];
   configs: any[] = [];
 status:string="";
   info: any[] = [];
   categories: any[] = [];
+  temas: any[] = [];
   currentPage: number = 1;
   clients: any;
   device: string = '';
   currentUser: any;
   ordersSize = 0;
   selectedFile: File | null = null;
-
- 
+  modaltitle="Modal";
+  docummentSelected={};
+  newCategory:any;
+  newTema:any;
   clientDetail: { clrepresentante: any }[] = [];
   constructor(
     private apollo: Apollo,
@@ -43,6 +48,7 @@ status:string="";
     public virtuallRouter: virtualRouter,
     public yeoman: Yeoman,
     public dataApiService: DataApiService,
+    public _butler:Butler,
     private imageUploadService: ImageUploadService
   ) {}
   
@@ -59,9 +65,73 @@ status:string="";
   getClientes(): Observable<any> {
     return this.http.get<any>(this.apirestUrl + 'collections/vendricomClients/records');
   }
- 
+  getCategories(): Observable<any> {
+    return this.http.get<any>(this.apirestUrl + 'collections/vendricomCategories/records');
+  }
+  getTemas(): Observable<any> {
+    return this.http.get<any>(this.apirestUrl + 'collections/vendricomTemas/records');
+  }
 
+  getDocuments(): Observable<any> {
+    return this.http.get<any>(this.apirestUrl + 'collections/vendricomDocuments/records');
+  }
+ uploadDocument(){
+  
+ }
+  activateInfo() {
+    this.isInfoActive = true;
+  }
+  iactivateInfo() {
+    this.isInfoActive = false;
+  }
 
+  saveCategory() {
+    let category = { name: this.newCategory };
+
+    this.dataApiService.saveCategory(category).subscribe(
+      (response) => {
+        console.log("categoria guardada correctamente:", JSON.stringify(response));
+        // Agregar la categoria de la respuesta al array de categorias
+        this.categories.push(response);
+        this.categories = [...this.categories];
+
+        // console.log(JSON.stringify(this.yeoman.categorys))
+        // Limpiar los valores para futuros usos
+        this.newCategory = "";
+        // this.activeModal.close();
+      },
+      (error) => {
+        console.error("Error al guardar la categoria:", error);
+      }
+    );
+  }
+  saveTema() {
+    let tema = { name: this.newTema };
+
+    this.dataApiService.saveTema(tema).subscribe(
+      (response) => {
+        console.log("Tema guardado correctamente:", JSON.stringify(response));
+        // Agregar la marca de la respuesta al array de marcas
+        this.temas.push(response);
+        this.temas = [...this.temas];
+
+        // console.log(JSON.stringify(this.yeoman.brands))
+        // Limpiar los valores para futuros usos
+        this.newTema = "";
+        // this.activeModal.close();
+      },
+      (error) => {
+        console.error("Error al guardar el tema:", error);
+      }
+    );
+  }
+
+  getClass(){
+    return {
+      'fmapp-wrap': !this.isInfoActive,
+      'fmapp-wrap fmapp-info-active': this.isInfoActive
+    };
+  }
   isLogin() {
     // Obtener el valor de isLoggedin del localStorage
     const isLoggedIn = localStorage.getItem('isLoggedin');
@@ -101,6 +171,7 @@ status:string="";
 
   
   onUpload() {
+    console.log(JSON.stringify(this._butler.uploaderImages))
     console.log( "esta es la imagen:"+this.selectedFile);
     if (!this.selectedFile) {
       console.error('No se ha seleccionado ningún archivo.');
@@ -109,7 +180,17 @@ status:string="";
 
     this.imageUploadService.uploadImage(this.selectedFile).subscribe(
       response => {
-        console.log('Imagen subida correctamente:', response);
+        const imageUrl = response.id;
+        // console.log('Imagen subida correctamente:', response);
+        let imageComplete =
+        "https://db.vendricom.com:8091/api/files/" +
+        response.collectionId +
+        "/" +
+        imageUrl +
+        "/" +
+        response.file;
+      // console.log("imageURL: " + imageComplete);
+      this._butler.uploaderImages.push(imageComplete);
         // Aquí puedes manejar la respuesta del servidor, como mostrar un mensaje de éxito
       },
       error => {
@@ -120,6 +201,7 @@ status:string="";
     }
     onFileChanged(event:Event) {
       this.selectedFile = (event.target as HTMLInputElement).files?.[0] || null;
+      this.onUpload();
     }
   
     

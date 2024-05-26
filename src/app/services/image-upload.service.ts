@@ -6,14 +6,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ImageUploadService {
 
-  private apiUrl = 'https://db.buckapi.com:8090/api/collections/images/records';
+  private apiUrl = 'https://db.vendricom.com:8091/api/collections/files/records';
 
   constructor(private http: HttpClient) { }
 
-  uploadImage(image: File) {
+  uploadImage(file: File) {
     const formData = new FormData();
-    formData.append('image', image);
-    formData.append('type', 'avatar');
+    formData.append('file', file);
+    formData.append('type', 'file');
     
     // Obtenemos el usuario actual del localStorage
     const currentUserString = localStorage.getItem('currentUser');
