@@ -24,6 +24,7 @@ export class GlobalService {
   clientes: any[] = [];
   documents: any[] = [];
   configs: any[] = [];
+  selectedTema="";
 status:string="";
   info: any[] = [];
   categories: any[] = [];

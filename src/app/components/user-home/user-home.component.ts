@@ -107,7 +107,9 @@ export class UserHomeComponent implements OnInit {
     this.status = this.getStatusFromLocalStorage();
     this.check();
   }
-
+setSelectedTema(tema:any){
+  this.global.selectedTema=tema;
+}
   ngOnInit(): void {
     // this.check();
   }

@@ -166,7 +166,7 @@
                                     </div>
                                 </div>
                             </a>
-                            <a href="javascript:void(0);" class="dropdown-item">
+                            <!-- <a href="javascript:void(0);" class="dropdown-item">
                                 <div class="media">
                                     <div class="media-head">
                                         <div class="avatar  avatar-icon avatar-xs avatar-success avatar-rounded">
@@ -258,7 +258,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </a>
+                            </a> -->
                         </div>
                         <div class="dropdown-footer"><a href="#"><u>View all notifications</u></a></div>
                     </div>
@@ -268,20 +268,26 @@
                 <div class="dropdown ps-2">
                     <a class=" dropdown-toggle no-caret" href="#" role="button" data-bs-display="static" data-bs-toggle="dropdown" data-dropdown-animation data-bs-auto-close="outside" aria-expanded="false">
                         <div class="avatar avatar-rounded avatar-xs">
-                            <img src="assets/jampack/dist/img/avatar12.jpg" alt="user" class="avatar-img">
+                            <img src="assets/jampack/dist/img/admin.jpg" [hidden]="authRest.getType()!='admin'" alt="user" class="avatar-img">
+
+                            <img src="assets/jampack/dist/img/avataer10.jpg" [hidden]="authRest.getType()=='admin'" alt="user" class="avatar-img">
+                            <!-- <img src="assets/jampack/dist/img/avataer10.jpg" alt="user" class="avatar-img"> -->
                         </div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end">
                         <div class="p-2">
                             <div class="media">
                                 <div class="media-head me-2">
-                                    <div class="avatar avatar-primary avatar-xs avatar-rounded">
-                                        <span class="initial-wrap">Hk</span>
+                                    <div class="avatar avatar-primary avatar avatar-rounded">
+                                        <img src="assets/jampack/dist/img/admin.jpg" [hidden]="authRest.getType()!='admin'" alt="user" class="avatar-img">
+
+                            <img src="assets/jampack/dist/img/avataer10.jpg" [hidden]="authRest.getType()=='admin'" alt="user" class="avatar-img">
+             
                                     </div>
                                 </div>
                                 <div class="media-body">
                                     <div class="dropdown">
-                                        <a href="#" class="d-block dropdown-toggle link-dark fw-medium"  data-bs-toggle="dropdown" data-dropdown-animation data-bs-auto-close="inside">Hencework</a>
+                                        <a href="#" class="d-block dropdown-toggle link-dark fw-medium"  data-bs-toggle="dropdown" data-dropdown-animation data-bs-auto-close="inside">{{authRest.getCurrentUser().name}}</a>
                                         <div class="dropdown-menu dropdown-menu-end">
                                             <div class="p-2">
                                                 <div class="media align-items-center active-user mb-3">
@@ -313,8 +319,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="fs-7">contact hencework.com</div>
-                                    <a href="#" class="d-block fs-8 link-secondary"><u>Sign Out</u></a>
+                                    <div class="fs-7">{{authRest.getCurrentUser().email}}</div>
+                                    <!-- <a href="#" class="d-block fs-8 link-secondary"><u>Sign Out</u></a> -->
                                 </div>
                             </div>
                         </div>

@@ -41,7 +41,8 @@
                             <div class="form-group">
                                 <div class="d-flex align-items-center justify-content-between mb-2">
                                     <label for="nombreReceptor">Categoría:</label>
-                                    <a (click)="open('categoria')" style="cursor: pointer;" class="btn btn-xs btn-icon btn-rounded btn-light" data-bs-toggle="modal"
+                                    <a (click)="open('categoria')" style="cursor: pointer;"
+                                        class="btn btn-xs btn-icon btn-rounded btn-light" data-bs-toggle="modal"
                                         data-bs-target="#add_fav_board"><span class="icon" data-bs-toggle="tooltip"
                                             data-bs-placement="top" title="" data-bs-original-title="Add Board"><span
                                                 class="feather-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24"
@@ -60,7 +61,8 @@
                             <div class="form-group">
                                 <div class="d-flex align-items-center justify-content-between mb-2">
                                     <label for="nombreReceptor">Tema:</label>
-                                    <a (click)="open('tema')" style="cursor: pointer;" class="btn btn-xs btn-icon btn-rounded btn-light" data-bs-toggle="modal"
+                                    <a (click)="open('tema')" style="cursor: pointer;"
+                                        class="btn btn-xs btn-icon btn-rounded btn-light" data-bs-toggle="modal"
                                         data-bs-target="#add_fav_board"><span class="icon" data-bs-toggle="tooltip"
                                             data-bs-placement="top" title="" data-bs-original-title="Add Board"><span
                                                 class="feather-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24"
@@ -72,8 +74,8 @@
                                                 </svg></span></span></a>
                                 </div>
                                 <ng-multiselect-dropdown [ngModelOptions]="{standalone: true}"
-                                    [placeholder]="'Seleccione un tema'" [data]="global.temas"
-                                    [(ngModel)]="data.temas" [settings]="dropdownSettings">
+                                    [placeholder]="'Seleccione un tema'" [data]="global.temas" [(ngModel)]="data.temas"
+                                    [settings]="dropdownSettings">
                                 </ng-multiselect-dropdown>
                             </div>
                             <div class="d-flex align-items-center justify-content-between mb-2">
@@ -169,7 +171,8 @@
                                     <div class="d-flex align-items-center flex-wrap flex-sm-nowrap">
                                         Bienvenido, aqui un mensaje de actualización de perfil
                                         <a href="#"
-                                            class="btn btn-sm btn-warning ms-sm-auto mt-sm-0 mt-2 flex-shrink-0">Actualizar información</a>
+                                            class="btn btn-sm btn-warning ms-sm-auto mt-sm-0 mt-2 flex-shrink-0">Actualizar
+                                            información</a>
                                     </div>
                                     <button type="button" class="btn-close" data-bs-dismiss="alert"
                                         aria-label="Close"></button>
@@ -185,10 +188,11 @@
                                         <div id="fm_collapse_1" class="collapse show">
                                             <div
                                                 class="row gx-3 row-cols-xxl-6 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-1 mt-3">
-                                                <div class="col" *ngFor="let document of global.documents" (click)="setPreview(document)">
+                                                <div class="col" *ngFor="let document of global.documents"
+                                                    (click)="setPreview(document)">
                                                     <div class="card file-card card-border">
                                                         <div class="card-body fmapp-info-trigger">
-                                                             <i class="svg-icon"></i>
+                                                            <i class="svg-icon"></i>
                                                             <!-- <i class="ri-file-excel-2-fill text-blue" style="font-size: 120px;"></i> -->
                                                         </div>
                                                         <div class="card-footer">
@@ -196,17 +200,18 @@
                                                                 class="d-flex justify-content-between align-items-start">
                                                                 <div>
                                                                     <div class="file-name">{{document.subject}}</div>
-                                                                    <div class="text-truncate fs-8 mb-2">{{document.receiver}}</div>
+                                                                    <div class="text-truncate fs-8 mb-2">
+                                                                        {{document.receiver}}</div>
                                                                 </div>
                                                                 <div class="d-flex">
-                                                                   
+
                                                                     <a class="btn btn-xs btn-icon btn-flush-dark btn-rounded flush-soft-hover flex-shrink-0"
                                                                         href="#" data-bs-toggle="dropdown" role="button"
                                                                         aria-haspopup="true" aria-expanded="false"><span
                                                                             class="icon"><span class="feather-icon"><i
                                                                                     data-feather="more-horizontal"></i></span></span></a>
                                                                     <div class="dropdown-menu">
-                                                                    
+
                                                                         <a class="dropdown-item" href="#"><span
                                                                                 class="feather-icon dropdown-icon"><i
                                                                                     data-feather="link-2"></i></span><span>Compartir
@@ -215,7 +220,7 @@
                                                                         <a class="dropdown-item" href="#"><span
                                                                                 class="feather-icon dropdown-icon"><i
                                                                                     data-feather="info"></i></span><span>Ver
-                                                                                </span></a>
+                                                                            </span></a>
                                                                         <a class="dropdown-item" href="#"><span
                                                                                 class="feather-icon dropdown-icon"><i
                                                                                     data-feather="download"></i></span><span>Download</span></a>
@@ -225,234 +230,12 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <p class="text-truncate p-xs">Last Access: 2 hours ago</p>
+                                                            <p class="text-truncate p-xs">Fecha de expedición:
+                                                                {{document.issue}}</p>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!-- <div class="col">
-                                                    <div class="card file-card card-border">
-                                                        <div class="card-body fmapp-info-trigger">
-                                                            <i class="ri-file-pdf-fill text-danger"></i>
-                                                        </div>
-                                                        <div class="card-footer">
-                                                            <div
-                                                                class="d-flex justify-content-between align-items-start">
-                                                                <div>
-                                                                    <div class="file-name">Website_content.exl</div>
-                                                                    <div class="text-truncate fs-8 mb-2">21.73 MB</div>
-                                                                </div>
-                                                                <div class="d-flex">
-                                                                    <span class="file-star"><span
-                                                                            class="feather-icon"><i
-                                                                                data-feather="star"></i></span></span>
-                                                                    <a class="btn btn-xs btn-icon btn-flush-dark btn-rounded flush-soft-hover flex-shrink-0"
-                                                                        href="#" data-bs-toggle="dropdown" role="button"
-                                                                        aria-haspopup="true" aria-expanded="false"><span
-                                                                            class="icon"><span class="feather-icon"><i
-                                                                                    data-feather="more-horizontal"></i></span></span></a>
-                                                                    <div class="dropdown-menu">
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="eye"></i></span><span>Preview</span></a>
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="copy"></i></span><span>Duplicate</span></a>
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="skip-forward"></i></span><span>Move</span></a>
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="user-plus"></i></span><span>Invite</span></a>
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="link-2"></i></span><span>Share
-                                                                                Link</span></a>
-                                                                        <div class="dropdown-divider"></div>
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="info"></i></span><span>View
-                                                                                Details</span></a>
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="download"></i></span><span>Download</span></a>
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="trash-2"></i></span><span>Delete</span></a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <p class="text-truncate p-xs">Last Access: 2 hours ago </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="card file-card card-border">
-                                                        <div class="card-body fmapp-info-trigger">
-                                                            <i class="ri-file-word-2-fill text-blue"></i>
-                                                        </div>
-                                                        <div class="card-footer">
-                                                            <div
-                                                                class="d-flex justify-content-between align-items-start">
-                                                                <div>
-                                                                    <div class="file-name">jampack.doc</div>
-                                                                    <div class="text-truncate fs-8 mb-2">951 KB</div>
-                                                                </div>
-                                                                <div class="d-flex">
-                                                                    <span class="file-star"><span
-                                                                            class="feather-icon"><i
-                                                                                data-feather="star"></i></span></span>
-                                                                    <a class="btn btn-xs btn-icon btn-flush-dark btn-rounded flush-soft-hover flex-shrink-0"
-                                                                        href="#" data-bs-toggle="dropdown" role="button"
-                                                                        aria-haspopup="true" aria-expanded="false"><span
-                                                                            class="icon"><span class="feather-icon"><i
-                                                                                    data-feather="more-horizontal"></i></span></span></a>
-                                                                    <div class="dropdown-menu">
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="eye"></i></span><span>Preview</span></a>
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="copy"></i></span><span>Duplicate</span></a>
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="skip-forward"></i></span><span>Move</span></a>
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="user-plus"></i></span><span>Invite</span></a>
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="link-2"></i></span><span>Share
-                                                                                Link</span></a>
-                                                                        <div class="dropdown-divider"></div>
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="info"></i></span><span>View
-                                                                                Details</span></a>
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="download"></i></span><span>Download</span></a>
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="trash-2"></i></span><span>Delete</span></a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <p class="text-truncate p-xs">Last Access: 2 hours ago</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="card file-card card-border">
-                                                        <div class="card-body fmapp-info-trigger">
-                                                            <i class="ri-folder-2-fill text-warning"></i>
-                                                        </div>
-                                                        <div class="card-footer">
-                                                            <div
-                                                                class="d-flex justify-content-between align-items-start">
-                                                                <div>
-                                                                    <div class="file-name">Jampack - html - v1.0</div>
-                                                                    <div class="text-truncate fs-8 mb-2">1.6 GB</div>
-                                                                </div>
-                                                                <div class="d-flex">
-                                                                    <span class="file-star"><span
-                                                                            class="feather-icon"><i
-                                                                                data-feather="star"></i></span></span>
-                                                                    <a class="btn btn-xs btn-icon btn-flush-dark btn-rounded flush-soft-hover flex-shrink-0"
-                                                                        href="#" data-bs-toggle="dropdown" role="button"
-                                                                        aria-haspopup="true" aria-expanded="false"><span
-                                                                            class="icon"><span class="feather-icon"><i
-                                                                                    data-feather="more-horizontal"></i></span></span></a>
-                                                                    <div class="dropdown-menu">
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="eye"></i></span><span>Preview</span></a>
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="copy"></i></span><span>Duplicate</span></a>
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="skip-forward"></i></span><span>Move</span></a>
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="user-plus"></i></span><span>Invite</span></a>
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="link-2"></i></span><span>Share
-                                                                                Link</span></a>
-                                                                        <div class="dropdown-divider"></div>
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="info"></i></span><span>View
-                                                                                Details</span></a>
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="download"></i></span><span>Download</span></a>
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="trash-2"></i></span><span>Delete</span></a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <p class="text-truncate p-xs">Last Access: 2 hours ago</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="card file-card card-border">
-                                                        <div class="card-body fmapp-info-trigger">
-                                                            <i class="ri-folder-2-fill text-warning"></i>
-                                                        </div>
-                                                        <div class="card-footer">
-                                                            <div
-                                                                class="d-flex justify-content-between align-items-start">
-                                                                <div>
-                                                                    <div class="file-name">Jampack - Angular</div>
-                                                                    <div class="text-truncate fs-8 mb-2">2,637 KB</div>
-                                                                </div>
-                                                                <div class="d-flex">
-                                                                    <span class="file-star"><span
-                                                                            class="feather-icon"><i
-                                                                                data-feather="star"></i></span></span>
-                                                                    <a class="btn btn-xs btn-icon btn-flush-dark btn-rounded flush-soft-hover flex-shrink-0"
-                                                                        href="#" data-bs-toggle="dropdown" role="button"
-                                                                        aria-haspopup="true" aria-expanded="false"><span
-                                                                            class="icon"><span class="feather-icon"><i
-                                                                                    data-feather="more-horizontal"></i></span></span></a>
-                                                                    <div class="dropdown-menu">
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="eye"></i></span><span>Preview</span></a>
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="copy"></i></span><span>Duplicate</span></a>
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="skip-forward"></i></span><span>Move</span></a>
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="user-plus"></i></span><span>Invite</span></a>
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="link-2"></i></span><span>Share
-                                                                                Link</span></a>
-                                                                        <div class="dropdown-divider"></div>
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="info"></i></span><span>View
-                                                                                Details</span></a>
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="download"></i></span><span>Download</span></a>
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="trash-2"></i></span><span>Delete</span></a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <p class="text-truncate p-xs">Last Access: 2 hours ago</p>
-                                                        </div>
-                                                    </div>
-                                                </div> -->
+
                                             </div>
                                         </div>
                                     </div>
@@ -474,10 +257,10 @@
                             <span></span>
                             <!-- <img src="assets/jampack/dist/img/gallery/mock2.jpg" alt="user"
                                 class="d-block img-fluid my-4 w-250p"> -->
-                                <div class="card-body fmapp-info-trigger">
-                                     <i class="svg-icon"></i>
-                                    <!-- <i class="ri-file-excel-2-fill text-blue" style="font-size: 200px;"></i> -->
-                                </div>
+                            <div class="card-body fmapp-info-trigger">
+                                <i class="svg-icon"></i>
+                                <!-- <i class="ri-file-excel-2-fill text-blue" style="font-size: 200px;"></i> -->
+                            </div>
                             <ul class="nav nav-justified nav-light nav-tabs nav-segmented-tabs active-theme mt-5">
                                 <li class="nav-item">
                                     <a class="nav-link active" data-bs-toggle="tab" href="#tab_info">
@@ -504,7 +287,8 @@
                                                         <li>
                                                             <span>Enlace</span>
                                                             <span>
-                                                                <a href="{{docummentSelected.files[0]}}" target="_blank" style="color: blue; cursor: pointer;"> abrir</a>
+                                                                <a href="{{docummentSelected.files[0]}}" target="_blank"
+                                                                    style="color: blue; cursor: pointer;"> abrir</a>
                                                             </span>
                                                         </li>
                                                         <li>
@@ -626,11 +410,11 @@
                                         <div class="card">
                                             <div class="card-header">
                                                 <a role="button" data-bs-toggle="collapse" href="#act_info1"
-                                                    aria-expanded="true">Yesterday</a>
+                                                    aria-expanded="true">Actividad</a>
                                             </div>
                                             <div id="act_info1" class="collapse show">
                                                 <div class="card-body">
-                                                    <ul class="activity-list list-group list-group-flush">
+                                                    <!-- <ul class="activity-list list-group list-group-flush">
                                                         <li class="list-group-item">
                                                             <div class="media">
                                                                 <div class="media-head">
@@ -665,7 +449,7 @@
                                                                 </div>
                                                             </div>
                                                         </li>
-                                                    </ul>
+                                                    </ul> -->
                                                 </div>
                                             </div>
                                         </div>
