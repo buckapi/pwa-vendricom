@@ -152,7 +152,8 @@ docummentSelected: DocumentInterface = {
           status: ''
         };  
         // this.temas = [...this.temas];
-        console.log('Marca guardada correctamente:', response);
+        this._butler.uploaderImages=[];
+        console.log('documento cargado con éxito:', response);
         // Agregar la marca de la respuesta al array de marcas, si es necesario
 
         // Limpiar los valores para futuros usos

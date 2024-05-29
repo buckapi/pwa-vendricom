@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Renderer2, ElementRef, ViewChild , OnInit} from '@angular/core';
 import { FormBuilder, FormsModule, FormGroup,ReactiveFormsModule , Validators} from '@angular/forms';
 import { AuthRESTService } from '@app/services/auth-rest.service';
 import { Butler } from '@app/services/butler.service';
@@ -13,6 +13,31 @@ import PocketBase from 'pocketbase';
 import { DemoFilePickerAdapter } from  '@app/file-picker.adapter';
 import { HttpClient } from '@angular/common/http';
 import { UploaderCaptions } from 'ngx-awesome-uploader';
+
+
+
+
+import { ImageUploadService } from '@app/services/image-upload.service';
+import {
+  IDropdownSettings,
+  NgMultiSelectDropDownModule,
+} from 'ng-multiselect-dropdown';
+import { DataApiService } from '@app/services/data-api-service';
+
+
+interface DocumentInterface {
+  categories: any[];
+  temas: any[];
+  files: string[];
+  issue: string;
+  image: string;
+  serial: string;
+  receiver: string;
+  subject: string;
+  entity: string;
+  status: string;
+}
+
 @Component({
   selector: 'app-user-home',
   standalone: true,
@@ -27,6 +52,7 @@ import { UploaderCaptions } from 'ngx-awesome-uploader';
   styleUrl: './user-home.component.css'
 })
 export class UserHomeComponent implements OnInit {
+  @ViewChild('infoDiv', { static: true }) infoDiv!: ElementRef;
   public captions: UploaderCaptions = {
     dropzone: {
       title: 'Imágenes del producto',
@@ -41,6 +67,18 @@ export class UserHomeComponent implements OnInit {
       remove: 'Borrar',
       uploadError: 'error',
     },
+  };
+  docummentSelected: DocumentInterface = {
+    categories: [],
+    temas: [],
+    files: [],
+    issue: '',
+    image: '',
+    serial: '',
+    receiver: '',
+    subject: '',
+    entity: '',
+    status: ''
   };
   pb: any; // Variable para la instancia de PocketBase
   status: any = "";
@@ -57,6 +95,7 @@ export class UserHomeComponent implements OnInit {
     public global: GlobalService,
     public http:HttpClient,
     public _butler: Butler,
+    private renderer: Renderer2,
     public script: ScriptService,
     public virtualRouter: virtualRouter,
   ) {
@@ -72,14 +111,22 @@ export class UserHomeComponent implements OnInit {
   ngOnInit(): void {
     // this.check();
   }
-
+  setPreview(selected:any){
+    
+    this.docummentSelected=selected;
+  }
   getStatusFromLocalStorage(): any {
     // Recuperar el valor de 'status' del localStorage
     let status = localStorage.getItem('status');
     console.log("status: " + status)
     return status;
   }
-
+  close() {
+    // Aquí va tu lógica para la acción
+    this.renderer.removeClass(this.infoDiv.nativeElement, 'fmapp-info-active');
+    // Luego de la acción, agregar la clase
+    this.renderer.addClass(this.infoDiv.nativeElement, 'fmapp-wrap');
+  }
   check() {
     if (this.pocketAuthService.isLoggedIn()) {
       this.virtualRouter.setRoute('home')

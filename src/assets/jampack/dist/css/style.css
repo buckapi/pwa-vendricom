@@ -70318,7 +70318,7 @@ Project:	Jampack
   display: inline-flex;
 }
 .navbar.navbar-dark {
-  background: #0a3b6c;
+  background: #002e7dff;
   /* background: #262a2e; */
 }
 .navbar.navbar-dark .badge.badge-indicator {
@@ -71403,7 +71403,7 @@ Project:	Jampack
   background: #d8d8d8;
 }
 .hk-wrapper[data-layout=vertical][data-menu=dark] .hk-menu {
-  background: #0a3b6c;
+  background: #002e7dff;
   /* background: #262a2e; */
   
 }

@@ -1,0 +1,9 @@
+.svg-icon {
+    display: inline-block;
+    width: 120px; /* Ajusta el tamaño */
+    height: 120px; /* Ajusta el tamaño */
+    background-image: url('../../../assets/jampack/dist/img/doc.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
