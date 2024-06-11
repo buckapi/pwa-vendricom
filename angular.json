@@ -26,6 +26,8 @@
               "src/assets"
             ],
             "styles": [
+
+              "node_modules/swiper/swiper-bundle.css",
               "node_modules/ngx-spinner/animations/ball-scale-multiple.css",
                "src/styles.css"
             ],

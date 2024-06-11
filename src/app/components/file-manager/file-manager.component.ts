@@ -139,6 +139,8 @@ docummentSelected: DocumentInterface = {
       (response) => {
         this.global.documents.push(this.data);
         this.global.documents=[...this.global.documents];
+        this.global.filteredDocuments=this.global.documents;
+        this.global.filteredDocuments=[...this.global.filteredDocuments];
         this.data = {
           categories: [],
           temas: [],

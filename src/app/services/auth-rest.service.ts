@@ -8,8 +8,11 @@ import { PocketAuthService } from '@services/pocket-auth.service'; // Importa el
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthRESTService {
-  constructor(
+
+	indentity:any={name:"name",email:"email"};
+	constructor(
 	private http: HttpClient
 	) { }
 	headers : HttpHeaders = new HttpHeaders({
@@ -59,7 +62,8 @@ export class AuthRESTService {
 		      let user: UserInterface = JSON.parse(user_string!);
 		      return user;
 		    } else { 
-		      return null!;
+				let user =this.indentity;
+		      return user!;
 			}
   		}
 		

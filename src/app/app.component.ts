@@ -122,7 +122,7 @@ export class AppComponent {
         (data) => {
           this.global.documents = data.items; // Asigna los registros obtenidos a la variable 'registros'
           this.global.documents = data.items.reverse(); // Invierte el orden de los registros obtenidos y los asigna a la variable 'registros'
-
+          this.global.filteredDocuments=this.global.documents;
           // console.log(data); // respuesta
         },
         (error) => {

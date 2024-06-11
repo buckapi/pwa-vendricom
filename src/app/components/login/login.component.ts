@@ -9,11 +9,12 @@ import { CommonModule } from '@angular/common';
 import { AuthRESTService } from '@app/services/auth-rest.service';
 import { Butler } from '@app/services/butler.service';
 import { ScriptService } from '@app/services/script.service';
+import { FooterComponent } from '../ui/footer/footer.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule,NgxSpinnerModule],
+  imports: [CommonModule,ReactiveFormsModule,NgxSpinnerModule,FooterComponent],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })

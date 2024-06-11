@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Renderer2, ElementRef, ViewChild , OnInit} from '@angular/core';
+import { Component, Renderer2, ElementRef, ViewChild , OnInit, AfterViewInit} from '@angular/core';
 import { FormBuilder, FormsModule, FormGroup,ReactiveFormsModule , Validators} from '@angular/forms';
 import { AuthRESTService } from '@app/services/auth-rest.service';
 import { Butler } from '@app/services/butler.service';
@@ -14,7 +14,13 @@ import { DemoFilePickerAdapter } from  '@app/file-picker.adapter';
 import { HttpClient } from '@angular/common/http';
 import { UploaderCaptions } from 'ngx-awesome-uploader';
 
+// import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 
+import Swiper from 'swiper';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 
 import { ImageUploadService } from '@app/services/image-upload.service';
@@ -26,6 +32,7 @@ import { DataApiService } from '@app/services/data-api-service';
 
 
 interface DocumentInterface {
+  id?: string; 
   categories: any[];
   temas: any[];
   files: string[];
@@ -51,7 +58,7 @@ interface DocumentInterface {
   templateUrl: './user-home.component.html',
   styleUrl: './user-home.component.css'
 })
-export class UserHomeComponent implements OnInit {
+export class UserHomeComponent implements AfterViewInit {
   @ViewChild('infoDiv', { static: true }) infoDiv!: ElementRef;
   public captions: UploaderCaptions = {
     dropzone: {
@@ -69,6 +76,7 @@ export class UserHomeComponent implements OnInit {
     },
   };
   docummentSelected: DocumentInterface = {
+    id:'',
     categories: [],
     temas: [],
     files: [],
@@ -80,12 +88,14 @@ export class UserHomeComponent implements OnInit {
     entity: '',
     status: ''
   };
+  temaFilter="";
   pb: any; // Variable para la instancia de PocketBase
   status: any = "";
   address: string = ""; // Propiedad para almacenar la dirección del usuario
   phone: string = ""; // Propiedad para almacenar el teléfono del usuario
   ngForm: FormGroup;
   submitted = false;
+  filtered=false;
   public isError = false;
   adapter = new  DemoFilePickerAdapter(this.http,this._butler,this.global);
   constructor(
@@ -110,6 +120,38 @@ export class UserHomeComponent implements OnInit {
 setSelectedTema(tema:any){
   this.global.selectedTema=tema;
 }
+ngAfterViewInit() {
+  new Swiper('.swiper-container', {
+
+      slidesPerView: 1,
+      spaceBetween: 10,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        // when window width is >= 640px
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        // when window width is >= 768px
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 30,
+        },
+        // when window width is >= 1024px
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 40,
+        },
+      },
+    });
+}
   ngOnInit(): void {
     // this.check();
   }
@@ -128,6 +170,10 @@ setSelectedTema(tema:any){
     this.renderer.removeClass(this.infoDiv.nativeElement, 'fmapp-info-active');
     // Luego de la acción, agregar la clase
     this.renderer.addClass(this.infoDiv.nativeElement, 'fmapp-wrap');
+  }
+  setPrev(tema:any){
+    this.temaFilter=tema.id;
+    this.filtered=true;
   }
   check() {
     if (this.pocketAuthService.isLoggedIn()) {

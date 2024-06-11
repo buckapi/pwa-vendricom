@@ -1,0 +1,169 @@
+.bg-primary-light-5 {
+    background-image: url('../../../assets/jampack/wall.png');
+    background-size: cover; /* Cubrir todo el div */
+    background-color: transparent !important;
+    background-position: center; /* Centrar la imagen */
+    background-repeat: no-repeat; /* No repetir la imagen */
+  }
+  
+  .wall {
+    padding-top: 0%;
+    background-image: url('../../../assets/jampack/wallp2.png');
+    background-size: cover; /* Cubrir todo el div */
+    background-position: center; /* Centrar la imagen */
+    background-repeat: no-repeat; /* No repetir la imagen */
+  }
+  
+  @media (max-width: 600px) {
+    .bg-primary-light-5 {
+      background-size: 100%; /* Ajusta el tamaño para pantallas pequeñas */
+    }
+  }
+  
+  body, html {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .container-fluid {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .auth-split {
+    display: flex;
+    flex-grow: 1;
+  }
+  
+  .position-relative.mx-auto.d-flex.flex-column {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  .auth-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .bg-primary-light-5 {
+    background-image: url('../../../assets/jampack/wall.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .hk-footer {
+    flex-shrink: 0;
+  }
+  
+  .container-fluid {
+    --bs-gutter-x: 0px;
+  }
+  
+  .base-image {
+    display: block;
+    width: 100%; /* Adjust size as needed */
+    height: auto; /* Adjust size as needed */
+  }
+  
+  .icon {
+    position: absolute;
+    width: 160px; /* Adjust size as needed */
+    height: 160px; /* Adjust size as needed */
+  }
+  
+  /* Define la animación para el primer icono */
+  @keyframes float1 {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px); /* Ajusta según sea necesario */
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  /* Define la animación para el segundo icono */
+  @keyframes float2 {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-25px); /* Ajusta según sea necesario */
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  /* Define la animación para el tercer icono */
+  @keyframes float3 {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-15px); /* Ajusta según sea necesario */
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  @keyframes float5 {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-15px); /* Ajusta según sea necesario */
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  @keyframes float4 {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-15px); /* Ajusta según sea necesario */
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  /* Aplica las animaciones específicas a los iconos */
+  .icon1 {
+    top: 15%;
+    left: 32%;
+    animation: float1 3s ease-in-out infinite; /* Duración y repetición */
+  }
+  
+  .icon4 {
+    top: 43%;
+    right: 25%;
+    animation: float1 3s ease-in-out infinite; /* Duración y repetición */
+  }
+  .icon5 {
+    top: 10%;
+    left: 10%;
+    animation: float1 3s ease-in-out infinite; /* Duración y repetición */
+  }
+  
+  .icon2 {
+    top: 13%;
+    right: 18%;
+    animation: float2 4s ease-in-out infinite; /* Duración y repetición */
+  }
+  
+  .icon3 {
+    bottom: 25%;
+    left: 27%;
+    animation: float3 5s ease-in-out infinite; /* Duración y repetición */
+  }
+  

@@ -7,3 +7,42 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+.swiper-container {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .swiper-wrapper {
+    display: flex;
+  }
+  
+  .swiper-slide {
+    background-color: #012c6b; /* Fondo azul */
+    color: #ffffff; /* Letras en color blanco */
+    padding: 20px;
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para darle efecto de tarjeta */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    margin: 10px; /* Espacio entre tarjetas */
+  }
+  
+  .swiper-slide:nth-child(odd) {
+    background-color: rgb(42, 71, 122); /* Fondo azul oscuro para alternar colores */
+  }
+  .document {
+    /* Otras propiedades CSS */
+  }
+  
+  .document:hover {
+    border: 2px solid rgb(6, 38, 87); /* Aplica un borde verde al pasar el mouse */
+  }
+   
+  .documentSelected {
+    border: 2px solid rgb(6, 38, 87); /* Aplica un borde verde al pasar el mouse */
+  }
+  

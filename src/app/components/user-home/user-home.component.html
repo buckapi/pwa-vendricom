@@ -103,6 +103,19 @@
                                 </div>
                                 <div class="collapse-simple mt-4">
                                     <div class="card">
+                                        <div class="swiper-container">
+                                            <div class="swiper-wrapper">
+                                                <div (click)="setPrev(tema)" class="swiper-slide" *ngFor="let tema of global.temas"
+                                                  >
+                                                  {{tema.name}}
+                                                  </div>
+                                                </div>
+                                                </div>
+                                                <div class="swiper-button-prev"></div>
+                                                <div class="swiper-button-next"></div>
+                                    </div>
+                                    </div>
+                                    <div class="card">
                                         <div class="card-header">
                                             <a role="button" data-bs-toggle="collapse" href="#fm_collapse_1"
                                                 aria-expanded="true">
@@ -110,11 +123,13 @@
                                             </a>
                                         </div>
                                         <div id="fm_collapse_1" class="collapse show">
+                                     
+                                        <div id="fm_collapse_1" class="collapse show">
                                             <div
                                                 class="row gx-3 row-cols-xxl-6 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-1 mt-3">
-                                                <div class="col" *ngFor="let document of global.documents"
-                                                    (click)="setPreview(document)">
-                                                    <div class="card file-card card-border">
+                                                <div class="col " *ngFor="let document of global.filteredDocuments" 
+                                                    (click)="setPreview(document)" [hidden]="filtered && document.temas">
+                                                    <div class="card file-card card-border document"   [ngClass]="{'documentSelected': docummentSelected.id === document.id}">
                                                         <div class="card-body fmapp-info-trigger">
                                                             <i class="svg-icon"></i>
                                                         </div>
