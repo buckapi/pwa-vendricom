@@ -71329,6 +71329,7 @@ Project:	Jampack
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+background-color: #012c6b !important;
   flex: 0 0 auto;
   height: 65px;
   -webkit-box-align: center;
@@ -71403,12 +71404,13 @@ Project:	Jampack
   background: #d8d8d8;
 }
 .hk-wrapper[data-layout=vertical][data-menu=dark] .hk-menu {
-  background: #012c6b;
+  background:  #adcb2f;
   /* background: #262a2e; */
   
 }
 .hk-wrapper[data-layout=vertical][data-menu=dark] .hk-menu .menu-content-wrap .menu-group .navbar-nav .nav-item .nav-link {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgb(26 16 109);
+  /* color: rgba(255, 255, 255, 0.6); */
 }
 .hk-wrapper[data-layout=vertical][data-menu=dark] .hk-menu .menu-content-wrap .menu-group .navbar-nav .nav-item .nav-link[data-bs-toggle=collapse]::after {
   color: rgba(255, 255, 255, 0.3);

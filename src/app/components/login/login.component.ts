@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 import { PocketAuthService } from '@app/services/pocket-auth.service';
 import { GlobalService } from '@app/services/global.service';
@@ -14,7 +14,7 @@ import { FooterComponent } from '../ui/footer/footer.component';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule,NgxSpinnerModule,FooterComponent],
+  imports: [CommonModule,ReactiveFormsModule,FormsModule, NgxSpinnerModule,FooterComponent],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -22,12 +22,20 @@ export class LoginComponent implements OnInit {
   ngFormLogin: FormGroup;
   submitted = false;
   public isError = false;
-
+  // color: string | null = null;
+  colorActual: string | null = null;
+// color= "#87CEEB";
   returnUrl: any;
   public isLogged =false;
   message:any="Error en datos de acceso"; 
-
-
+  mostrarColorBoxes = false;
+  esquemasDeColores = [
+    { nombre: 'Esquema 1', colores: ['#00296b', '#0058c5', '#000000', '#FFFFFF'] },
+    { nombre: 'Esquema 2', colores: ['#00296b', '#0058c5', '#000000', '#CCCCCC'] },
+    { nombre: 'Esquema 3', colores: ['#00296b', '#0058c5', '#000000', '#B3D1FF'] },
+    { nombre: 'Esquema 4', colores: ['#00296b', '#0058c5', '#000000', '#7ED4E6'] },
+    { nombre: 'Esquema 5', colores: ['#00296b', '#0058c5', '#000000', '#87CEEB'] }
+  ];
   constructor(
     private spinner: NgxSpinnerService,
     public AuthRESTService:AuthRESTService,
@@ -50,7 +58,9 @@ export class LoginComponent implements OnInit {
     });
 
   }
-
+change(){
+  this.mostrarColorBoxes=!this.mostrarColorBoxes;
+}
   ngOnInit(): void {
     this.ngFormLogin = this.formBuilder.group({
       email: ['', [Validators.required]],
@@ -62,13 +72,20 @@ export class LoginComponent implements OnInit {
     return this.ngFormLogin.controls;
   }
 
+  setColor(esquema: { nombre: string, colores: string[] }) {
+    this.colorActual = esquema.colores[3];
+  }
+
+  clearColor() {
+    this.colorActual = null;
+  }
   onIsError(): void {
     this.isError = true;
     setTimeout(() => {
       this.isError = false;
     }, 4000);
   }
-
+ 
   onLogin(): void {
     this.submitted = true;
     if (this.ngFormLogin.invalid) {
