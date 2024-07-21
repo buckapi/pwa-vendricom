@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Renderer2, ElementRef, ViewChild } from '@angular/core';
+import { Component,OnInit, Renderer2, ElementRef, ViewChild } from '@angular/core';
 
 import { FormBuilder, FormsModule } from '@angular/forms';
 import { AuthRESTService } from '@app/services/auth-rest.service';
@@ -41,9 +41,10 @@ interface DocumentInterface {
   templateUrl: './file-manager.component.html',
   styleUrl: './file-manager.component.css',
 })
-export class FileManagerComponent {
+export class FileManagerComponent implements OnInit{
   @ViewChild('infoDiv', { static: true }) infoDiv!: ElementRef;
-  
+  years: number[] = [];
+
   data = {
     categories: [] as any[],
     temas: [] as any[],
@@ -124,6 +125,13 @@ docummentSelected: DocumentInterface = {
   setPreview(selected:any){
     
     this.docummentSelected=selected;
+  }
+
+  ngOnInit(): void {
+    const currentYear = new Date().getFullYear();
+    for (let i = 0; i < 40; i++) {
+      this.years.push(currentYear - i);
+    }
   }
   submitForm() {
     // Aquí puedes manejar los datos del formulario, por ejemplo, enviarlos a un servicio o imprimirlos en la consola.

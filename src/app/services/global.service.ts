@@ -11,7 +11,17 @@ import { Apollo, gql } from 'apollo-angular';
 import { PocketAuthService } from '@services/pocket-auth.service';
 import { ImageUploadService } from '@services/image-upload.service';
 import { Butler } from './butler.service';
+interface Tema {
+  id: string;
+  name: string;
+}
 
+interface Document {
+  created: string;
+  subject: string;
+  temas: Tema[];
+  // otros campos según tu estructura de datos
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -25,9 +35,21 @@ export class GlobalService {
   documents: any[] = [];
   filteredDocuments: any[] = [];
   configs: any[] = [];
-  selectedTema="";
+  // selectedTema="";
 status:string="";
   info: any[] = [];
+
+  selectedTema: any = "";
+  selectedYear: number | null = null;
+  
+  
+  // selectedTema: any = null;
+  // selectedYear: any = null;
+  searchQuery: string = '';
+  selectedCategory: string = '';
+  // selectedTema: string = '';
+  searchText: string = '';
+  
   categories: any[] = [];
   temas: any[] = [];
   currentPage: number = 1;
@@ -253,6 +275,36 @@ status:string="";
       this.yeoman.config.clientSelected = i;
     });
   }
+
+  applyFilters() {
+    this.filteredDocuments = this.documents.filter((doc: Document) => {
+      // Verificar si selectedTema no está vacío y si es así, comprobar que coincide con algún tema del documento
+      let matchesTema = this.selectedTema ? doc.temas.some((t: Tema) => t.id === this.selectedTema.id) : true;
+      // Verificar si searchQuery no está vacío y si es así, comprobar que coincide con el campo entity del documento
+      let matchesSearchText = this.searchQuery ? doc.subject.toLowerCase().includes(this.searchQuery.toLowerCase()) : true;
+      // Verificar si selectedYear no está vacío y si es así, comprobar que el año de la fecha de creación coincide con el año seleccionado
+      let matchesYear = this.selectedYear ? new Date(doc.created).getFullYear() === this.selectedYear : true;
+      return matchesTema && matchesSearchText && matchesYear;
+    });
+  }
+  
+  selectYear(year: number) {
+    this.selectedYear = year;
+    this.applyFilters();
+  }
+  searchDocuments(event: Event) {
+    event.preventDefault(); // Evitar el comportamiento por defecto del formulario
+    this.applyFilters();
+  }
+  
+  selectTema(tema: any) {
+    this.selectedTema = tema;
+    this.applyFilters();
+  }
+  
+
+
+ 
 
   signOut() {
     this.pocketAuthService.logoutUser();
