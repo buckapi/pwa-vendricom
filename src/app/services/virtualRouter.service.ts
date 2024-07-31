@@ -27,18 +27,42 @@ export class virtualRouter {
               console.error('Tipo de usuario no reconocido');
           }
           break;
-        case 'file-manager':
-          switch (userType) {
-            case 'admin':
-              this.routerActive = 'file-manager';
+          case 'file-manager':
+            switch (userType) {
+              case 'admin':
+                this.routerActive = 'file-manager';
+                break;
+              case 'cliente':
+                this.routerActive = 'file-manager';
+                break;
+              default:
+                console.error('Tipo de usuario no reconocido');
+            }
+            break;
+          case 'normativas':
+            switch (userType) {
+              case 'admin':
+                this.routerActive = 'normativas';
+                break;
+              case 'cliente':
+                this.routerActive = 'normativas';
+                break;
+              default:
+                console.error('Tipo de usuario no reconocido');
+            }
+            break;
+            case 'boletines':
+              switch (userType) {
+                case 'admin':
+                  this.routerActive = 'boletines';
+                  break;
+                case 'cliente':
+                  this.routerActive = 'boletines';
+                  break;
+                default:
+                  console.error('Tipo de usuario no reconocido');
+              }
               break;
-            case 'cliente':
-              this.routerActive = 'file-manager';
-              break;
-            default:
-              console.error('Tipo de usuario no reconocido');
-          }
-          break;
         case 'settings':
           this.routerActive = 'settings';
           break;

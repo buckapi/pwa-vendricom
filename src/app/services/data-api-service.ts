@@ -31,6 +31,30 @@ export interface PostInterface{
 	entity: string;
 	status: string;
 }
+export interface BoletinInterface{
+	categories: any[];
+	temas: any[];
+	files: string[];
+	issue: string;
+	image: string;
+	serial: string;
+	receiver: string;
+	subject: string;
+	entity: string;
+	status: string;
+}
+export interface NormativaInterface{
+	categories: any[];
+	temas: any[];
+	files: string[];
+	issue: string;
+	image: string;
+	serial: string;
+	receiver: string;
+	subject: string;
+	entity: string;
+	status: string;
+}
  export interface PayInterface{
 	id?:number;
  }
@@ -133,6 +157,18 @@ export class DataApiService {
 	saveDocument( document: DocumentInterface) {
 		const url_api =  'https://db.buckapi.com:8090/api/collections/vendricomDocuments/records';
 		return this.http.post<DocumentInterface>(url_api, document).pipe(
+		  map(data => data)
+		);
+	  }
+	  saveNormativa( normativa: NormativaInterface) {
+		const url_api =  'https://db.buckapi.com:8090/api/collections/vendricomNormativas/records';
+		return this.http.post<NormativaInterface>(url_api, normativa).pipe(
+		  map(data => data)
+		);
+	  }
+	  saveBoletin( boletin: BoletinInterface) {
+		const url_api =  'https://db.buckapi.com:8090/api/collections/vendricomBoletines/records';
+		return this.http.post<BoletinInterface>(url_api, boletin).pipe(
 		  map(data => data)
 		);
 	  }

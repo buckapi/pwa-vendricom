@@ -71404,12 +71404,11 @@ background-color: #012c6b !important;
   background: #d8d8d8;
 }
 .hk-wrapper[data-layout=vertical][data-menu=dark] .hk-menu {
-  background:  #adcb2f;
-  /* background: #262a2e; */
-  
+  background: linear-gradient(135deg, #4a327b, #43939f);
 }
+
 .hk-wrapper[data-layout=vertical][data-menu=dark] .hk-menu .menu-content-wrap .menu-group .navbar-nav .nav-item .nav-link {
-  color: rgb(26 16 109);
+  color: white;
   /* color: rgba(255, 255, 255, 0.6); */
 }
 .hk-wrapper[data-layout=vertical][data-menu=dark] .hk-menu .menu-content-wrap .menu-group .navbar-nav .nav-item .nav-link[data-bs-toggle=collapse]::after {

@@ -22,6 +22,12 @@ interface Document {
   temas: Tema[];
   // otros campos según tu estructura de datos
 }
+interface Normativa {
+  created: string;
+  subject: string;
+  temas: Tema[];
+  // otros campos según tu estructura de datos
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -33,7 +39,11 @@ export class GlobalService {
   private apirestUrl = 'https://db.buckapi.com:8090/api/';
   clientes: any[] = [];
   documents: any[] = [];
+  normativas: any[] = [];
   filteredDocuments: any[] = [];
+  boletines: any[] = [];
+  filteredBoletines: any[] = [];
+  filteredNormativas: any[] = [];
   configs: any[] = [];
   // selectedTema="";
 status:string="";
@@ -99,6 +109,12 @@ status:string="";
 
   getDocuments(): Observable<any> {
     return this.http.get<any>(this.apirestUrl + 'collections/vendricomDocuments/records');
+  }
+  getNormativas(): Observable<any> {
+    return this.http.get<any>(this.apirestUrl + 'collections/vendricomNormativas/records');
+  }
+  getBoletines(): Observable<any> {
+    return this.http.get<any>(this.apirestUrl + 'collections/vendricomBoletines/records');
   }
  uploadDocument(){
   
@@ -287,6 +303,17 @@ status:string="";
       return matchesTema && matchesSearchText && matchesYear;
     });
   }
+  applyFiltersNormativas() {
+    this.filteredNormativas = this.normativas.filter((normativa: Normativa) => {
+      // Verificar si selectedTema no está vacío y si es así, comprobar que coincide con algún tema del normativaumento
+      // let matchesTema = this.selectedTema ? normativa.temas.some((t: Tema) => t.id === this.selectedTema.id) : true;
+      // Verificar si searchQuery no está vacío y si es así, comprobar que coincide con el campo entity del normativaumento
+      let matchesSearchText = this.searchQuery ? normativa.subject.toLowerCase().includes(this.searchQuery.toLowerCase()) : true;
+      // Verificar si selectedYear no está vacío y si es así, comprobar que el año de la fecha de creación coincide con el año seleccionado
+      // let matchesYear = this.selectedYear ? new Date(normativa.created).getFullYear() === this.selectedYear : true;
+      return  matchesSearchText;
+    });
+  }
   
   selectYear(year: number) {
     this.selectedYear = year;
@@ -295,6 +322,16 @@ status:string="";
   searchDocuments(event: Event) {
     event.preventDefault(); // Evitar el comportamiento por defecto del formulario
     this.applyFilters();
+  }
+
+  searchBoletines(event: Event) {
+    event.preventDefault(); // Evitar el comportamiento por defecto del formulario
+    this.applyFilters();
+  }
+
+  searchNormativas(event: Event) {
+    event.preventDefault(); // Evitar el comportamiento por defecto del formulario
+    this.applyFiltersNormativas();
   }
   
   selectTema(tema: any) {

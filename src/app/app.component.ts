@@ -19,6 +19,8 @@ import { FileManagerComponent } from './components/file-manager/file-manager.com
 import { AdminSupportComponent } from './components/admin-support/admin-support.component';
 import { UserSupportComponent } from './components/user-support/user-support.component';
 import { FormsModule } from '@angular/forms';
+import { NormativaComponent } from './components/normativa/normativa.component';
+import { BoletinesComponent  } from './components/boletines/boletines.component';
 
 
 @Component({
@@ -40,7 +42,9 @@ import { FormsModule } from '@angular/forms';
     RegisterComponent,
     FileManagerComponent,
     AdminSupportComponent,
-    UserSupportComponent
+    UserSupportComponent,
+    NormativaComponent,
+    BoletinesComponent
     
   ],
   templateUrl: './app.component.html',
@@ -129,7 +133,31 @@ export class AppComponent {
           console.error(error); // Manejo de errores si la solicitud falla
         }
       );
+
+      this.global.getNormativas().subscribe(
+        (data) => {
+          this.global.normativas = data.items; // Asigna los registros obtenidos a la variable 'registros'
+          this.global.normativas = data.items.reverse(); // Invierte el orden de los registros obtenidos y los asigna a la variable 'registros'
+          this.global.filteredNormativas=this.global.normativas;
+          // console.log(data); // respuesta
+        },
+        (error) => {
+          console.error(error); // Manejo de errores si la solicitud falla
+        }
+      );
+      this.global.getBoletines().subscribe(
+        (data) => {
+          this.global.boletines = data.items; // Asigna los registros obtenidos a la variable 'registros'
+          this.global.boletines = data.items.reverse(); // Invierte el orden de los registros obtenidos y los asigna a la variable 'registros'
+          this.global.filteredBoletines=this.global.boletines;
+          // console.log(data); // respuesta
+        },
+        (error) => {
+          console.error(error); // Manejo de errores si la solicitud falla
+        }
+      );
     }
+    
     toggleLayoutStyle() {
       if (this.layoutStyle === "default") {
         this.layoutStyle = "collapsed";
