@@ -77,6 +77,7 @@
                             <!-- <span class="badge badge-sm badge-soft-pink ms-auto">Hot</span> -->
                         </a>
                     </li>
+                    
                     <li class="nav-item" [hidden]="pocketAuthService.getType()!='admin'">
                         <a class="nav-link" (click)="virtualRouter.setRoute('normativas')" style="cursor: pointer;">
                             <span class="nav-icon-wrap">
@@ -122,6 +123,102 @@
                                 </span>
                             </span>
                             <span class="nav-link-text">Normativa</span>
+                            <!-- <span class="badge badge-sm badge-soft-pink ms-auto">Hot</span> -->
+                        </a>
+                    </li>
+                    <li class="nav-item" [hidden]="pocketAuthService.getType()!='admin'">
+                        <a class="nav-link" (click)="virtualRouter.setRoute('modelos')" style="cursor: pointer;">
+                            <span class="nav-icon-wrap">
+                                <span class="svg-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                                        <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+                                        <path d="M9 15l2 2l4 -4" />
+                                    </svg>
+                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-template" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <rect x="4" y="4" width="16" height="4" rx="1" />
+                                        <rect x="4" y="12" width="6" height="8" rx="1" />
+                                        <line x1="14" y1="12" x2="20" y2="12" />
+                                        <line x1="14" y1="16" x2="20" y2="16" />
+                                        <line x1="14" y1="20" x2="20" y2="20" />
+                                    </svg> -->
+                                </span>
+                            </span>
+                            <span class="nav-link-text">Modelos</span>
+                            <!-- <span class="badge badge-sm badge-soft-pink ms-auto">Hot</span> -->
+                        </a>
+                    </li>
+                    <li class="nav-item" [hidden]="pocketAuthService.getType()=='admin'">
+                        <a class="nav-link" (click)="virtualRouter.setRoute('modelos')" style="cursor: pointer;">
+                            <span class="nav-icon-wrap">
+                                <span class="svg-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                                        <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+                                        <path d="M9 15l2 2l4 -4" />
+                                    </svg>
+                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-template" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <rect x="4" y="4" width="16" height="4" rx="1" />
+                                        <rect x="4" y="12" width="6" height="8" rx="1" />
+                                        <line x1="14" y1="12" x2="20" y2="12" />
+                                        <line x1="14" y1="16" x2="20" y2="16" />
+                                        <line x1="14" y1="20" x2="20" y2="20" />
+                                    </svg> -->
+                                </span>
+                            </span>
+                            <span class="nav-link-text">Modelos</span>
+                            <!-- <span class="badge badge-sm badge-soft-pink ms-auto">Hot</span> -->
+                        </a>
+                    </li>
+                    <li class="nav-item" [hidden]="pocketAuthService.getType()!='admin'">
+                        <a class="nav-link" (click)="virtualRouter.setRoute('jurisprudencia')" style="cursor: pointer;">
+                            <span class="nav-icon-wrap">
+                                <span class="svg-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                                        <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+                                        <path d="M9 15l2 2l4 -4" />
+                                    </svg>
+                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-template" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <rect x="4" y="4" width="16" height="4" rx="1" />
+                                        <rect x="4" y="12" width="6" height="8" rx="1" />
+                                        <line x1="14" y1="12" x2="20" y2="12" />
+                                        <line x1="14" y1="16" x2="20" y2="16" />
+                                        <line x1="14" y1="20" x2="20" y2="20" />
+                                    </svg> -->
+                                </span>
+                            </span>
+                            <span class="nav-link-text">Jurisprudencias</span>
+                            <!-- <span class="badge badge-sm badge-soft-pink ms-auto">Hot</span> -->
+                        </a>
+                    </li>
+                    <li class="nav-item" [hidden]="pocketAuthService.getType()=='admin'">
+                        <a class="nav-link" (click)="virtualRouter.setRoute('jurisprudencia')" style="cursor: pointer;">
+                            <span class="nav-icon-wrap">
+                                <span class="svg-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                                        <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+                                        <path d="M9 15l2 2l4 -4" />
+                                    </svg>
+                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-template" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <rect x="4" y="4" width="16" height="4" rx="1" />
+                                        <rect x="4" y="12" width="6" height="8" rx="1" />
+                                        <line x1="14" y1="12" x2="20" y2="12" />
+                                        <line x1="14" y1="16" x2="20" y2="16" />
+                                        <line x1="14" y1="20" x2="20" y2="20" />
+                                    </svg> -->
+                                </span>
+                            </span>
+                            <span class="nav-link-text">Jurisprudencias</span>
                             <!-- <span class="badge badge-sm badge-soft-pink ms-auto">Hot</span> -->
                         </a>
                     </li>
@@ -173,6 +270,8 @@
                             <!-- <span class="badge badge-sm badge-soft-pink ms-auto">Hot</span> -->
                         </a>
                     </li>
+                    
+                    
                 </ul>	
             </div>
             <div class="menu-gap"></div>

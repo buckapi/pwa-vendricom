@@ -28,6 +28,24 @@ interface Normativa {
   temas: Tema[];
   // otros campos según tu estructura de datos
 }
+interface Boletin {
+  created: string;
+  subject: string;
+  temas: Tema[];
+  // otros campos según tu estructura de datos
+}
+interface Jurisprudencia {
+  created: string;
+  subject: string;
+  temas: Tema[];
+  // otros campos según tu estructura de datos
+}
+interface Modelos {
+  created: string;
+  subject: string;
+  temas: Tema[];
+  // otros campos según tu estructura de datos
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -39,11 +57,15 @@ export class GlobalService {
   private apirestUrl = 'https://db.buckapi.com:8090/api/';
   clientes: any[] = [];
   documents: any[] = [];
-  normativas: any[] = [];
   filteredDocuments: any[] = [];
+  normativas: any[] = [];
+  filteredNormativas: any[] = [];
+  jurisprudencias: any[] = [];
+  filteredJurisprudencias: any[] = [];
+  modelos: any[] = [];
+  filteredModelos: any[] = [];
   boletines: any[] = [];
   filteredBoletines: any[] = [];
-  filteredNormativas: any[] = [];
   configs: any[] = [];
   // selectedTema="";
 status:string="";
@@ -115,6 +137,12 @@ status:string="";
   }
   getBoletines(): Observable<any> {
     return this.http.get<any>(this.apirestUrl + 'collections/vendricomBoletines/records');
+  }
+  getJurisprudencias(): Observable<any> {
+    return this.http.get<any>(this.apirestUrl + 'collections/vendricomJurisprudencias/records');
+  }
+  getModelos(): Observable<any> {
+    return this.http.get<any>(this.apirestUrl + 'collections/vendricomModelos/records');
   }
  uploadDocument(){
   
@@ -310,8 +338,42 @@ status:string="";
       // Verificar si searchQuery no está vacío y si es así, comprobar que coincide con el campo entity del normativaumento
       let matchesSearchText = this.searchQuery ? normativa.subject.toLowerCase().includes(this.searchQuery.toLowerCase()) : true;
       // Verificar si selectedYear no está vacío y si es así, comprobar que el año de la fecha de creación coincide con el año seleccionado
-      // let matchesYear = this.selectedYear ? new Date(normativa.created).getFullYear() === this.selectedYear : true;
+       let matchesYear = this.selectedYear ? new Date(normativa.created).getFullYear() === this.selectedYear : true;
+      return  matchesSearchText && matchesYear;
+    });
+  }
+ 
+  applyFiltersBoletines() {
+    this.filteredBoletines = this.boletines.filter((boletines: Boletin) => {
+      // Verificar si selectedTema no está vacío y si es así, comprobar que coincide con algún tema del boletinesumento
+      // let matchesTema = this.selectedTema ? boletines.temas.some((t: Tema) => t.id === this.selectedTema.id) : true;
+      // Verificar si searchQuery no está vacío y si es así, comprobar que coincide con el campo entity del boletinesumento
+      let matchesSearchText = this.searchQuery ? boletines.subject.toLowerCase().includes(this.searchQuery.toLowerCase()) : true;
+      // Verificar si selectedYear no está vacío y si es así, comprobar que el año de la fecha de creación coincide con el año seleccionado
+      // let matchesYear = this.selectedYear ? new Date(boletines.created).getFullYear() === this.selectedYear : true;
       return  matchesSearchText;
+    });
+  }
+  applyFiltersJurisprudencias() {
+    this.filteredJurisprudencias = this.jurisprudencias.filter((jurisprudencia: Jurisprudencia) => {
+      // Verificar si selectedTema no está vacío y si es así, comprobar que coincide con algún tema del jurisprudenciaumento
+      // let matchesTema = this.selectedTema ? jurisprudencia.temas.some((t: Tema) => t.id === this.selectedTema.id) : true;
+      // Verificar si searchQuery no está vacío y si es así, comprobar que coincide con el campo entity del jurisprudenciaumento
+      let matchesSearchText = this.searchQuery ? jurisprudencia.subject.toLowerCase().includes(this.searchQuery.toLowerCase()) : true;
+      // Verificar si selectedYear no está vacío y si es así, comprobar que el año de la fecha de creación coincide con el año seleccionado
+      // let matchesYear = this.selectedYear ? new Date(jurisprudencia.created).getFullYear() === this.selectedYear : true;
+      return  matchesSearchText;
+    });
+  }
+  applyFiltersModelos() {
+    this.filteredModelos = this.modelos.filter((modelos: Modelos) => {
+      // Verificar si selectedTema no está vacío y si es así, comprobar que coincide con algún tema del modelos
+      let matchesTema = this.selectedTema ? modelos.temas.some((t: Tema) => t.id === this.selectedTema.id) : true;
+      // Verificar si searchQuery no está vacío y si es así, comprobar que coincide con el campo entity del modelos
+      let matchesSearchText = this.searchQuery ? modelos.subject.toLowerCase().includes(this.searchQuery.toLowerCase()) : true;
+      // Verificar si selectedYear no está vacío y si es así, comprobar que el año de la fecha de creación coincide con el año seleccionado
+      let matchesYear = this.selectedYear ? new Date(modelos.created).getFullYear() === this.selectedYear : true;
+      return matchesTema && matchesSearchText && matchesYear;
     });
   }
   
@@ -326,12 +388,20 @@ status:string="";
 
   searchBoletines(event: Event) {
     event.preventDefault(); // Evitar el comportamiento por defecto del formulario
-    this.applyFilters();
+    this.applyFiltersBoletines();
   }
 
   searchNormativas(event: Event) {
     event.preventDefault(); // Evitar el comportamiento por defecto del formulario
     this.applyFiltersNormativas();
+  }
+  searchJurisprudencias(event: Event) {
+    event.preventDefault(); // Evitar el comportamiento por defecto del formulario
+    this.applyFiltersJurisprudencias();
+  }
+  searchModelos(event: Event) {
+    event.preventDefault(); // Evitar el comportamiento por defecto del formulario
+    this.applyFiltersModelos();
   }
   
   selectTema(tema: any) {

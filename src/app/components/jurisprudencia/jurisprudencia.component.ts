@@ -17,8 +17,8 @@ import {
   NgMultiSelectDropDownModule,
 } from 'ng-multiselect-dropdown';
 import { CommonModule } from '@angular/common';
-import { DataApiService } from '@app/services/data-api-service';
-interface DocumentInterface {
+import { DataApiService, JurisprudenciaInterface } from '@app/services/data-api-service';
+interface jurisprudencia {
   categories: any[];
   temas: any[];
   files: string[];
@@ -28,10 +28,10 @@ interface DocumentInterface {
   receiver: string;
   subject: string;
   entity: string;
-  status: string;
-}
+  status: string;}
+
 @Component({
-  selector: 'app-file-manager',
+  selector: 'app-jurisprudencia',
   standalone: true,
   imports: [
     CommonModule,
@@ -39,10 +39,10 @@ interface DocumentInterface {
     FormsModule,
     NgMultiSelectDropDownModule,
   ],
-  templateUrl: './file-manager.component.html',
-  styleUrl: './file-manager.component.css',
+  templateUrl: './jurisprudencia.component.html',
+  styleUrl: './jurisprudencia.component.css'
 })
-export class FileManagerComponent implements OnInit{
+export class JurisprudenciaComponent {
   @ViewChild('infoDiv', { static: true }) infoDiv!: ElementRef;
   years: number[] = [];
 
@@ -59,7 +59,7 @@ export class FileManagerComponent implements OnInit{
     status: '',
   };
   
-docummentSelected: DocumentInterface = {
+docummentSelected: JurisprudenciaInterface = {
   categories: [],
   temas: [],
   files: [],
@@ -144,12 +144,12 @@ docummentSelected: DocumentInterface = {
     this.data.issue = this.formData.fechaEmision;
     this.data.serial = this.formData.serial;
     this.data.files = this._butler.uploaderImages;
-    this.dataApi.saveDocument(this.data).subscribe(
+    this.dataApi.saveJurisprudencia(this.data).subscribe(
       (response) => {
-        this.global.documents.push(this.data);
-        this.global.documents=[...this.global.documents];
-        this.global.filteredDocuments=this.global.documents;
-        this.global.filteredDocuments=[...this.global.filteredDocuments];
+        this.global.jurisprudencias.push(this.data);
+        this.global.jurisprudencias=[...this.global.jurisprudencias];
+        this.global.filteredJurisprudencias=this.global.jurisprudencias;
+        this.global.filteredJurisprudencias=[...this.global.filteredJurisprudencias];
         this.data = {
           categories: [],
           temas: [],
@@ -164,7 +164,7 @@ docummentSelected: DocumentInterface = {
         };  
         // this.temas = [...this.temas];
         this._butler.uploaderImages=[];
-        console.log('documento cargado con éxito:', response);
+        console.log('Jurisprudencia cargada con éxito:', response);
         // Agregar la marca de la respuesta al array de marcas, si es necesario
 
         // Limpiar los valores para futuros usos
@@ -182,3 +182,4 @@ docummentSelected: DocumentInterface = {
     this.formData = {};
   }
 }
+

@@ -55,6 +55,30 @@ export interface NormativaInterface{
 	entity: string;
 	status: string;
 }
+export interface JurisprudenciaInterface{
+	categories: any[];
+	temas: any[];
+	files: string[];
+	issue: string;
+	image: string;
+	serial: string;
+	receiver: string;
+	subject: string;
+	entity: string;
+	status: string;
+}
+export interface ModelosInterface{
+	categories: any[];
+	temas: any[];
+	files: string[];
+	issue: string;
+	image: string;
+	serial: string;
+	receiver: string;
+	subject: string;
+	entity: string;
+	status: string;
+}
  export interface PayInterface{
 	id?:number;
  }
@@ -169,6 +193,18 @@ export class DataApiService {
 	  saveBoletin( boletin: BoletinInterface) {
 		const url_api =  'https://db.buckapi.com:8090/api/collections/vendricomBoletines/records';
 		return this.http.post<BoletinInterface>(url_api, boletin).pipe(
+		  map(data => data)
+		);
+	  }
+	  saveJurisprudencia( jurisprudencia: JurisprudenciaInterface) {
+		const url_api =  'https://db.buckapi.com:8090/api/collections/vendricomJurisprudencias/records';
+		return this.http.post<JurisprudenciaInterface>(url_api, jurisprudencia).pipe(
+		  map(data => data)
+		);
+	  }
+	  saveModelos( modelo: ModelosInterface) {
+		const url_api =  'https://db.buckapi.com:8090/api/collections/vendricomModelos/records';
+		return this.http.post<ModelosInterface>(url_api, modelo).pipe(
 		  map(data => data)
 		);
 	  }

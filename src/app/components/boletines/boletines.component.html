@@ -120,7 +120,7 @@
                                 </a>
                             </div>
                             <form class="mx-3 flex-grow-1 mw-400p" role="search" (submit)="global.searchBoletines($event)">
-                                <input type="text" class="form-control" placeholder="Buscar entre los boletines" [(ngModel)]="global.searchQuery" (ngModelChange)="global.applyFilters()" name="searchQuery">
+                                <input type="text" class="form-control" placeholder="Buscar entre los boletines" [(ngModel)]="global.searchQuery" (ngModelChange)="global.applyFiltersBoletines()" name="searchQuery">
 
                                 <!-- <input type="text" class="form-control" placeholder="Buscar entre los boletines" [(ngModel)]="global.searchQuery"> -->
                             </form>
@@ -265,7 +265,7 @@
                                                                                     data-feather="download"></i></span><span>Download</span></a>
                                                                         <a class="dropdown-item" href="#"><span
                                                                                 class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="trash-2"></i></span><span>Borarr</span></a>
+                                                                                    data-feather="trash-2"></i></span><span>Borrar</span></a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -330,26 +330,26 @@
                                                                     style="color: blue; cursor: pointer;"> abrir</a>
                                                             </span>
                                                         </li>
-                                                        <li>
+                                                     <!--    <li>
                                                             <span>Serial</span>
                                                             <span>{{docummentSelected.serial}}</span>
-                                                        </li>
+                                                        </li> -->
                                                         <li>
                                                             <span>Asunto</span>
                                                             <span>{{docummentSelected.subject}}</span>
                                                         </li>
-                                                        <li>
+                                                        <!-- <li>
                                                             <span>Entidad Emisora</span>
                                                             <span>{{docummentSelected.entity}}</span>
-                                                        </li>
+                                                        </li> -->
                                                         <li>
                                                             <span>Fecha de expedicion</span>
                                                             <span>{{docummentSelected.issue}}</span>
                                                         </li>
-                                                        <li>
+                                                        <!-- <li>
                                                             <span>Persona receptora</span>
                                                             <span>{{docummentSelected.receiver}}</span>
-                                                        </li>
+                                                        </li> -->
                                                         <!-- <li>
                                                             <span>Dimension</span>
                                                             <span>1950 x 1245</span>

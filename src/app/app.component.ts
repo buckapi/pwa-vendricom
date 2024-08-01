@@ -21,6 +21,8 @@ import { UserSupportComponent } from './components/user-support/user-support.com
 import { FormsModule } from '@angular/forms';
 import { NormativaComponent } from './components/normativa/normativa.component';
 import { BoletinesComponent  } from './components/boletines/boletines.component';
+import { JurisprudenciaComponent } from './components/jurisprudencia/jurisprudencia.component';
+import { ModelosComponent } from './components/modelos/modelos.component';
 
 
 @Component({
@@ -44,7 +46,9 @@ import { BoletinesComponent  } from './components/boletines/boletines.component'
     AdminSupportComponent,
     UserSupportComponent,
     NormativaComponent,
-    BoletinesComponent
+    BoletinesComponent,
+    JurisprudenciaComponent,
+    ModelosComponent
     
   ],
   templateUrl: './app.component.html',
@@ -150,6 +154,28 @@ export class AppComponent {
           this.global.boletines = data.items; // Asigna los registros obtenidos a la variable 'registros'
           this.global.boletines = data.items.reverse(); // Invierte el orden de los registros obtenidos y los asigna a la variable 'registros'
           this.global.filteredBoletines=this.global.boletines;
+          // console.log(data); // respuesta
+        },
+        (error) => {
+          console.error(error); // Manejo de errores si la solicitud falla
+        }
+      );
+      this.global.getJurisprudencias().subscribe(
+        (data) => {
+          this.global.jurisprudencias = data.items; // Asigna los registros obtenidos a la variable 'registros'
+          this.global.jurisprudencias = data.items.reverse(); // Invierte el orden de los registros obtenidos y los asigna a la variable 'registros'
+          this.global.filteredJurisprudencias=this.global.jurisprudencias;
+          // console.log(data); // respuesta
+        },
+        (error) => {
+          console.error(error); // Manejo de errores si la solicitud falla
+        }
+      );
+      this.global.getModelos().subscribe(
+        (data) => {
+          this.global.modelos = data.items; // Asigna los registros obtenidos a la variable 'registros'
+          this.global.modelos = data.items.reverse(); // Invierte el orden de los registros obtenidos y los asigna a la variable 'registros'
+          this.global.filteredModelos=this.global.modelos;
           // console.log(data); // respuesta
         },
         (error) => {

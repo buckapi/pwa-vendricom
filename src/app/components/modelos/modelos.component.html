@@ -11,7 +11,7 @@
                                     <a class="nav-link" href="javascript:void(0);">
                                         <span class="nav-icon-wrap"><span class="feather-icon"><i
                                                     data-feather="upload"></i></span></span>
-                                        <span class="nav-link-text">Subir normativa a VENDRICOM</span>
+                                        <span class="nav-link-text">Subir Modelo a VENDRICOM</span>
                                     </a>
                                 </li>
                             </ul>
@@ -23,12 +23,12 @@
                                 <input type="text" class="form-control" id="asunto" name="asunto"
                                     [(ngModel)]="formData.asunto" required>
                             </div>
-                            <div class="form-group">
+                           <!--  <div class="form-group">
                                 <label for="fechaEmision">Fecha de Emisión:</label>
                                 <input type="date" class="form-control" id="fechaEmision" name="fechaEmision"
                                     [(ngModel)]="formData.fechaEmision" required>
-                            </div>
-                            <!-- <div class="form-group">
+                            </div> -->
+                           <!--  <div class="form-group">
                                 <label for="entidadRegulatoria">Entidad Regulatoria:</label>
                                 <input type="text" class="form-control" id="entidadRegulatoria"
                                     name="entidadRegulatoria" [(ngModel)]="formData.entidadRegulatoria" required>
@@ -58,7 +58,7 @@
                                     [(ngModel)]="data.categories" [settings]="dropdownSettings">
                                 </ng-multiselect-dropdown>
                             </div>
-                            <!-- <div class="form-group">
+                            <div class="form-group">
                                 <div class="d-flex align-items-center justify-content-between mb-2">
                                     <label for="nombreReceptor">Tema:</label>
                                     <a (click)="open('tema')" style="cursor: pointer;"
@@ -77,15 +77,15 @@
                                     [placeholder]="'Seleccione un tema'" [data]="global.temas" [(ngModel)]="data.temas"
                                     [settings]="dropdownSettings">
                                 </ng-multiselect-dropdown>
-                            </div> -->
+                            </div>
                             <div class="d-flex align-items-center justify-content-between mb-2">
 
                             </div>
-                            <div class="form-group">
-                                <label for="serial">Numero de ley:</label>
+                           <!--  <div class="form-group">
+                                <label for="serial">Serial:</label>
                                 <input type="text" class="form-control" id="serial" name="serial"
                                     [(ngModel)]="formData.serial" required>
-                            </div>
+                            </div> -->
                         </form>
 
                         <div class="separator separator-light"></div>
@@ -93,7 +93,7 @@
 
                         </div>
                         <div class="btn btn-outline-primary btn-rounded btn-block btn-file mb-4">
-                            Subir normativa
+                            Subir Modelo
                             <input type="file" (change)="global.onFileChanged($event)">
                         </div>
                         <button class="btn btn-primary btn-rounded btn-block btn-file mb-4"
@@ -109,23 +109,23 @@
 
                     <header class="fm-header">
                         <div class="d-flex align-items-center flex-grow-1">
-                            <!-- <a class="fmapp-title dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#"
+                            <a class="fmapp-title dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#"
                                 role="button" aria-haspopup="true" aria-expanded="false">
                                 <h1>{{ global.selectedTema ? global.selectedTema.name : 'Todos los temas' }}</h1>
-                            </a> -->
+                            </a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" *ngFor="let tema of global.temas" (click)="global.selectTema(tema)">
                                     <span class="feather-icon dropdown-icon"><i data-feather="file"></i></span>
                                     <span>{{ tema.name }}</span>
                                 </a>
                             </div>
-                            <form class="mx-3 flex-grow-1 mw-400p" role="search" (submit)="global.searchNormativas($event)">
-                                <input type="text" class="form-control" placeholder="Buscar entre las normativas" [(ngModel)]="global.searchQuery" (ngModelChange)="global.applyFiltersNormativas()" name="searchQuery">
+                            <form class="mx-3 flex-grow-1 mw-400p" role="search" (submit)="global.searchModelos($event)">
+                                <input type="text" class="form-control" placeholder="Buscar entre los documentos" [(ngModel)]="global.searchQuery" (ngModelChange)="global.applyFiltersModelos()" name="searchQuery">
 
-                                <!-- <input type="text" class="form-control" placeholder="Buscar entre las normativas" [(ngModel)]="global.searchQuery"> -->
+                                <!-- <input type="text" class="form-control" placeholder="Buscar entre los documentos" [(ngModel)]="global.searchQuery"> -->
                             </form>
                         </div>
-                        <div class="d-flex align-items-center flex-grow-1">
+                       <!--  <div class="d-flex align-items-center flex-grow-1">
                             <a class="fmapp-title dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#"
                                 role="button" aria-haspopup="true" aria-expanded="false">
                                 <h1>{{ global.selectedYear ? global.selectedYear : 'Todos los años' }}</h1>
@@ -136,7 +136,7 @@
                                     <span>{{ year }}</span>
                                 </a>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="fm-options-wrap">
                             <a class="btn btn-icon btn-flush-dark btn-rounded flush-soft-hover fmapp-info-toggle"
                                 href="#"><span class="icon"><span class="feather-icon"><i data-feather="info"></i></span></span></a>
@@ -165,7 +165,7 @@
                                
                             </div>
                             <form class="mx-3 flex-grow-1 mw-400p" role="search">
-                                <input type="text" class="form-control" placeholder="Buscar entre las normativas">
+                                <input type="text" class="form-control" placeholder="Buscar entre los documentos">
                             </form>
                         </div>
                         <div class="d-flex align-items-center flex-grow-1">
@@ -221,14 +221,14 @@
                                         <div class="card-header">
                                             <a role="button" data-bs-toggle="collapse" href="#fm_collapse_1"
                                                 aria-expanded="true">
-                                                <h5 class="mb-0">Normativas recientes</h5>
+                                                <h5 class="mb-0">Modelos recientes</h5>
                                             </a>
                                         </div>
                                         <div id="fm_collapse_1" class="collapse show">
                                             <div
                                                 class="row gx-3 row-cols-xxl-6 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-1 mt-3">
-                                                <div class="col" *ngFor="let normativa of global.filteredNormativas"
-                                                    (click)="setPreview(normativa)">
+                                                <div class="col" *ngFor="let modelo of global.filteredModelos"
+                                                    (click)="setPreview(modelo)">
                                                     <div class="card file-card card-border">
                                                         <div class="card-body fmapp-info-trigger">
                                                             <i class="svg-icon"></i>
@@ -238,9 +238,9 @@
                                                             <div
                                                                 class="d-flex justify-content-between align-items-start">
                                                                 <div>
-                                                                    <div class="file-name">{{normativa.subject}}</div>
+                                                                    <div class="file-name">{{modelo.subject}}</div>
                                                                     <div class="text-truncate fs-8 mb-2">
-                                                                        {{normativa.receiver}}</div>
+                                                                        {{modelo.receiver}}</div>
                                                                 </div>
                                                                 <div class="d-flex">
 
@@ -269,8 +269,8 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <p class="text-truncate p-xs">Fecha de expedición:
-                                                                {{normativa.issue}}</p>
+                                                            <!-- <p class="text-truncate p-xs">Fecha de expedición:
+                                                                {{modelo.issue}}</p> -->
                                                         </div>
                                                     </div>
                                                 </div>
@@ -330,24 +330,23 @@
                                                                     style="color: blue; cursor: pointer;"> abrir</a>
                                                             </span>
                                                         </li>
-                                                        
+                                                        <!-- <li>
+                                                            <span>Serial</span>
+                                                            <span>{{docummentSelected.serial}}</span>
+                                                        </li> -->
                                                         <li>
                                                             <span>Titulo</span>
                                                             <span>{{docummentSelected.subject}}</span>
                                                         </li>
-                                                   <!--      <li>
+                                                        <!-- <li>
                                                             <span>Entidad Emisora</span>
                                                             <span>{{docummentSelected.entity}}</span>
-                                                        </li> -->
+                                                        </li>
                                                         <li>
                                                             <span>Fecha de expedicion</span>
                                                             <span>{{docummentSelected.issue}}</span>
                                                         </li>
                                                         <li>
-                                                            <span>Numero de ley</span>
-                                                            <span>{{docummentSelected.serial}}</span>
-                                                        </li>
-                                                      <!--   <li>
                                                             <span>Persona receptora</span>
                                                             <span>{{docummentSelected.receiver}}</span>
                                                         </li> -->

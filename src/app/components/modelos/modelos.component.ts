@@ -17,8 +17,8 @@ import {
   NgMultiSelectDropDownModule,
 } from 'ng-multiselect-dropdown';
 import { CommonModule } from '@angular/common';
-import { DataApiService } from '@app/services/data-api-service';
-interface DocumentInterface {
+import { DataApiService, ModelosInterface } from '@app/services/data-api-service';
+interface modelos {
   categories: any[];
   temas: any[];
   files: string[];
@@ -28,10 +28,11 @@ interface DocumentInterface {
   receiver: string;
   subject: string;
   entity: string;
-  status: string;
-}
+  status: string;}
+
+
 @Component({
-  selector: 'app-file-manager',
+  selector: 'app-modelos',
   standalone: true,
   imports: [
     CommonModule,
@@ -39,10 +40,10 @@ interface DocumentInterface {
     FormsModule,
     NgMultiSelectDropDownModule,
   ],
-  templateUrl: './file-manager.component.html',
-  styleUrl: './file-manager.component.css',
+  templateUrl: './modelos.component.html',
+  styleUrl: './modelos.component.css'
 })
-export class FileManagerComponent implements OnInit{
+export class ModelosComponent {
   @ViewChild('infoDiv', { static: true }) infoDiv!: ElementRef;
   years: number[] = [];
 
@@ -59,7 +60,7 @@ export class FileManagerComponent implements OnInit{
     status: '',
   };
   
-docummentSelected: DocumentInterface = {
+docummentSelected: ModelosInterface = {
   categories: [],
   temas: [],
   files: [],
@@ -144,12 +145,12 @@ docummentSelected: DocumentInterface = {
     this.data.issue = this.formData.fechaEmision;
     this.data.serial = this.formData.serial;
     this.data.files = this._butler.uploaderImages;
-    this.dataApi.saveDocument(this.data).subscribe(
+    this.dataApi.saveModelos(this.data).subscribe(
       (response) => {
-        this.global.documents.push(this.data);
-        this.global.documents=[...this.global.documents];
-        this.global.filteredDocuments=this.global.documents;
-        this.global.filteredDocuments=[...this.global.filteredDocuments];
+        this.global.modelos.push(this.data);
+        this.global.modelos=[...this.global.modelos];
+        this.global.filteredModelos=this.global.jurisprudencias;
+        this.global.filteredModelos=[...this.global.filteredModelos];
         this.data = {
           categories: [],
           temas: [],
@@ -164,7 +165,7 @@ docummentSelected: DocumentInterface = {
         };  
         // this.temas = [...this.temas];
         this._butler.uploaderImages=[];
-        console.log('documento cargado con éxito:', response);
+        console.log('Jurisprudencia cargada con éxito:', response);
         // Agregar la marca de la respuesta al array de marcas, si es necesario
 
         // Limpiar los valores para futuros usos
