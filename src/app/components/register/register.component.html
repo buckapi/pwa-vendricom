@@ -6,12 +6,17 @@
             <div class="container-fluid">
                 <!-- Row -->
                 <div class="row auth-split">
-                    <div
-                        class="col-xl-5 col-lg-6 col-md-5 d-md-block d-none bg-primary-dark-3 bg-opacity-85 position-relative">
-                        <img class="bg-img" src="assets/jampack/dist/img/signup-bg.jpg" alt="bg-img">
-                        <div class="auth-content py-8">
+                    <div class="col-xl-4 col-lg-6 col-md-4 d-md-block d-none  bg-opacity-85 position-relative" style="background: transparent;">
+                        <!-- <img class="bg-img" src="assets/jampack/dist/img/signup-bg.jpg" alt="bg-img"> -->
+                        <div class="auth-content ">
                             <div class="row">
                                 <div class="col-xxl-8 mx-auto">
+                                    <div class="text-center">
+                                        <a class="navbar-brand me-0">
+                                            <img class="brand-img d-inline-block" src="assets/jampack/dist/img/Jampack.png"
+                                                alt="brand">
+                                        </a>
+                                    </div>
                                     <div class="text-center">
                                         <h3 class="text-white mb-2">Servidor de documentos </h3>
                                         <p class="text-white">Accede a un amplio numero de <u>Documentos</u>.</p>
@@ -28,7 +33,7 @@
                                                     datos.</span></p>
                                         </li>
                                     </ul>
-                                    <div class="row gx-3 mt-7">
+                                    <!-- <div class="row gx-3 mt-7">
                                         <div class="col-lg-6">
                                             <div class="card card-shadow">
                                                 <img class="card-img-top" src="assets/jampack/dist/img/slide1.jpg"
@@ -51,90 +56,96 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                             </div>
                         </div>
                         <!-- <p class="p-xs text-white credit-text opacity-55">All illustration are powered by <a href="https://icons8.com/ouch/" target="_blank" class="link-white"><u>OUCH</u></a></p> -->
                     </div>
-                    <div class="col-xl-7 col-lg-6 col-md-7 col-sm-10 position-relative mx-auto">
-                        <div class="auth-content flex-column pt-8 pb-md-8 pb-13">
-                            <div class="text-center mb-7">
-                                <a class="navbar-brand me-0" href="index.html">
-                                    <img class="brand-img d-inline-block" src="assets/jampack/dist/img/logo-light.png"
-                                        alt="brand">
-                                </a>
-                            </div>
-                            <form class="w-100" (submit)="onRegister()">
-                                <div class="row">
-                                    <div class="col-xxl-5 col-xl-7 col-lg-10 mx-auto">
-                                        <button class="btn btn-outline-dark btn-rounded btn-block mb-3"><span><span
-                                                    class="icon"><i class="fab fa-google"></i></span><span>Ingresa con
-                                                    Gmail</span></span></button>
-                                        <div class="title-sm title-wth-divider divider-center my-4"><span>O</span></div>
-                                        <h4 class="text-center mb-4">Crea una cuenta</h4>
+                    <div class="col-xl-7 col-lg-7 col-md-7 col-sm-10 position-relative mx-auto" >
+                        <div class="auth-content flex-column pt-5 pb-md-5 pb-5">
+                            
+                            <div style="background: white;
+                            border-radius: 25px 40px 40px 40px;
+                            padding: 40px;">
+                                <form class="w-100" (submit)="onRegister()">
+                                    <div class="row">
+                                        <div class="col-xxl-7 col-xl-7  mx-auto">
+                                        <!--  <button class="btn btn-outline-dark btn-rounded btn-block mb-3"><span><span
+                                                        class="icon"><i class="fab fa-google"></i></span><span>Ingresa con
+                                                        Gmail</span></span></button>
+                                            <div class="title-sm title-wth-divider divider-center my-4"><span>O</span></div> -->
+                                            <h3 class="text-center mb-4" style="color: black;">Crea una cuenta</h3>
 
-                                        <div class="form-group">
-                                            <label>Nombre o razón social</label>
-                                            <input class="form-control" placeholder="nombre o razón social"
-                                                [(ngModel)]="ngFormRegister.value.name" name="name" type="text"
-                                                required>
-                                        </div>
-                                        <!-- <div class="form-group">
-                                            <label>Username</label>
-                                            <input class="form-control" placeholder="Enter username" [(ngModel)]="ngFormRegister.value.username" name="username" type="text" required>
-                                        </div> -->
-                                        <div class="form-group">
-                                            <label>Email</label>
-                                            <input class="form-control" placeholder="tu email"
-                                                [(ngModel)]="ngFormRegister.value.email" name="email" type="email"
-                                                required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Contraseña</label>
-                                            <div class="input-group password-check">
-                                                <span class="input-affix-wrapper affix-wth-text">
-                                                    <input class="form-control" placeholder="6+ caracteres"
-                                                        [(ngModel)]="ngFormRegister.value.password" name="password"
-                                                        type="password" required>
-                                                    <a href="#"
-                                                        class="input-suffix text-primary text-uppercase fs-8 fw-medium">
-                                                        <span>Mostrar</span>
-                                                        <span class="d-none">Ocultar</span>
-                                                    </a>
-                                                </span>
+                                            <div class="form-group">
+                                                <label>Nombre o razón social</label>
+                                                <input class="form-control" placeholder="nombre o razón social"
+                                                    [(ngModel)]="ngFormRegister.value.name" name="name" type="text"
+                                                    required>
+                                            </div>
+                                            <!-- <div class="form-group">
+                                                <label>Username</label>
+                                                <input class="form-control" placeholder="Enter username" [(ngModel)]="ngFormRegister.value.username" name="username" type="text" required>
+                                            </div> -->
+                                            <div class="form-group">
+                                                <label>Email</label>
+                                                <input class="form-control" placeholder="tu email"
+                                                    [(ngModel)]="ngFormRegister.value.email" name="email" type="email"
+                                                    required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Contraseña</label>
+                                                <div class="input-group password-check">
+                                                    <span class="input-affix-wrapper affix-wth-text">
+                                                        <input class="form-control" placeholder="6+ caracteres"
+                                                            [(ngModel)]="ngFormRegister.value.password" name="password"
+                                                            type="password" required>
+                                                        <a href="#"
+                                                            class="input-suffix text-primary text-uppercase fs-8 fw-medium">
+                                                            <span>Mostrar</span>
+                                                            <span class="d-none">Ocultar</span>
+                                                        </a>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Confirmar Contraseña</label>
+                                                <input class="form-control" placeholder="confirmar contraseña"
+                                                    [(ngModel)]="ngFormRegister.value.passwordConfirm"
+                                                    name="passwordConfirm" type="password" required>
+                                            </div>
+                                            <div class="form-check form-check-sm mb-3">
+                                                <input type="checkbox" class="form-check-input" id="logged_in" checked>
+
+                                                <label class="form-check-label text-muted fs-8" for="logged_in">
+                                                    Al crear una cuenta, especificas que has leído y aceptado nuestros
+                                                    <a href="#">Términos de uso</a> y <a href="#">Política de
+                                                        privacidad</a>.
+                                                    Podemos mantenerte informado sobre las últimas actualizaciones a través
+                                                    de nuestra configuración predeterminada de
+                                                    <a href="#">notificaciones</a>.
+                                                </label>
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <p class="p-lg mt-2">
+                                                    Ya eres cliente? 
+                                                    <button class="btn btn-primary btn-rounded btn-uppercase ms-2"
+                                                        (click)="virtualrouter.setRoute('login')">Inicia sesión</button>
+                                                </p>
+                                                <p class="p-lg mt-2">
+                                                    Registrate 
+                                                <button class="btn btn-primary btn-rounded btn-uppercase me-2"
+                                                    type="submit">Crear cuenta</button>
+                                                </p>                                            
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Confirmar Contraseña</label>
-                                            <input class="form-control" placeholder="confirmar contraseña"
-                                                [(ngModel)]="ngFormRegister.value.passwordConfirm"
-                                                name="passwordConfirm" type="password" required>
-                                        </div>
-                                        <div class="form-check form-check-sm mb-3">
-                                            <input type="checkbox" class="form-check-input" id="logged_in" checked>
-
-                                            <label class="form-check-label text-muted fs-8" for="logged_in">
-                                                Al crear una cuenta, especificas que has leído y aceptado nuestros
-                                                <a href="#">Términos de uso</a> y <a href="#">Política de
-                                                    privacidad</a>.
-                                                Podemos mantenerte informado sobre las últimas actualizaciones a través
-                                                de nuestra configuración predeterminada de
-                                                <a href="#">notificaciones</a>.
-                                            </label>
-                                        </div>
-                                        <button class="btn btn-primary btn-rounded btn-uppercase btn-block"
-                                            type="submit">Crear cuenta</button>
-                                        <p class="p-lg mt-2 text-center">Ya eres cliente ? <a
-                                                (click)="virtualrouter.setRoute('login')" style="cursor: pointer;">
-                                                <u>Inicia sesión</u></a></p>
                                     </div>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
                         <!-- Page Footer -->
-                        <div class="hk-footer border-0">
+                        <!-- <div class="hk-footer border-0">
                             <footer class="container-xxl footer">
                                 <div class="row">
                                     <div class="col-xl-8 text-center">
@@ -144,7 +155,7 @@
                                     </div>
                                 </div>
                             </footer>
-                        </div>
+                        </div> -->
                         <!-- / Page Footer -->
                     </div>
                 </div>

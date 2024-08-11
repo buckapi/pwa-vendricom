@@ -38,7 +38,7 @@
                                     <div class="col-xl-7 col-sm-10 mx-auto">
                                         <div class="text-center mb-4">
                                             
-                                            <h4>Inicio de Sesión</h4>
+                                            <h4 style="color: black;">Inicio de Sesión</h4>
                                             
                                         </div>
                                         <div class="row gx-3">
@@ -79,9 +79,10 @@
                                             <div class="form-check form-check-sm mb-3"></div>
                                         </div>
                                         
-                                        <button type="submit" class="btn btn-primary btn-uppercase btn-block">Entrar</button>
+                                        <button type="submit" class="btn btn-primary btn-rounded btn-uppercase ms-2">Ingresas</button>
                                         <p class="p-lg mt-2 text-center">Eres nuevo? <a (click)="virtualRouter.setRoute('register')" style="cursor: pointer;"><u>Regístrate</u></a></p>
                                     </div>
+                                    
                                     <label>
                                       
                                         <input type="checkbox" (click)="change()" [(ngModel)]="mostrarColorBoxes">
@@ -109,8 +110,8 @@
                 </div>
                 <!-- /Row -->
                 <div class="row">
-                    <app-footer></app-footer>
-                </div>
+<!--                     <app-footer></app-footer>
+ -->                </div>
             </div>
             
             <!-- /Container -->

@@ -4,10 +4,10 @@
     <div class="menu-header">
         <span>
             <a class="navbar-brand" (click)="virtualRouter.setRoute('home')">
-                <img class="brand-img img-fluid" src="assets/jampack/dist/img/brand-sm.png" alt="brand" />
+                <!-- <img class="brand-img img-fluid" src="assets/jampack/dist/img/brand-sm.png" alt="brand" /> -->
                 <img class="brand-img img-fluid" src="assets/jampack/dist/img/Jampack.png" alt="brand" />
             </a>
-            <button class="btn btn-icon btn-rounded btn-flush-dark flush-soft-hover navbar-toggle">
+            <button class="btn btn-icon btn-rounded btn-flush-dark flush-soft-hover navbar-toggle" style="color: #fff;">
                 <span class="icon">
                     <span class="svg-icon fs-5">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-bar-to-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -31,22 +31,16 @@
                 <ul class="navbar-nav flex-column">
                     <li class="nav-item" [hidden]="pocketAuthService.getType()!='admin'">
                         <a class="nav-link" (click)="virtualRouter.setRoute('file-manager')" style="cursor: pointer;">
-                            <span class="nav-icon-wrap">
+                            <span class="nav-icon-wrap iconbg">
                                 <span class="svg-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                         <path d="M14 3v4a1 1 0 0 0 1 1h4" />
                                         <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
                                         <path d="M9 15l2 2l4 -4" />
-                                    </svg>
-                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-template" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                        <rect x="4" y="4" width="16" height="4" rx="1" />
-                                        <rect x="4" y="12" width="6" height="8" rx="1" />
-                                        <line x1="14" y1="12" x2="20" y2="12" />
-                                        <line x1="14" y1="16" x2="20" y2="16" />
-                                        <line x1="14" y1="20" x2="20" y2="20" />
                                     </svg> -->
+                                    <img src="assets/jampack/dist/img/home.png" style="width: 34px; height: 34px;">
+                                   
                                 </span>
                             </span>
                             <span class="nav-link-text">Documentos</span>
@@ -55,99 +49,52 @@
                     </li>
                     <li class="nav-item" [hidden]="pocketAuthService.getType()=='admin'">
                         <a class="nav-link" (click)="virtualRouter.setRoute('home')" style="cursor: pointer;">
-                            <span class="nav-icon-wrap">
+                            <span class="nav-icon-wrap iconbg" >
                                 <span class="svg-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                        <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-                                        <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
-                                        <path d="M9 15l2 2l4 -4" />
-                                    </svg>
-                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-template" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                        <rect x="4" y="4" width="16" height="4" rx="1" />
-                                        <rect x="4" y="12" width="6" height="8" rx="1" />
-                                        <line x1="14" y1="12" x2="20" y2="12" />
-                                        <line x1="14" y1="16" x2="20" y2="16" />
-                                        <line x1="14" y1="20" x2="20" y2="20" />
-                                    </svg> -->
+                                    <img src="assets/jampack/dist/img/home.png" style="width: 34px; height: 34px;">
+
                                 </span>
                             </span>
                             <span class="nav-link-text">Documentos</span>
-                            <!-- <span class="badge badge-sm badge-soft-pink ms-auto">Hot</span> -->
+                            <span class="badge badge-sm badge-soft-pink ms-auto">Nuevo</span>
                         </a>
                     </li>
-                    
                     <li class="nav-item" [hidden]="pocketAuthService.getType()!='admin'">
                         <a class="nav-link" (click)="virtualRouter.setRoute('normativas')" style="cursor: pointer;">
-                            <span class="nav-icon-wrap">
+                            <span class="nav-icon-wrap iconbg">
                                 <span class="svg-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-notebook" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-notebook" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                         <path d="M6 4h11a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-11a1 1 0 0 1 -1 -1v-14a1 1 0 0 1 1 -1m3 0v18"></path>
                                         <line x1="13" y1="8" x2="15" y2="8"></line>
                                         <line x1="13" y1="12" x2="15" y2="12"></line>
-                                    </svg>
-                                </span>
-                            </span>
-                            <span class="nav-link-text">Normativa</span>
-                            <!-- <span class="badge badge-sm badge-soft-pink ms-auto">Hot</span> -->
-                        </a>
-                    </li>
-                    <li class="nav-item" [hidden]="pocketAuthService.getType()=='admin'">
-                        <a class="nav-link" (click)="virtualRouter.setRoute('normativas')" style="cursor: pointer;">
-                            <span class="nav-icon-wrap">
-                                <span class="svg-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-notebook" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M6 4h11a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-11a1 1 0 0 1 -1 -1v-14a1 1 0 0 1 1 -1m3 0v18"></path>
-                                        <line x1="13" y1="8" x2="15" y2="8"></line>
-                                        <line x1="13" y1="12" x2="15" y2="12"></line>
-                                    </svg>
-                                </span>
-                            </span>
-                            <span class="nav-link-text">Normativa</span>
-                            <!-- <span class="badge badge-sm badge-soft-pink ms-auto">Hot</span> -->
-                        </a>
-                    </li>
-                    <li class="nav-item" [hidden]="pocketAuthService.getType()!='admin'">
-                        <a class="nav-link" (click)="virtualRouter.setRoute('modelos')" style="cursor: pointer;">
-                            <span class="nav-icon-wrap">
-                                <span class="svg-icon">
-                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                        <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-                                        <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
-                                        <path d="M9 15l2 2l4 -4" />
                                     </svg> -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-inbox" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                        <rect x="4" y="4" width="16" height="4" rx="1" />
-                                        <rect x="4" y="12" width="6" height="8" rx="1" />
-                                        <line x1="14" y1="12" x2="20" y2="12" />
-                                        <line x1="14" y1="16" x2="20" y2="16" />
-                                        <line x1="14" y1="20" x2="20" y2="20" />
-                                    </svg>
+                                    <img src="assets/jampack/dist/img/doc.png" style="width: 34px; height: 34px;">
                                 </span>
                             </span>
-                            <span class="nav-link-text">Modelos</span>
+                            <span class="nav-link-text">Normativa</span>
                             <!-- <span class="badge badge-sm badge-soft-pink ms-auto">Hot</span> -->
                         </a>
                     </li>
                     <li class="nav-item" [hidden]="pocketAuthService.getType()=='admin'">
-                        <a class="nav-link" (click)="virtualRouter.setRoute('modelos')" style="cursor: pointer;">
-                            <span class="nav-icon-wrap">
+                        <a class="nav-link" (click)="virtualRouter.setRoute('normativas')" style="cursor: pointer;">
+                            <span class="nav-icon-wrap iconbg">
                                 <span class="svg-icon">
                                     
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-inbox" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                        <rect x="4" y="4" width="16" height="4" rx="1" />
-                                        <rect x="4" y="12" width="6" height="8" rx="1" />
-                                        <line x1="14" y1="12" x2="20" y2="12" />
-                                        <line x1="14" y1="16" x2="20" y2="16" />
-                                        <line x1="14" y1="20" x2="20" y2="20" />
-                                    </svg>
-                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-template" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <!-- <i class="ri-file-pdf-fill text-blue-w"></i> -->
+                                    <img src="assets/jampack/dist/img/doc.png" style="width: 34px; height: 34px;">
+                                </span>
+                            </span>
+                            <span class="nav-link-text">Normativa</span>
+                            <!-- <span class="badge badge-sm badge-soft-pink ms-auto">Hot</span> -->
+                        </a>
+                    </li>
+                    <li class="nav-item" [hidden]="pocketAuthService.getType()!='admin'">
+                        <a class="nav-link" (click)="virtualRouter.setRoute('modelos')" style="cursor: pointer;">
+                            <span class="nav-icon-wrap iconbg" >
+                                <span class="svg-icon">
+                                    
+                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-inbox" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                         <rect x="4" y="4" width="16" height="4" rx="1" />
                                         <rect x="4" y="12" width="6" height="8" rx="1" />
@@ -155,6 +102,29 @@
                                         <line x1="14" y1="16" x2="20" y2="16" />
                                         <line x1="14" y1="20" x2="20" y2="20" />
                                     </svg> -->
+                                    <img src="assets/jampack/dist/img/modelos.png" style="width: 34px; height: 34px;">
+
+                                </span>
+                            </span>
+                            <span class="nav-link-text">Modelos</span>
+                            <!-- <span class="badge badge-sm badge-soft-pink ms-auto">Hot</span> -->
+                        </a>
+                    </li>
+                    <li class="nav-item" [hidden]="pocketAuthService.getType()=='admin'">
+                        <a class="nav-link" (click)="virtualRouter.setRoute('modelos')" style="cursor: pointer;">
+                            <span class="nav-icon-wrap iconbg">
+                                <span class="svg-icon">
+                                    
+                                   <!--  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-inbox" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <rect x="4" y="4" width="16" height="4" rx="1" />
+                                        <rect x="4" y="12" width="6" height="8" rx="1" />
+                                        <line x1="14" y1="12" x2="20" y2="12" />
+                                        <line x1="14" y1="16" x2="20" y2="16" />
+                                        <line x1="14" y1="20" x2="20" y2="20" />
+                                    </svg> -->
+                                    <img src="assets/jampack/dist/img/modelos.png" style="width: 34px; height: 34px;">
+
                                 </span>
                             </span>
                             <span class="nav-link-text">Modelos</span>
@@ -163,9 +133,9 @@
                     </li>
                     <li class="nav-item" [hidden]="pocketAuthService.getType()!='admin'">
                         <a class="nav-link" (click)="virtualRouter.setRoute('jurisprudencia')" style="cursor: pointer;">
-                            <span class="nav-icon-wrap">
+                            <span class="nav-icon-wrap iconbg">
                                 <span class="svg-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list-details" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list-details" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                         <path d="M13 5h8"></path>
                                         <path d="M13 9h5"></path>
@@ -173,7 +143,9 @@
                                         <path d="M13 19h5"></path>
                                         <rect x="3" y="4" width="6" height="6" rx="1"></rect>
                                         <rect x="3" y="14" width="6" height="6" rx="1"></rect>
-                                    </svg>
+                                    </svg> -->
+                                    <img src="assets/jampack/dist/img/jurispru.png" style="width: 34px; height: 34px;">
+
                                 </span>
                             </span>
                             <span class="nav-link-text">Jurisprudencias</span>
@@ -182,9 +154,9 @@
                     </li>
                     <li class="nav-item" [hidden]="pocketAuthService.getType()=='admin'">
                         <a class="nav-link" (click)="virtualRouter.setRoute('jurisprudencia')" style="cursor: pointer;">
-                            <span class="nav-icon-wrap">
+                            <span class="nav-icon-wrap iconbg">
                                 <span class="svg-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list-details" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list-details" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                         <path d="M13 5h8"></path>
                                         <path d="M13 9h5"></path>
@@ -192,7 +164,9 @@
                                         <path d="M13 19h5"></path>
                                         <rect x="3" y="4" width="6" height="6" rx="1"></rect>
                                         <rect x="3" y="14" width="6" height="6" rx="1"></rect>
-                                    </svg>
+                                    </svg> -->
+                                    <img src="assets/jampack/dist/img/jurispru.png" style="width: 34px; height: 34px;">
+
                                 </span>
                             </span>
                             <span class="nav-link-text">Jurisprudencias</span>
@@ -201,15 +175,17 @@
                     </li>
                     <li class="nav-item" [hidden]="pocketAuthService.getType()!='admin'">
                         <a class="nav-link" (click)="virtualRouter.setRoute('boletines')" style="cursor: pointer;">
-                            <span class="nav-icon-wrap">
+                            <span class="nav-icon-wrap iconbg">
                                 <span class="svg-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-code-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                   <!--  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-code-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                         <path d="M10 12h-1v5h1"></path>
                                         <path d="M14 12h1v5h-1"></path>
                                         <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
                                         <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
-                                    </svg>
+                                    </svg> -->
+                                    <img src="assets/jampack/dist/img/clip.png" style="width: 34px; height: 34px;">
+
                                 </span>
                             </span>
                             <span class="nav-link-text">Boletines</span>
@@ -218,27 +194,159 @@
                     </li>
                     <li class="nav-item" [hidden]="pocketAuthService.getType()=='admin'">
                         <a class="nav-link" (click)="virtualRouter.setRoute('boletines')" style="cursor: pointer;">
-                            <span class="nav-icon-wrap">
+                            <span class="nav-icon-wrap iconbg">
                                 <span class="svg-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-code-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                   <!--  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-code-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                         <path d="M10 12h-1v5h1"></path>
                                         <path d="M14 12h1v5h-1"></path>
                                         <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
                                         <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
-                                    </svg>
+                                    </svg> -->
+                                    <img src="assets/jampack/dist/img/clip.png" style="width: 34px; height: 34px;">
+
                                 </span>
                             </span>
                             <span class="nav-link-text">Boletines</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" [hidden]="pocketAuthService.getType()!='admin'">
+                        <a class="nav-link" (click)="virtualRouter.setRoute('boletines')" style="cursor: pointer;">
+                            <span class="nav-icon-wrap iconbg">
+                                <span class="svg-icon">
+                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-code-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M10 12h-1v5h1"></path>
+                                        <path d="M14 12h1v5h-1"></path>
+                                        <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                                        <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
+                                    </svg> -->
+                                    <img src="assets/jampack/dist/img/curso.png" style="width: 34px; height: 34px;">
+
+                                </span>
+                            </span>
+                            <span class="nav-link-text">Cursos y Charlas</span>
                             <!-- <span class="badge badge-sm badge-soft-pink ms-auto">Hot</span> -->
                         </a>
                     </li>
-                    
-                    
+                    <li class="nav-item" [hidden]="pocketAuthService.getType()=='admin'">
+                        <a class="nav-link" (click)="virtualRouter.setRoute('boletines')" style="cursor: pointer;">
+                            <span class="nav-icon-wrap iconbg">
+                                <span class="svg-icon">
+                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-code-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M10 12h-1v5h1"></path>
+                                        <path d="M14 12h1v5h-1"></path>
+                                        <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                                        <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
+                                    </svg> -->
+                                    <img src="assets/jampack/dist/img/curso.png" style="width: 34px; height: 34px;">
+
+                                </span>
+                            </span>
+                            <span class="nav-link-text">Cursos y Charlas</span>
+                            <!-- <span class="badge badge-sm badge-soft-pink ms-auto">Hot</span> -->
+                        </a>
+                    </li>
+                    <li class="nav-item" [hidden]="pocketAuthService.getType()!='admin'">
+                        <a class="nav-link" (click)="virtualRouter.setRoute('boletines')" style="cursor: pointer;">
+                            <span class="nav-icon-wrap iconbg">
+                                <span class="svg-icon">
+                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-code-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M10 12h-1v5h1"></path>
+                                        <path d="M14 12h1v5h-1"></path>
+                                        <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                                        <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
+                                    </svg> -->
+                                    <img src="assets/jampack/dist/img/estudio.png" style="width: 34px; height: 34px;">
+
+                                </span>
+                            </span>
+                            <span class="nav-link-text">Estudios de Calidad</span>
+                            <!-- <span class="badge badge-sm badge-soft-pink ms-auto">Hot</span> -->
+                        </a>
+                    </li>
+                    <li class="nav-item" [hidden]="pocketAuthService.getType()=='admin'">
+                        <a class="nav-link" (click)="virtualRouter.setRoute('boletines')" style="cursor: pointer;">
+                            <span class="nav-icon-wrap iconbg">
+                                <span class="svg-icon">
+                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-code-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M10 12h-1v5h1"></path>
+                                        <path d="M14 12h1v5h-1"></path>
+                                        <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                                        <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
+                                    </svg> -->
+                                    <img src="assets/jampack/dist/img/estudio.png" style="width: 34px; height: 34px;">
+
+                                </span>
+                            </span>
+                            <span class="nav-link-text">Estudios de Calidad</span>
+                            <!-- <span class="badge badge-sm badge-soft-pink ms-auto">Hot</span> -->
+                        </a>
+                    </li>
+                    <li class="nav-item" [hidden]="pocketAuthService.getType()!='admin'">
+                        <a class="nav-link" (click)="virtualRouter.setRoute('boletines')" style="cursor: pointer;">
+                            <span class="nav-icon-wrap iconbg">
+                                <span class="svg-icon">
+                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-code-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M10 12h-1v5h1"></path>
+                                        <path d="M14 12h1v5h-1"></path>
+                                        <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                                        <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
+                                    </svg> -->
+                                    <img src="assets/jampack/dist/img/capacitaciones.png" style="width: 34px; height: 34px;">
+
+                                </span>
+                            </span>
+                            <span class="nav-link-text">Capacitaciones</span>
+                            <!-- <span class="badge badge-sm badge-soft-pink ms-auto">Hot</span> -->
+                        </a>
+                    </li>
+                    <li class="nav-item" [hidden]="pocketAuthService.getType()=='admin'">
+                        <a class="nav-link" (click)="virtualRouter.setRoute('boletines')" style="cursor: pointer;">
+                            <span class="nav-icon-wrap iconbg">
+                                <span class="svg-icon">
+                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-code-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M10 12h-1v5h1"></path>
+                                        <path d="M14 12h1v5h-1"></path>
+                                        <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                                        <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
+                                    </svg> -->
+                                    <img src="assets/jampack/dist/img/capacitaciones.png" style="width: 34px; height: 34px;">
+
+                                </span>
+                            </span>
+                            <span class="nav-link-text">Capacitaciones</span>
+                            <!-- <span class="badge badge-sm badge-soft-pink ms-auto">Hot</span> -->
+                        </a>
+                    </li>
+                    <li class="nav-item" [hidden]="pocketAuthService.getType()!='admin'">
+                        <a class="nav-link" (click)="virtualRouter.setRoute('support')" style="cursor: pointer;">
+                            <span class="nav-icon-wrap iconbg">
+                                <span class="svg-icon">
+                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-code-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M10 12h-1v5h1"></path>
+                                        <path d="M14 12h1v5h-1"></path>
+                                        <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                                        <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
+                                    </svg> -->
+                                    <img src="assets/jampack/dist/img/chat.png" style="width: 34px; height: 34px;">
+
+                                </span>
+                            </span>
+                            <span class="nav-link-text">Soporte </span>
+                            <!-- <span class="badge badge-sm badge-soft-pink ms-auto">Hot</span> -->
+                        </a>
+                    </li>
                 </ul>	
             </div>
-            <div class="menu-gap"></div>
-            <div class="menu-group">
+            <!-- <div class="menu-gap"></div>
+             <div class="menu-group">
                 <div class="nav-header">
                     <span>Soporte</span>
                 </div>
@@ -247,7 +355,7 @@
                         <a class="nav-link" style="cursor: pointer" (click)="virtualRouter.setRoute('support')">
                             <span class="nav-icon-wrap position-relative">
                                 <span class="badge badge-sm badge-primary badge-sm badge-pill position-top-end-overflow">!</span>
-                                <!-- <span class="svg-icon">
+                              <span class="svg-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-message-dots" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                         <path d="M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4" />
@@ -255,7 +363,7 @@
                                         <line x1="8" y1="11" x2="8" y2="11.01" />
                                         <line x1="16" y1="11" x2="16" y2="11.01" />
                                     </svg>
-                                </span> -->
+                                </span> 
                                 <span class="svg-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-message-circle-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -297,7 +405,7 @@
                     </li>	
            
                 </ul>
-            </div>
+            </div>  -->
             <div class="menu-gap"></div>
             
         </div>

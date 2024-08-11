@@ -1,0 +1,22 @@
+
+.svg-icon {
+    line-height: 1 !important;
+}
+
+.iconbg {
+    background: linear-gradient(135deg, #56347c 0%, #000000 100%);
+    border-radius: 50%;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.svg-icon{
+    display: contents; justify-content: center; align-items: center;
+}
+
+.text-blue-w {
+    color: #fff;
+}

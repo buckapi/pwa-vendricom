@@ -88,6 +88,22 @@ export class UserHomeComponent implements AfterViewInit {
     entity: '',
     status: ''
   };
+  years: number[] = [];
+
+  data = {
+    categories: [] as any[],
+    temas: [] as any[],
+    files: [] as string[],
+    issue: '',
+    image: '',
+    serial: '',
+    receiver: '',
+    subject: '',
+    entity: '',
+    status: '',
+  };
+  dropdownSettings: IDropdownSettings = {};
+  formData: any = {};
   temaFilter="";
   pb: any; // Variable para la instancia de PocketBase
   status: any = "";
@@ -116,6 +132,15 @@ export class UserHomeComponent implements AfterViewInit {
     this.pb = new PocketBase('https://db.buckapi.com:8090'); // Inicializar la instancia de PocketBase
     this.status = this.getStatusFromLocalStorage();
     this.check();
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'id',
+      textField: 'name',
+      selectAllText: 'Seleccionar todo',
+      unSelectAllText: 'Deseleccionar todo',
+      itemsShowLimit: 3,
+      allowSearchFilter: true,
+    };
   }
 setSelectedTema(tema:any){
   this.global.selectedTema=tema;

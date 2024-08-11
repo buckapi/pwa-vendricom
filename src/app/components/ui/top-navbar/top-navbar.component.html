@@ -1,7 +1,7 @@
 <!-- Top Navbar -->
 <!-- <nav class="hk-navbar navbar navbar-expand-xl navbar-dark fixed-top"> -->
  <!-- barra oscura -->
-    <nav class="hk-navbar navbar navbar-expand-xl  fixed-top navbar-dark">
+    <nav class="hk-navbar navbar navbar-expand-xl  fixed-top">
     <div class="container-fluid">
     <!-- Start Nav -->
     <div class="nav-start-wrap">
@@ -10,7 +10,11 @@
         <!-- Search -->
         <form class="dropdown navbar-search">
             <div class="dropdown-toggle no-caret" data-bs-toggle="dropdown" data-dropdown-animation data-bs-auto-close="outside">
-                <a href="#" class="btn btn-icon btn-rounded btn-flush-dark flush-soft-hover  d-xl-none"><span class="icon"><span class="feather-icon"><i data-feather="search"></i></span></span></a>
+                <a href="#" class="btn btn-icon btn-rounded btn-flush-dark flush-soft-hover  d-xl-none">
+                    <span class="icon">
+                        <span class="feather-icon"><i data-feather="search"></i></span>
+                    </span>
+                </a>
                 <div class="input-group d-xl-flex d-none">
                     <!-- <span class="input-affix-wrapper input-search affix-border">
                         <input type="text" class="form-control  bg-transparent"  data-navbar-search-close="false" placeholder="Buscar..." aria-label="Search">
@@ -88,9 +92,7 @@
                             </div>
                         </div>
                     </a>
-                    <div class="dropdown-divider"></div>
-                    <h6 class="dropdown-header">Users
-                    </h6>
+                    
                     <a href="javascript:void(0);" class="dropdown-item">
                         <div class="media align-items-center">
                             <div class="media-head me-2">
@@ -141,7 +143,82 @@
             <!-- <li class="nav-item">
                 <a href="email.html" class="btn btn-icon btn-rounded btn-flush-dark flush-soft-hover"><span class="icon"><span class=" position-relative"><span class="feather-icon"><i data-feather="inbox"></i></span><span class="badge badge-sm badge-soft-primary badge-sm badge-pill position-top-end-overflow-1">4</span></span></span></a>
             </li> -->
-            <li class="nav-item">
+            <li class="nav-item" style="    padding: 10px;">
+                <div class="dropdown ps-2">
+                    <a class=" dropdown-toggle no-caret" href="#" role="button" data-bs-display="static" data-bs-toggle="dropdown" data-dropdown-animation data-bs-auto-close="outside" aria-expanded="false">
+                        <div class="avatar avatar-rounded avatar-xs">
+                            <img src="assets/jampack/dist/img/avataer10.jpg" [hidden]="authRest.getType()!='admin'" alt="user" class="avatar-img">
+
+                            <img src="assets/jampack/dist/img/avataer10.jpg" [hidden]="authRest.getType()=='admin'" alt="user" class="avatar-img">
+                            <!-- <img src="assets/jampack/dist/img/avataer10.jpg" alt="user" class="avatar-img"> -->
+                        </div>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <div class="p-2">
+                            <div class="media">
+                                <div class="media-head me-2">
+                                    <div class="avatar avatar-primary avatar avatar-rounded">
+                                        <img src="assets/jampack/dist/img/avataer10.jpg" [hidden]="authRest.getType()!='admin'" alt="user" class="avatar-img">
+
+                            <img src="assets/jampack/dist/img/avataer10.jpg" [hidden]="authRest.getType()=='admin'" alt="user" class="avatar-img">
+             
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <div class="dropdown">
+                                        <a href="#" class="d-block dropdown-toggle link-dark fw-medium"  data-bs-toggle="dropdown" data-dropdown-animation data-bs-auto-close="inside">{{authRest.getCurrentUser().name}}</a>
+                                        <!-- <div class="dropdown-menu dropdown-menu-end">
+                                            <div class="p-2">
+                                                <div class="media align-items-center active-user mb-3">
+                                                    <div class="media-head me-2">
+                                                        <div class="avatar avatar-primary avatar-xs avatar-rounded">
+                                                            <span class="initial-wrap">Hk</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <a href="#" class="d-flex align-items-center link-dark">Hencework <i class="ri-checkbox-circle-fill fs-7 text-primary ms-1"></i></a>
+                                                        <a href="#" class="d-block fs-8 link-secondary"><u>Manage your account</u></a>
+                                                    </div>
+                                                </div>
+                                                <div class="media align-items-center mb-3">
+                                                    <div class="media-head me-2">
+                                                        <div class="avatar avatar-xs avatar-rounded">
+                                                            <img src="assets/jampack/dist/img/avatar12.jpg" alt="user" class="avatar-img">
+                                                        </div>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <a href="#" class="d-block link-dark">Jampack Team</a>
+                                                        <a href="#" class="d-block fs-8 link-secondary">contact hencework.com</a>
+                                                    </div>
+                                                </div>
+                                                <button class="btn btn-block btn-outline-light btn-sm">
+                                                    <span><span class="icon"><span class="feather-icon"><i data-feather="plus"></i></span></span>
+                                                    <span>Add Account</span></span>
+                                                </button>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                    <div class="fs-7">{{authRest.getCurrentUser().email}}</div>
+                                    <!-- <a href="#" class="d-block fs-8 link-secondary"><u>Sign Out</u></a> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <!-- <a class="dropdown-item" href="profile.html">Profile</a> -->
+                        <!-- <a class="dropdown-item" href="#"><span class="me-2">Offers</span><span class="badge badge-sm badge-soft-pink">2</span></a><div class="dropdown-divider"></div> -->
+                        <h6 class="dropdown-header">Cuenta</h6>
+                        <!-- <a class="dropdown-item" href="#"><span class="dropdown-icon feather-icon"><i data-feather="credit-card"></i></span><span>Payment methods</span></a> -->
+                        <a class="dropdown-item" href="#"><span class="dropdown-icon feather-icon"><i data-feather="check-square"></i></span><span>Mi perfil</span></a>
+                        <a class="dropdown-item" href="#"><span class="dropdown-icon feather-icon"><i data-feather="settings"></i></span><span>Ajustes</span></a>
+                        <div class="dropdown-divider"></div>
+                        <!-- <a class="dropdown-item" href="#"><span class="dropdown-icon feather-icon"><i data-feather="tag"></i></span><span>Raise a ticket</span></a> -->
+                        <div class="dropdown-divider"></div>
+                        <!-- <a class="dropdown-item" href="#">Terms & Conditions</a> -->
+                        <a class="dropdown-item" (click)="global.signOut()">Salir</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item" style="    padding: 10px;">
                 <div class="dropdown dropdown-notifications">
                     <a href="#" class="btn btn-icon btn-rounded btn-flush-dark flush-soft-hover dropdown-toggle no-caret" data-bs-toggle="dropdown" data-dropdown-animation role="button" aria-haspopup="true" aria-expanded="false"><span class="icon"><span class="position-relative"><span class="feather-icon"><i data-feather="bell"></i></span><span class="badge badge-pink badge-indicator position-top-end-overflow-1"></span></span></span></a>
                     <div class="dropdown-menu dropdown-menu-end p-0">
@@ -264,81 +341,7 @@
                     </div>
                 </div>
             </li>
-            <li class="nav-item">
-                <div class="dropdown ps-2">
-                    <a class=" dropdown-toggle no-caret" href="#" role="button" data-bs-display="static" data-bs-toggle="dropdown" data-dropdown-animation data-bs-auto-close="outside" aria-expanded="false">
-                        <div class="avatar avatar-rounded avatar-xs">
-                            <img src="assets/jampack/dist/img/admin.jpg" [hidden]="authRest.getType()!='admin'" alt="user" class="avatar-img">
-
-                            <img src="assets/jampack/dist/img/avataer10.jpg" [hidden]="authRest.getType()=='admin'" alt="user" class="avatar-img">
-                            <!-- <img src="assets/jampack/dist/img/avataer10.jpg" alt="user" class="avatar-img"> -->
-                        </div>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end">
-                        <div class="p-2">
-                            <div class="media">
-                                <div class="media-head me-2">
-                                    <div class="avatar avatar-primary avatar avatar-rounded">
-                                        <img src="assets/jampack/dist/img/admin.jpg" [hidden]="authRest.getType()!='admin'" alt="user" class="avatar-img">
-
-                            <img src="assets/jampack/dist/img/avataer10.jpg" [hidden]="authRest.getType()=='admin'" alt="user" class="avatar-img">
-             
-                                    </div>
-                                </div>
-                                <div class="media-body">
-                                    <div class="dropdown">
-                                        <a href="#" class="d-block dropdown-toggle link-dark fw-medium"  data-bs-toggle="dropdown" data-dropdown-animation data-bs-auto-close="inside">{{authRest.getCurrentUser().name}}</a>
-                                        <div class="dropdown-menu dropdown-menu-end">
-                                            <div class="p-2">
-                                                <div class="media align-items-center active-user mb-3">
-                                                    <div class="media-head me-2">
-                                                        <div class="avatar avatar-primary avatar-xs avatar-rounded">
-                                                            <span class="initial-wrap">Hk</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <a href="#" class="d-flex align-items-center link-dark">Hencework <i class="ri-checkbox-circle-fill fs-7 text-primary ms-1"></i></a>
-                                                        <a href="#" class="d-block fs-8 link-secondary"><u>Manage your account</u></a>
-                                                    </div>
-                                                </div>
-                                                <div class="media align-items-center mb-3">
-                                                    <div class="media-head me-2">
-                                                        <div class="avatar avatar-xs avatar-rounded">
-                                                            <img src="assets/jampack/dist/img/avatar12.jpg" alt="user" class="avatar-img">
-                                                        </div>
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <a href="#" class="d-block link-dark">Jampack Team</a>
-                                                        <a href="#" class="d-block fs-8 link-secondary">contact hencework.com</a>
-                                                    </div>
-                                                </div>
-                                                <button class="btn btn-block btn-outline-light btn-sm">
-                                                    <span><span class="icon"><span class="feather-icon"><i data-feather="plus"></i></span></span>
-                                                    <span>Add Account</span></span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="fs-7">{{authRest.getCurrentUser().email}}</div>
-                                    <!-- <a href="#" class="d-block fs-8 link-secondary"><u>Sign Out</u></a> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="dropdown-divider"></div>
-                        <!-- <a class="dropdown-item" href="profile.html">Profile</a> -->
-                        <!-- <a class="dropdown-item" href="#"><span class="me-2">Offers</span><span class="badge badge-sm badge-soft-pink">2</span></a><div class="dropdown-divider"></div> -->
-                        <h6 class="dropdown-header">Cuenta</h6>
-                        <!-- <a class="dropdown-item" href="#"><span class="dropdown-icon feather-icon"><i data-feather="credit-card"></i></span><span>Payment methods</span></a> -->
-                        <a class="dropdown-item" href="#"><span class="dropdown-icon feather-icon"><i data-feather="check-square"></i></span><span>Mi perfil</span></a>
-                        <a class="dropdown-item" href="#"><span class="dropdown-icon feather-icon"><i data-feather="settings"></i></span><span>Ajustes</span></a>
-                        <div class="dropdown-divider"></div>
-                        <!-- <a class="dropdown-item" href="#"><span class="dropdown-icon feather-icon"><i data-feather="tag"></i></span><span>Raise a ticket</span></a> -->
-                        <div class="dropdown-divider"></div>
-                        <!-- <a class="dropdown-item" href="#">Terms & Conditions</a> -->
-                        <a class="dropdown-item" (click)="global.signOut()">Salir</a>
-                    </div>
-                </div>
-            </li>
+            
         </ul>
     </div>
     <!-- /End Nav -->
