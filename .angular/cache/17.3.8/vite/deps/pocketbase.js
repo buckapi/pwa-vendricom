@@ -2,7 +2,7 @@ import {
   __async,
   __spreadValues,
   __superGet
-} from "./chunk-LJ4VCL4A.js";
+} from "./chunk-RKN2ARKZ.js";
 
 // node_modules/pocketbase/dist/pocketbase.es.mjs
 var ClientResponseError = class _ClientResponseError extends Error {

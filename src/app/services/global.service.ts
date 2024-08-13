@@ -201,6 +201,7 @@ status:string="";
       'fmapp-wrap fmapp-info-active': this.isInfoActive
     };
   }
+
   isLogin() {
     // Obtener el valor de isLoggedin del localStorage
     const isLoggedIn = localStorage.getItem('isLoggedin');
@@ -236,9 +237,6 @@ status:string="";
     this.currentPage = page;
   }
 
- 
-
-  
   onUpload() {
     console.log(JSON.stringify(this._butler.uploaderImages))
     console.log( "esta es la imagen:"+this.selectedFile);
@@ -268,12 +266,10 @@ status:string="";
       }
     );
     }
-    onFileChanged(event:Event) {
+  onFileChanged(event:Event) {
       this.selectedFile = (event.target as HTMLInputElement).files?.[0] || null;
       this.onUpload();
-    }
-  
-    
+    }    
 
   ClientFicha(): any {
     let client_string = localStorage.getItem('clientFicha');
@@ -310,7 +306,6 @@ status:string="";
       this.yeoman.clientFicha = clienteFicha;
     }
   }
-
   setClient(i: any) {
     this.yeoman.origin.restUrl = this.clients[i].RestUrl;
     this.dataApiService.getAllProducts().subscribe((response) => {
@@ -408,10 +403,6 @@ status:string="";
     this.selectedTema = tema;
     this.applyFilters();
   }
-  
-
-
- 
 
   signOut() {
     this.pocketAuthService.logoutUser();

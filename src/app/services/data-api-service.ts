@@ -352,6 +352,10 @@ export class DataApiService {
 		this.orders = this.http.get(url_api);
 		return (this.http.get(url_api));
 	}
+	deleteDocuments(id: string) {
+		const url_api = `${this.yeoman.origin.restUrl}/api/collections/vendricomDocuments/records/${id}`;
+			return this.http.delete<DocumentInterface>(url_api).pipe(map((data) => data));
+		  }
 	deleteOrder(orderId: string): Observable<void> {
 		const token = this.AuthRESTService.getToken();
 		const url_api = `${this.yeoman.origin.restUrl}/api/orders/${orderId}/?access_token=${token}`;
@@ -368,14 +372,6 @@ export class DataApiService {
 		const url_api = `${this.yeoman.origin.restUrl}/api/dists/${distId}/?access_token=${token}`;
 		return this.http.delete<void>(url_api, { headers: this.headers });
 	}
-
-
-
-	
-	
-	
-
-
 	getProduct(id: string){
 		const url_api = this.yeoman.origin.restUrl+`/api/products/${id}`;
 		return this.http.get(url_api);
@@ -398,6 +394,14 @@ export class DataApiService {
 	// 	  .put(url, orderUpdate)
 	// 	  .pipe(map(data => data));
 	//   }
+	
+	  updateDocument(data: any, id: string): Observable<any> {
+		const url = `https://db.buckapi.com:8090/api/collections/vendricomDocuments/records/${id}`;
+			return this.http.patch(url, document).pipe(
+		  map(response => response)
+		);
+	  }
+	  
 	  orderUpdate(order : OrderInterface , id: string){
 		// let token = this.authService.getToken();
 		const url_api=	this.yeoman.origin.restUrl+`/api/orders/${id}`;

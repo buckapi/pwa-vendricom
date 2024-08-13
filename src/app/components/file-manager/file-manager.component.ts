@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Component,OnInit, Renderer2, ElementRef, ViewChild } from '@angular/core';
-
 import { FormBuilder, FormsModule } from '@angular/forms';
 import { AuthRESTService } from '@app/services/auth-rest.service';
 import { Butler } from '@app/services/butler.service';
@@ -18,7 +17,10 @@ import {
 } from 'ng-multiselect-dropdown';
 import { CommonModule } from '@angular/common';
 import { DataApiService } from '@app/services/data-api-service';
+import Swal from 'sweetalert2';
+
 interface DocumentInterface {
+  id?: string;
   categories: any[];
   temas: any[];
   files: string[];
@@ -45,8 +47,9 @@ interface DocumentInterface {
 export class FileManagerComponent implements OnInit{
   @ViewChild('infoDiv', { static: true }) infoDiv!: ElementRef;
   years: number[] = [];
-
+  isEditMode = false;
   data = {
+    id:'',
     categories: [] as any[],
     temas: [] as any[],
     files: [] as string[],
@@ -60,6 +63,7 @@ export class FileManagerComponent implements OnInit{
   };
   
 docummentSelected: DocumentInterface = {
+  id:'',
   categories: [],
   temas: [],
   files: [],
@@ -114,6 +118,7 @@ docummentSelected: DocumentInterface = {
       allowSearchFilter: true,
     };
   }
+  
   close() {
     // Aquí va tu lógica para la acción
     this.renderer.removeClass(this.infoDiv.nativeElement, 'fmapp-info-active');
@@ -134,23 +139,39 @@ docummentSelected: DocumentInterface = {
       this.years.push(currentYear - i);
     }
   }
+  
   submitForm() {
     // Aquí puedes manejar los datos del formulario, por ejemplo, enviarlos a un servicio o imprimirlos en la consola.
     console.log(this.formData);
-    // this.dataApi.saveDocument(this.formData).subscribe(){};
+  
+    // Mapear los datos del formulario al objeto data
     this.data.entity = this.formData.entidadRegulatoria;
     this.data.subject = this.formData.asunto;
     this.data.receiver = this.formData.nombreReceptor;
     this.data.issue = this.formData.fechaEmision;
     this.data.serial = this.formData.serial;
     this.data.files = this._butler.uploaderImages;
+  
+    // Guardar el documento en el backend
     this.dataApi.saveDocument(this.data).subscribe(
       (response) => {
-        this.global.documents.push(this.data);
-        this.global.documents=[...this.global.documents];
-        this.global.filteredDocuments=this.global.documents;
-        this.global.filteredDocuments=[...this.global.filteredDocuments];
+        // Agregar el nuevo documento a la lista global de documentos
+        this.global.documents.push(response);
+        this.global.documents = [...this.global.documents];
+        this.global.filteredDocuments = this.global.documents;
+        this.global.filteredDocuments = [...this.global.filteredDocuments];
+  
+        // Mostrar alerta de éxito con SweetAlert
+        Swal.fire({
+          title: 'Éxito',
+          text: 'El documento ha sido guardado con éxito.',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        });
+  
+        // Limpiar el formulario y resetear el objeto data
         this.data = {
+          id:'',
           categories: [],
           temas: [],
           files: [],
@@ -161,24 +182,107 @@ docummentSelected: DocumentInterface = {
           subject: '',
           entity: '',
           status: ''
-        };  
-        // this.temas = [...this.temas];
-        this._butler.uploaderImages=[];
-        console.log('documento cargado con éxito:', response);
-        // Agregar la marca de la respuesta al array de marcas, si es necesario
-
-        // Limpiar los valores para futuros usos
-        // this.global.newBrand = '';
-        // this.yeoman.brands.push(response);
-        // this.yeoman.brands = [...this.yeoman.brands];
-        // Cerrar el modal
+        };
+        
+        // Limpiar las imágenes subidas
+        this._butler.uploaderImages = [];
+        console.log('Documento cargado con éxito:', response);
+  
+        // Opcionalmente, cerrar modal si se utilizaba
         // this.activeModal.close();
       },
       (error) => {
-        console.error('Error al guardar la marca:', error);
+        console.error('Error al guardar el documento:', error);
+        Swal.fire({
+          title: 'Error',
+          text: 'Ocurrió un error al guardar el documento. Por favor, inténtelo de nuevo.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
       }
     );
+  
     // Limpia el formulario después de enviarlo.
     this.formData = {};
   }
+  updateDocument (document: any)
+  {
+    const documentId = document.id;
+  this.dataApi.updateDocument(this.data, this.data.id).subscribe(
+    (response) => {
+      Swal.fire({
+        title: 'Éxito',
+        text: 'El documento ha sido actualizado con éxito.',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      });
+  
+      // Actualizar la lista de documentos local
+      const index = this.global.documents.findIndex(doc => doc.id === this.data.id);
+      if (index !== -1) {
+        this.global.documents[index] = response;
+        this.global.documents = [...this.global.documents];
+        this.global.filteredDocuments = this.global.documents;
+        this.global.filteredDocuments = [...this.global.filteredDocuments];
+      }
+  
+     /*  this.resetForm(); */
+    },
+    (error) => {
+      Swal.fire({
+        title: 'Error',
+        text: 'Ocurrió un error al actualizar el documento. Por favor, inténtelo de nuevo.',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+      console.error('Error al actualizar el documento:', error);
+    }
+  );
+}
+  
+  deleteDocuments(document: any) {
+    const documentId = document.id;
+  
+    if (!documentId) {
+      console.error('No se puede eliminar el documento: ID no definido');
+      return;
+    }
+    
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¡Esta acción no se podrá revertir!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, borrar!',
+      cancelButtonText: 'No, cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.dataApi.deleteDocuments(documentId).subscribe(
+          response => {
+            console.log('Documento eliminado:', response);
+            
+            // Eliminar el documento de la lista local
+            this.global.documents = this.global.documents.filter(doc => doc.id !== documentId);
+            this.global.filteredDocuments = this.global.filteredDocuments.filter(doc => doc.id !== documentId);
+            
+            Swal.fire(
+              'Borrado!',
+              'El documento ha sido eliminado.',
+              'success'
+            );
+          },
+          error => {
+            Swal.fire(
+              'Error',
+              'Ocurrió un error al eliminar el documento. Inténtelo de nuevo más tarde.',
+              'error'
+            );
+            console.error('Error al borrar el documento:', error);
+          }
+        );
+      }
+    });
+  }
+  
+  cancelDelete(){}
 }

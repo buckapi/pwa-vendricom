@@ -5,19 +5,26 @@
             <nav class="fmapp-sidebar">
                 <div data-simplebar class="nicescroll-bar">
                     <div class="menu-content-wrap">
-                        <div class="menu-group">
+                        <div class="menu-group" *ngIf="!isEditMode">
                             <ul class="nav nav-light navbar-nav flex-column">
                                 <li class="nav-item">
                                     <a class="nav-link" href="javascript:void(0);">
-                                        <span class="nav-icon-wrap"><span class="feather-icon"><i
-                                                    data-feather="upload"></i></span></span>
-                                        <span class="nav-link-text">Subir documento a VENDRICOM</span>
+
+                                        <span class="nav-link-text">Agregar documento a VENDRICOM</span>
                                     </a>
                                 </li>
                             </ul>
                         </div>
-
-                        <form (ngSubmit)="submitForm()">
+                        <div class="menu-group" *ngIf="isEditMode">
+                            <ul class="nav nav-light navbar-nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="javascript:void(0);">                                    
+                                        <span class="nav-link-text">Agregar documento a VENDRICOM</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <form (ngSubmit)="submitForm()" *ngIf="!isEditMode">
                             <div class="form-group">
                                 <label for="asunto">Asunto:</label>
                                 <input type="text" class="form-control" id="asunto" name="asunto"
@@ -87,7 +94,76 @@
                                     [(ngModel)]="formData.serial" required>
                             </div>
                         </form>
+                        <form (ngSubmit)="submitForm()" *ngIf="isEditMode">
+                            <div class="form-group">
+                                <label for="asunto">Asunto:</label>
+                                <input type="text" class="form-control" id="asunto" name="asunto"
+                                    [(ngModel)]="formData.asunto" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="fechaEmision">Fecha de Emisión:</label>
+                                <input type="date" class="form-control" id="fechaEmision" name="fechaEmision"
+                                    [(ngModel)]="formData.fechaEmision" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="entidadRegulatoria">Entidad Regulatoria:</label>
+                                <input type="text" class="form-control" id="entidadRegulatoria"
+                                    name="entidadRegulatoria" [(ngModel)]="formData.entidadRegulatoria" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="nombreReceptor">Nombre de la Persona Receptora:</label>
+                                <input type="text" class="form-control" id="nombreReceptor" name="nombreReceptor"
+                                    [(ngModel)]="formData.nombreReceptor" required>
+                            </div>
+                            <div class="form-group">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <label for="nombreReceptor">Categoría:</label>
+                                    <a (click)="open('categoria')" style="cursor: pointer;"
+                                        class="btn btn-xs btn-icon btn-rounded btn-light" data-bs-toggle="modal"
+                                        data-bs-target="#add_fav_board"><span class="icon" data-bs-toggle="tooltip"
+                                            data-bs-placement="top" title="" data-bs-original-title="Add Board"><span
+                                                class="feather-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-plus">
+                                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                </svg></span></span></a>
+                                </div>
+                                <ng-multiselect-dropdown [ngModelOptions]="{standalone: true}"
+                                    [placeholder]="'Selecciona una'" [data]="global.categories"
+                                    [(ngModel)]="data.categories" [settings]="dropdownSettings">
+                                </ng-multiselect-dropdown>
+                            </div>
+                            <div class="form-group">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <label for="nombreReceptor">Tema:</label>
+                                    <a (click)="open('tema')" style="cursor: pointer;"
+                                        class="btn btn-xs btn-icon btn-rounded btn-light" data-bs-toggle="modal"
+                                        data-bs-target="#add_fav_board"><span class="icon" data-bs-toggle="tooltip"
+                                            data-bs-placement="top" title="" data-bs-original-title="Add Board"><span
+                                                class="feather-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-plus">
+                                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                </svg></span></span></a>
+                                </div>
+                                <ng-multiselect-dropdown [ngModelOptions]="{standalone: true}"
+                                    [placeholder]="'Seleccione un tema'" [data]="global.temas" [(ngModel)]="data.temas"
+                                    [settings]="dropdownSettings">
+                                </ng-multiselect-dropdown>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
 
+                            </div>
+                            <div class="form-group">
+                                <label for="serial">Serial:</label>
+                                <input type="text" class="form-control" id="serial" name="serial"
+                                    [(ngModel)]="formData.serial" required>
+                            </div>
+                        </form>
                         <div class="separator separator-light"></div>
                         <div class="menu-group">
 
@@ -97,11 +173,10 @@
                             <input type="file" (change)="global.onFileChanged($event)">
                         </div>
                         <button class="btn btn-primary btn-rounded btn-block btn-file mb-4"
-                            [hidden]="_butler.uploaderImages.length==0" (click)="submitForm()">Guardar</button>
-
+                            [hidden]="_butler.uploaderImages.length==0" (click)="submitForm()">  <span class="nav-icon-wrap"><span class="feather-icon"><i
+                                data-feather="upload"></i></span></span> Guardar</button>
                     </div>
                 </div>
-
             </nav>
             <div class="fmapp-content">
                 <div class="fmapp-detail-wrap">
@@ -153,54 +228,6 @@
                     </header>
                     
                     
-                    <!-- <header class="fm-header">
-                        <div class="d-flex align-items-center flex-grow-1">
-                            <a class="fmapp-title dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#"
-                                role="button" aria-haspopup="true" aria-expanded="false">
-                                <h1>Todos los temas</h1>
-                            </a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" *ngFor="let tema of global.temas"><span class="feather-icon dropdown-icon"><i
-                                            data-feather="file"></i></span><span> {{tema.name}}</span></a>
-                               
-                            </div>
-                            <form class="mx-3 flex-grow-1 mw-400p" role="search">
-                                <input type="text" class="form-control" placeholder="Buscar entre los documentos">
-                            </form>
-                        </div>
-                        <div class="d-flex align-items-center flex-grow-1">
-                            <a class="fmapp-title dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#"
-                                role="button" aria-haspopup="true" aria-expanded="false">
-                                <h1>Todos los años</h1>
-                            </a>
-                            <div class="dropdown-menu" style="max-height: 300px; overflow-y: auto;">
-                                <a class="dropdown-item" *ngFor="let year of years">
-                                  <span class="feather-icon dropdown-icon">
-                                    <i data-feather="file"></i>
-                                  </span>
-                                  <span>{{ year }}</span>
-                                </a>
-                              </div>
-                              
-                          
-                        </div>
-                        <div class="fm-options-wrap">
-                      
-                            <a class="btn btn-icon btn-flush-dark btn-rounded flush-soft-hover fmapp-info-toggle"
-                                href="#"><span class="icon"><span class="feather-icon"><i
-                                            data-feather="info"></i></span></span></a>
-                       
-                            <a class="btn btn-icon btn-flush-dark btn-rounded flush-soft-hover hk-navbar-togglable d-lg-inline-block d-none"
-                                href="#" data-bs-toggle="tooltip" data-bs-placement="top" title=""
-                                data-bs-original-title="Collapse">
-                                <span class="icon">
-                                    <span class="feather-icon"><i data-feather="chevron-up"></i></span>
-                                    <span class="feather-icon d-none"><i data-feather="chevron-down"></i></span>
-                                </span>
-                            </a>
-                        </div>
-                        <div class="hk-sidebar-togglable"></div>
-                    </header> -->
                     <div class="fm-body">
                         <div data-simplebar class="nicescroll-bar">
                             <div class="file-card-view">
@@ -228,16 +255,13 @@
                                             <div class="row gx-3 row-cols-xxl-4 row-cols-xl-4 row-cols-lg-4 row-cols-md-2 row-cols-1 mt-3">
                                                 <div class="col" *ngFor="let document of global.filteredDocuments"
                                                     (click)="setPreview(document)">
-                                                    <div class="card file-card card-border">
-                                                        <div class="card-body fmapp-info-trigger">
-                                                            <!-- <i class="svg-icon"></i> -->
-                                                              <!-- <i class="ri-file-pdf-fill text-blue"></i>  -->
-                                                         </div>
+                                                    <div class="card file-card card-border fmapp-info-toggle">
+                                                       
                                                         <div class="card-footer">
                                                             <div
                                                                 class="d-flex justify-content-between align-items-start">
                                                                 <div>
-                                                                    <div class="file-name" style="font-size: 20px;">{{document.subject}}</div>
+                                                                    <div class="file-name" style="font-size: 20px; font-weight: bold;">{{document.subject}}</div>
                                                                     <div class="text-truncate fs-8 mb-2">
                                                                         {{document.receiver}}</div>
                                                                 </div>
@@ -255,14 +279,15 @@
                                                                                     data-feather="link-2"></i></span><span>Compartir
                                                                                 Link</span></a>
                                                                         <div class="dropdown-divider"></div>
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="info"></i></span><span>Ver
-                                                                            </span></a>
-                                                                        <a class="dropdown-item" href="#"><span
-                                                                                class="feather-icon dropdown-icon"><i
-                                                                                    data-feather="download"></i></span><span>Download</span></a>
-                                                                        <a class="dropdown-item" href="#"><span
+                                                                       
+                                                                            <a class="dropdown-item" (click)="updateDocument(document)">
+                                                                                <span class="feather-icon dropdown-icon">
+                                                                                  <i data-feather="edit"></i>
+                                                                                </span>
+                                                                                <span>Editar</span>
+                                                                              </a>
+                                                                              
+                                                                        <a class="dropdown-item" (click)="deleteDocuments(document)"><span
                                                                                 class="feather-icon dropdown-icon"><i
                                                                                     data-feather="trash-2"></i></span><span>Borrar</span></a>
                                                                     </div>
@@ -293,11 +318,8 @@
                                 </span></a>
                             <div class="file-name">{{docummentSelected.subject}}</div>
                             <span></span>
-                            <!-- <img src="assets/jampack/dist/img/gallery/mock2.jpg" alt="user"
-                                class="d-block img-fluid my-4 w-250p"> -->
                             <div class="card-body fmapp-info-trigger">
                                 <i class="svg-icon"></i>
-                                <!-- <i class="ri-file-excel-2-fill text-blue" style="font-size: 200px;"></i> -->
                             </div>
                             <ul class="nav nav-justified nav-light nav-tabs nav-segmented-tabs active-theme mt-5">
                                 <li class="nav-item">
@@ -349,10 +371,6 @@
                                                             <span>Persona receptora</span>
                                                             <span>{{docummentSelected.receiver}}</span>
                                                         </li>
-                                                        <!-- <li>
-                                                            <span>Dimension</span>
-                                                            <span>1950 x 1245</span>
-                                                        </li> -->
                                                     </ul>
                                                 </div>
                                             </div>
@@ -401,144 +419,14 @@
                                                                 <span class="initial-wrap">W</span>
                                                             </div>
                                                         </li>
-                                                        <!-- <li>
-                                                            <a href="#"
-                                                                class="avatar avatar-sm avatar-icon avatar-soft-light avatar-rounded"
-                                                                data-bs-toggle="modal" data-bs-target="#invite_people">
-                                                                <span class="initial-wrap" data-bs-toggle="tooltip"
-                                                                    data-bs-placement="top" title=""
-                                                                    data-bs-original-title="Add New">
-                                                                    <span class="feather-icon"><i
-                                                                            data-feather="plus"></i></span>
-                                                                </span>
-                                                            </a>
-                                                        </li> -->
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- <div class="card">
-                                            <div class="card-header">
-                                                <a role="button" data-bs-toggle="collapse" href="#settings"
-                                                    aria-expanded="true">Settings </a>
-                                            </div>
-                                            <div id="settings" class="collapse show">
-                                                <div class="card-body">
-                                                    <ul class="fm-action">
-                                                        <li>
-                                                            <a href="javascript:void(0);">
-                                                                <span class="text-danger">Delete File</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="javascript:void(0);">
-                                                                Somthing's Wrong
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                    <a href="#" class="d-block text-dark fs-7 mb-2">Give feedback and
-                                                        report conversation</a>
-                                                </div>
-                                            </div>
-                                        </div> -->
+                                       
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="tab_activity">
-                                    <div class="collapse-simple">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <a role="button" data-bs-toggle="collapse" href="#act_info1"
-                                                    aria-expanded="true">Actividad</a>
-                                            </div>
-                                            <div id="act_info1" class="collapse show">
-                                                <div class="card-body">
-                                                    <!-- <ul class="activity-list list-group list-group-flush">
-                                                        <li class="list-group-item">
-                                                            <div class="media">
-                                                                <div class="media-head">
-                                                                    <div
-                                                                        class="avatar avatar-sm avatar-primary avatar-rounded">
-                                                                        <span class="initial-wrap">H</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <p><span class="text-dark">Hencework</span> is
-                                                                        working on <a href="#"
-                                                                            class="link-url"><u>https://assets.adobe.com/id/urn:aaid:sc:AP:5cebaf53-ca19-420a-aeeb-1517b04ab8c0?view=file</u></a>
-                                                                    </p>
-                                                                    <div class="last-activity-time">3:15 PM</div>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="list-group-item">
-                                                            <div class="media">
-                                                                <div class="media-head">
-                                                                    <div
-                                                                        class="avatar avatar-sm avatar-soft-danger avatar-rounded">
-                                                                        <span class="initial-wrap">W</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <p><span class="text-dark">Morgan Fregman</span>
-                                                                        completed react conversion of <a href="#"
-                                                                            class="link-default"><u>components</u></a>
-                                                                    </p>
-                                                                    <div class="last-activity-time">3:15 PM</div>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    </ul> -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <a role="button" data-bs-toggle="collapse" href="#act_info2"
-                                                    aria-expanded="true">23 April</a>
-                                            </div>
-                                            <div id="act_info2" class="collapse show">
-                                                <div class="card-body">
-                                                    <ul class="activity-list list-group list-group-flush">
-                                                        <li class="list-group-item">
-                                                            <div class="media">
-                                                                <div class="media-head">
-                                                                    <div class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="assets/jampack/dist/img/avatar15.jpg"
-                                                                            alt="user" class="avatar-img">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <p><span class="text-dark">lalala</span> is
-                                                                        working on <a href="#"
-                                                                            class="link-url"><u>https://assets.adobe.com/id/urn:aaid:sc:AP:5cebaf53-ca19-420a-aeeb-1517b04ab8c0?view=file</u></a>
-                                                                    </p>
-                                                                    <div class="last-activity-time">3:15 PM</div>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="list-group-item">
-                                                            <div class="media">
-                                                                <div class="media-head">
-                                                                    <div class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="assets/jampack/dist/img/avatar12.jpg"
-                                                                            alt="user" class="avatar-img">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <p><span class="text-dark">Morgan Fregman</span>
-                                                                        completed react conversion of <a href="#"
-                                                                            class="link-default"><u>components</u></a>
-                                                                    </p>
-                                                                    <div class="last-activity-time">3:15 PM</div>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                               
                             </div>
                         </div>
                     </div>

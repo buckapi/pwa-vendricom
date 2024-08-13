@@ -1,9 +1,4 @@
 import {
-  ApolloClient,
-  NetworkStatus,
-  gql
-} from "./chunk-A5MUOLHT.js";
-import {
   Inject,
   Injectable,
   InjectionToken,
@@ -15,7 +10,7 @@ import {
   ɵɵdefineInjector,
   ɵɵdefineNgModule,
   ɵɵinject
-} from "./chunk-BR4BDFNJ.js";
+} from "./chunk-SJVPJSFQ.js";
 import {
   queueScheduler
 } from "./chunk-4SKER6FJ.js";
@@ -28,11 +23,16 @@ import {
   observeOn,
   startWith
 } from "./chunk-ERI3AVJI.js";
+import {
+  ApolloClient,
+  NetworkStatus,
+  gql
+} from "./chunk-ZTW3HBF4.js";
 import "./chunk-J2SOPSV6.js";
 import {
   __spreadProps,
   __spreadValues
-} from "./chunk-LJ4VCL4A.js";
+} from "./chunk-RKN2ARKZ.js";
 
 // node_modules/apollo-angular/fesm2022/ngApollo.mjs
 function fromPromise(promiseFn) {
