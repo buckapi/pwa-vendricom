@@ -14,6 +14,7 @@
   <app-user-requests [hidden]="virtualRouter.routerActive!=='user-requests'"></app-user-requests>
   <app-admin-support [hidden]="virtualRouter.routerActive!=='admin-support'"></app-admin-support>
   <app-user-support [hidden]="virtualRouter.routerActive!=='user-support'"></app-user-support>
+  <app-cursos [hidden]="virtualRouter.routerActive!=='cursos'"></app-cursos>
 </div>
 <div class="hk-wrapper hk-pg-auth" data-footer="simple" [hidden]="virtualRouter.routerActive!=='login'&& virtualRouter.routerActive!=='register' ">
   <app-login [hidden]="virtualRouter.routerActive!=='login'"></app-login>
@@ -35,7 +36,8 @@
             <div style="display: flex; align-items: center;">
               <input type="text" [hidden]="global.modaltitle!='categoria'"  style=" max-width: 50%; height: 50px;" [(ngModel)]="global.newCategory" class="form-control" placeholder="Nombre de la categoría">
               <input type="text"  [hidden]="global.modaltitle!='tema'" style=" max-width: 50%; height: 50px;" [(ngModel)]="global.newTema" class="form-control" placeholder="Nombre del tema">
-          
+              <input type="text"  [hidden]="global.modaltitle!='repositorio'" style=" max-width: 50%; height: 50px;" [(ngModel)]="global.newRepositorio" class="form-control" placeholder="Nombre del repositorio">
+
               <!-- <span class="btn btn-default btn-lg" style="margin-left: 10px;" (click)="global.saveCategory()">Guardar</span> -->
             </div>
           </div>
@@ -45,6 +47,7 @@
         <button type="button" class="btn flex-fill btn-light flex-1" data-bs-dismiss="modal">Cancelar</button>
         <button type="button" [hidden]="global.modaltitle!='categoria'" class="btn flex-fill btn-primary flex-1" data-bs-dismiss="modal" (click)="global.saveCategory()">Guardar</button>
         <button type="button" [hidden]="global.modaltitle!='tema'" class="btn flex-fill btn-primary flex-1" data-bs-dismiss="modal" (click)="global.saveTema()">Guardar</button>
+        <button type="button" [hidden]="global.modaltitle!='repositorio'" class="btn flex-fill btn-primary flex-1" data-bs-dismiss="modal" (click)="global.saveRepositorio()">Guardar</button>
       </div>
     </div>
   </div>

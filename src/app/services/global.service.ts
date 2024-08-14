@@ -84,6 +84,7 @@ status:string="";
   
   categories: any[] = [];
   temas: any[] = [];
+  repositorios: any[] = [];
   currentPage: number = 1;
   clients: any;
   device: string = '';
@@ -95,6 +96,7 @@ status:string="";
   docummentSelected={};
   newCategory:any;
   newTema:any;
+  newRepositorio:any;
   clientDetail: { clrepresentante: any }[] = [];
   constructor(
     private apollo: Apollo,
@@ -127,6 +129,9 @@ status:string="";
   }
   getTemas(): Observable<any> {
     return this.http.get<any>(this.apirestUrl + 'collections/vendricomTemas/records');
+  }
+  getRepositorios(): Observable<any> {
+    return this.http.get<any>(this.apirestUrl + 'collections/vendricomRepositorios/records');
   }
 
   getDocuments(): Observable<any> {
@@ -187,6 +192,26 @@ status:string="";
         // console.log(JSON.stringify(this.yeoman.brands))
         // Limpiar los valores para futuros usos
         this.newTema = "";
+        // this.activeModal.close();
+      },
+      (error) => {
+        console.error("Error al guardar el tema:", error);
+      }
+    );
+  }
+  saveRepositorio() {
+    let repositorio = { name: this.newRepositorio };
+
+    this.dataApiService.saveRepositorio(repositorio).subscribe(
+      (response) => {
+        console.log("Repositorio guardado correctamente:", JSON.stringify(response));
+        // Agregar la marca de la respuesta al array de marcas
+        this.repositorios.push(response);
+        this.repositorios = [...this.repositorios];
+
+        // console.log(JSON.stringify(this.yeoman.brands))
+        // Limpiar los valores para futuros usos
+        this.newRepositorio = "";
         // this.activeModal.close();
       },
       (error) => {

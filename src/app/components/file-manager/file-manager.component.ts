@@ -23,6 +23,7 @@ interface DocumentInterface {
   id?: string;
   categories: any[];
   temas: any[];
+  repositorios: any[];
   files: string[];
   issue: string;
   image: string;
@@ -52,6 +53,7 @@ export class FileManagerComponent implements OnInit{
     id:'',
     categories: [] as any[],
     temas: [] as any[],
+    repositorios: [] as any[],
     files: [] as string[],
     issue: '',
     image: '',
@@ -66,6 +68,7 @@ docummentSelected: DocumentInterface = {
   id:'',
   categories: [],
   temas: [],
+  repositorios:[],
   files: [],
   issue: '',
   image: '',
@@ -174,6 +177,7 @@ docummentSelected: DocumentInterface = {
           id:'',
           categories: [],
           temas: [],
+          repositorios:[],
           files: [],
           issue: '',
           image: '',

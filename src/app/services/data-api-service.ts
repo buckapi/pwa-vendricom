@@ -123,6 +123,9 @@ export interface CategoryInterface {
 export interface TemaInterface {
 
 }
+export interface RepositorioInterface {
+
+}
 
 
 
@@ -223,6 +226,12 @@ export class DataApiService {
 	  saveTema( category: TemaInterface) {
 		const url_api = 'https://db.buckapi.com:8090/api/collections/vendricomTemas/records';
 		return this.http.post<TemaInterface>(url_api, category).pipe(
+		  map(data => data)
+		);
+	  }
+	  saveRepositorio( repositorio: RepositorioInterface) {
+		const url_api = 'https://db.buckapi.com:8090/api/collections/vendricomRepositorios/records';
+		return this.http.post<RepositorioInterface>(url_api, repositorio).pipe(
 		  map(data => data)
 		);
 	  }

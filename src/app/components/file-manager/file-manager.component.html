@@ -67,6 +67,26 @@
                             </div>
                             <div class="form-group">
                                 <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <label for="nombreReceptor">Repositorio:</label>
+                                    <a (click)="open('repositorio')" style="cursor: pointer;"
+                                        class="btn btn-xs btn-icon btn-rounded btn-light" data-bs-toggle="modal"
+                                        data-bs-target="#add_fav_board"><span class="icon" data-bs-toggle="tooltip"
+                                            data-bs-placement="top" title="" data-bs-original-title="Add Board"><span
+                                                class="feather-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-plus">
+                                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                </svg></span></span></a>
+                                </div>
+                                <ng-multiselect-dropdown [ngModelOptions]="{standalone: true}"
+                                    [placeholder]="'Selecciona un'" [data]="global.repositorios"
+                                    [(ngModel)]="data.repositorios" [settings]="dropdownSettings">
+                                </ng-multiselect-dropdown>
+                            </div>
+                            <div class="form-group">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
                                     <label for="nombreReceptor">Tema:</label>
                                     <a (click)="open('tema')" style="cursor: pointer;"
                                         class="btn btn-xs btn-icon btn-rounded btn-light" data-bs-toggle="modal"
@@ -135,6 +155,7 @@
                                     [(ngModel)]="data.categories" [settings]="dropdownSettings">
                                 </ng-multiselect-dropdown>
                             </div>
+                            
                             <div class="form-group">
                                 <div class="d-flex align-items-center justify-content-between mb-2">
                                     <label for="nombreReceptor">Tema:</label>

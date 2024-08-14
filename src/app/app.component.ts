@@ -23,6 +23,7 @@ import { NormativaComponent } from './components/normativa/normativa.component';
 import { BoletinesComponent  } from './components/boletines/boletines.component';
 import { JurisprudenciaComponent } from './components/jurisprudencia/jurisprudencia.component';
 import { ModelosComponent } from './components/modelos/modelos.component';
+import { CursosComponent } from './components/cursos/cursos.component';
 
 
 @Component({
@@ -48,8 +49,8 @@ import { ModelosComponent } from './components/modelos/modelos.component';
     NormativaComponent,
     BoletinesComponent,
     JurisprudenciaComponent,
-    ModelosComponent
-    
+    ModelosComponent,
+    CursosComponent    
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
@@ -119,6 +120,15 @@ export class AppComponent {
       this.global.getTemas().subscribe(
         (data) => {
           this.global.temas = data.items; // Asigna los registros obtenidos a la variable 'registros'
+          // console.log(data); // respuesta
+        },
+        (error) => {
+          console.error(error); // Manejo de errores si la solicitud falla
+        }
+      );
+      this.global.getRepositorios().subscribe(
+        (data) => {
+          this.global.repositorios = data.items; // Asigna los registros obtenidos a la variable 'registros'
           // console.log(data); // respuesta
         },
         (error) => {

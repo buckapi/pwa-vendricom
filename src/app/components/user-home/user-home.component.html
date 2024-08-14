@@ -1,33 +1,8 @@
 <div class="hk-pg-wrapper pb-0">
     <div class="hk-pg-body py-0">
         <div class="fmapp-wrap fmapp-sidebar-toggle" #infoDiv id="info">
-            <!-- <nav class="fmapp-sidebar">
-                <div class="fmapp-fixednav">
-                    <div class="hk-toolbar">
-                        <ul class="nav nav-light">
-                            <li class="nav-item nav-link">
-                                <a class="btn btn-icon btn-flush-dark btn-rounded flush-soft-hover"
-                                    data-bs-toggle="tooltip" data-bs-placement="top" title=""
-                                    data-bs-original-title="Settings" href="#"><span class="icon"><span
-                                            class="feather-icon"><i data-feather="settings"></i></span></span></a>
-                            </li>
-                            <li class="nav-item nav-link">
-                                <a href="#" class="btn btn-icon btn-rounded btn-flush-dark flush-soft-hover"
-                                    data-bs-toggle="tooltip" data-bs-placement="top" title=""
-                                    data-bs-original-title="Archive"><span class="icon"><span class="feather-icon"><i
-                                                data-feather="archive"></i></span></span></a>
-                            </li>
-                            <li class="nav-item nav-link">
-                                <a href="#" class="btn btn-icon btn-rounded btn-flush-dark flush-soft-hover"
-                                    data-bs-toggle="tooltip" data-bs-placement="top" title=""
-                                    data-bs-original-title="Help"><span class="icon"><span class="feather-icon"><i
-                                                data-feather="book"></i></span></span></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav> -->
-            <!--  														
+          
+             														
            
                                                                                                                             
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -68,7 +43,46 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-						 -->
+	
+    														
+
+													
+               														
+<!-- <div id="owl_demo_4" class="owl-carousel owl-theme">
+	<div class="item">
+		<div class="card">
+			<img class="card-img-top" src="assets/jampack/dist/img/slide1.jpg" alt="Card image cap">
+			<div class="card-body">
+				<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+			</div>
+		</div>
+	</div>
+	<div class="item">
+		<div class="card">
+			<img class="card-img-top" src="assets/jampack/dist/img/slide2.jpg" alt="Card image cap">
+			<div class="card-body">
+				<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+			</div>
+		</div>
+	</div>
+	<div class="item">
+		<div class="card">
+			<img class="card-img-top" src="assets/jampack/dist/img/slide3.jpg" alt="Card image cap">
+			<div class="card-body">
+				<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+			</div>
+		</div>
+	</div>
+	<div class="item">
+		<div class="card">
+			<img class="card-img-top" src="assets/jampack/dist/img/slide4.jpg" alt="Card image cap">
+			<div class="card-body">
+				<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+			</div>
+		</div>
+	</div>
+</div> -->
+													                                         
             <div class="fmapp-content">
                 <div class="fmapp-detail-wrap">
                     <header class="fm-header">
@@ -210,6 +224,36 @@
                                                             </div>
                                                         </div>
                                                         <p class="text-truncate p-xs">Expedido: {{document.issue}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>                                    
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a role="button" data-bs-toggle="collapse" href="#fm_collapse_1"
+                                            aria-expanded="true">
+                                            <h5 class="mb-0" style="color: white;">Documentos recientes</h5>
+                                        </a>
+                                    </div>
+                                    <div id="fm_collapse_1" class="collapse show">
+                                        <div class="row gx-3 row-cols-xxl-4 row-cols-xl-4 row-cols-lg-4 row-cols-md-2 row-cols-1 mt-3">
+                                            <div class="col" *ngFor="let category of global.categories" >
+                                                <div class="card file-card card-border document"
+                                                  >
+                                                    <div class="card-body fmapp-info-trigger" style="min-height: 0px;">
+                                                        <!-- <i class="ri-file-pdf-fill text-blue"></i> -->
+                                                    </div>
+                                                    <div class="card-footer">
+                                                        <div class="d-flex justify-content-between align-items-start">
+                                                            <div>
+                                                                <div class="file-name" style="font-size: 20px;"> {{category.subject}}</div>
+                                                                
+                                                            </div>
+                                                           
+                                                        </div>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>

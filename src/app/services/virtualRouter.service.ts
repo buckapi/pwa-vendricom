@@ -87,6 +87,18 @@ export class virtualRouter {
                     console.error('Tipo de usuario no reconocido');
                 }
                 break;
+                case 'cursos':
+                switch (userType) {
+                  case 'admin':
+                    this.routerActive = 'cursos';
+                    break;
+                  case 'cliente':
+                    this.routerActive = 'cursos';
+                    break;
+                  default:
+                    console.error('Tipo de usuario no reconocido');
+                }
+                break;
         case 'settings':
           this.routerActive = 'settings';
           break;
