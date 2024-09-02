@@ -15,6 +15,8 @@
   <app-admin-support [hidden]="virtualRouter.routerActive!=='admin-support'"></app-admin-support>
   <app-user-support [hidden]="virtualRouter.routerActive!=='user-support'"></app-user-support>
   <app-cursos [hidden]="virtualRouter.routerActive!=='cursos'"></app-cursos>
+  <app-publicity [hidden]="virtualRouter.routerActive!=='publicity'"></app-publicity>
+
 </div>
 <div class="hk-wrapper hk-pg-auth" data-footer="simple" [hidden]="virtualRouter.routerActive!=='login'&& virtualRouter.routerActive!=='register' ">
   <app-login [hidden]="virtualRouter.routerActive!=='login'"></app-login>

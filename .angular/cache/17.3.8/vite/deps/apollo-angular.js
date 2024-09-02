@@ -1,4 +1,9 @@
 import {
+  ApolloClient,
+  NetworkStatus,
+  gql
+} from "./chunk-ZTW3HBF4.js";
+import {
   Inject,
   Injectable,
   InjectionToken,
@@ -11,10 +16,10 @@ import {
   ɵɵdefineNgModule,
   ɵɵinject
 } from "./chunk-SJVPJSFQ.js";
+import "./chunk-NY6QSHNF.js";
 import {
   queueScheduler
 } from "./chunk-4SKER6FJ.js";
-import "./chunk-NY6QSHNF.js";
 import {
   Observable,
   from,
@@ -23,11 +28,6 @@ import {
   observeOn,
   startWith
 } from "./chunk-ERI3AVJI.js";
-import {
-  ApolloClient,
-  NetworkStatus,
-  gql
-} from "./chunk-ZTW3HBF4.js";
 import "./chunk-J2SOPSV6.js";
 import {
   __spreadProps,

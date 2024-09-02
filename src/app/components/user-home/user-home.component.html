@@ -162,6 +162,34 @@
                                                 <div class="swiper-button-next"></div>
                                     </div>
                                     </div> -->
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <a role="button" data-bs-toggle="collapse" href="#fm_collapse_1"
+                                                aria-expanded="true">
+                                                <h5 class="mb-0" style="color: white;">Repositorios de Documentos</h5>
+                                            </a>
+                                        </div>
+                                        <div id="fm_collapse_1" class="collapse show">
+                                            <div class="row gx-3 row-cols-xxl-4 row-cols-xl-4 row-cols-lg-4 row-cols-md-2 row-cols-1 mt-3">
+                                                <div class="col" *ngFor="let repositorio of global.repositorios">
+                                                    <div class="card file-card card-border document">
+                                                        <div class="card-body fmapp-info-trigger" style="min-height: 0px;">
+                                                            <!-- <i class="ri-file-pdf-fill text-blue"></i> -->
+                                                        </div>
+                                                        <div class="card-footer">
+                                                            <div class="d-flex justify-content-between align-items-start">
+                                                                <div>
+                                                                    <div class="file-name" style="font-size: 20px;"> {{repositorio.name}}</div>
+                                                                    <div class="text-truncate fs-8 mb-2"> ..</div>
+                                                                </div>
+                                                              
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>                                    
+                                    </div>
                                 <div class="card">
                                     <div class="card-header">
                                         <a role="button" data-bs-toggle="collapse" href="#fm_collapse_1"
@@ -230,36 +258,7 @@
                                         </div>
                                     </div>                                    
                                 </div>
-                                <div class="card">
-                                    <div class="card-header">
-                                        <a role="button" data-bs-toggle="collapse" href="#fm_collapse_1"
-                                            aria-expanded="true">
-                                            <h5 class="mb-0" style="color: white;">Documentos recientes</h5>
-                                        </a>
-                                    </div>
-                                    <div id="fm_collapse_1" class="collapse show">
-                                        <div class="row gx-3 row-cols-xxl-4 row-cols-xl-4 row-cols-lg-4 row-cols-md-2 row-cols-1 mt-3">
-                                            <div class="col" *ngFor="let category of global.categories" >
-                                                <div class="card file-card card-border document"
-                                                  >
-                                                    <div class="card-body fmapp-info-trigger" style="min-height: 0px;">
-                                                        <!-- <i class="ri-file-pdf-fill text-blue"></i> -->
-                                                    </div>
-                                                    <div class="card-footer">
-                                                        <div class="d-flex justify-content-between align-items-start">
-                                                            <div>
-                                                                <div class="file-name" style="font-size: 20px;"> {{category.subject}}</div>
-                                                                
-                                                            </div>
-                                                           
-                                                        </div>
-                                                        
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>                                    
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
@@ -418,24 +417,7 @@
                     <span class="icon"><span class="feather-icon"><i data-feather="minus"></i></span></span>
                 </a>
             </div>
-<!--             <div class="separator-full separator-light mt-0 opacity-10"></div>
- -->            <!-- <div class="media-wrap">
-                <div class="media">
-                    <div class="media-head">
-                        <div class="avatar avatar-sm avatar-soft-primary avatar-icon avatar-rounded position-relative">
-                            <span class="initial-wrap">
-                                <i class="ri-customer-service-2-line"></i>
-                            </span>
-                            <span
-                                class="badge badge-success badge-indicator badge-indicator-lg badge-indicator-nobdr position-bottom-end-overflow-1"></span>
-                        </div>
-                    </div>
-                    <div class="media-body">
-                        <div class="user-name">Soporte</div>
-                        <div class="user-status">Online</div>
-                    </div>
-                </div>
-            </div> -->
+
         </header>
         <div class="chatbot-popup-body" style="padding-top: 15%;">
             <div data-simplebar class="nicescroll-bar">
