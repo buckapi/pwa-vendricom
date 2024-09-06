@@ -2,7 +2,7 @@
     <!-- Page Body -->
     <div class="hk-pg-body py-0">
         <div class="fmapp-wrap" #infoDiv id="info">
-            <nav class="fmapp-sidebar">
+            <nav class="fmapp-sidebar" [hidden]="pocketAuthService.getType()!='admin'">
                 <div data-simplebar class="nicescroll-bar">
                     <div class="menu-content-wrap">
                         <div class="menu-group">
