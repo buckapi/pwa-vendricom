@@ -79,6 +79,17 @@ export interface ModelosInterface{
 	entity: string;
 	status: string;
 }
+export interface PublicidadesInterface{
+	categories: any[];
+	temas: any[];
+	files: string[];
+	issue: string;
+	image: string;
+	whatsapp: string;
+	description: string;
+	subject: string;
+	status: string;
+}
  export interface PayInterface{
 	id?:number;
  }
@@ -208,6 +219,12 @@ export class DataApiService {
 	  saveModelos( modelo: ModelosInterface) {
 		const url_api =  'https://db.buckapi.com:8090/api/collections/vendricomModelos/records';
 		return this.http.post<ModelosInterface>(url_api, modelo).pipe(
+		  map(data => data)
+		);
+	  }
+	  savePublicidades( publicidades: PublicidadesInterface) {
+		const url_api =  'https://db.buckapi.com:8090/api/collections/vendricomPublicidad/records';
+		return this.http.post<PublicidadesInterface>(url_api, publicidades).pipe(
 		  map(data => data)
 		);
 	  }

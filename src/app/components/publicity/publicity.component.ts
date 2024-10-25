@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Component,OnInit, Renderer2, ElementRef, ViewChild } from '@angular/core';
-
 import { FormBuilder, FormsModule } from '@angular/forms';
 import { AuthRESTService } from '@app/services/auth-rest.service';
 import { Butler } from '@app/services/butler.service';
@@ -18,17 +17,16 @@ import {
 } from 'ng-multiselect-dropdown';
 import { CommonModule } from '@angular/common';
 import { DataApiService } from '@app/services/data-api-service';
-interface DocumentInterface {
+interface PublicidadInterface {
   categories: any[];
   temas: any[];
   files: string[];
-  issue: string;
-  image: string;
-  serial: string;
-  receiver: string;
-  subject: string;
-  entity: string;
-  status: string;
+  issue: '',
+    image: '',
+    whatsapp: '',
+    subject: '',
+    status: '',
+    description: ''
 }
 @Component({
   selector: 'app-publicity',
@@ -51,23 +49,21 @@ export class PublicityComponent {
     files: [] as string[],
     issue: '',
     image: '',
-    serial: '',
-    receiver: '',
+    whatsapp: '',
     subject: '',
-    entity: '',
+    description: '',
     status: '',
   };
   
-docummentSelected: DocumentInterface = {
+docummentSelected: PublicidadInterface = {
   categories: [],
   temas: [],
   files: [],
   issue: '',
   image: '',
-  serial: '',
-  receiver: '',
+  whatsapp: '',
+  description: '',
   subject: '',
-  entity: '',
   status: ''
 };
   dropdownSettings: IDropdownSettings = {};
@@ -136,33 +132,31 @@ docummentSelected: DocumentInterface = {
     // Aquí puedes manejar los datos del formulario, por ejemplo, enviarlos a un servicio o imprimirlos en la consola.
     console.log(this.formData);
     // this.dataApi.saveDocument(this.formData).subscribe(){};
-    this.data.entity = this.formData.entidadRegulatoria;
     this.data.subject = this.formData.asunto;
-    this.data.receiver = this.formData.nombreReceptor;
     this.data.issue = this.formData.fechaEmision;
-    this.data.serial = this.formData.serial;
+    this.data.whatsapp = this.formData.whatsapp;
+    this.data.description = this.formData.description;
     this.data.files = this._butler.uploaderImages;
-    this.dataApi.saveBoletin(this.data).subscribe(
+    this.dataApi.savePublicidades(this.data).subscribe(
       (response) => {
-        this.global.boletines.push(this.data);
-        this.global.boletines=[...this.global.boletines];
-        this.global.filteredBoletines=this.global.boletines;
-        this.global.filteredBoletines=[...this.global.filteredBoletines];
+        this.global.publicidades.push(this.data);
+        this.global.publicidades=[...this.global.publicidades];
+        this.global.filteredPublicidad=this.global.publicidades;
+        this.global.filteredPublicidad=[...this.global.filteredPublicidad];
         this.data = {
           categories: [],
           temas: [],
           files: [],
           issue: '',
           image: '',
-          serial: '',
-          receiver: '',
+          whatsapp: '',
+          description: '',
           subject: '',
-          entity: '',
           status: ''
         };  
         // this.temas = [...this.temas];
         this._butler.uploaderImages=[];
-        console.log('documento cargado con éxito:', response);
+        console.log('Publicidad cargada con éxito:', response);
         // Agregar la marca de la respuesta al array de marcas, si es necesario
 
         // Limpiar los valores para futuros usos
@@ -173,10 +167,11 @@ docummentSelected: DocumentInterface = {
         // this.activeModal.close();
       },
       (error) => {
-        console.error('Error al guardar la marca:', error);
+        console.error('Error al guardar publicidad:', error);
       }
     );
     // Limpia el formulario después de enviarlo.
     this.formData = {};
   }
 }
+  

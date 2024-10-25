@@ -45,4 +45,19 @@
   .documentSelected {
     border: 2px solid rgb(6, 38, 87); /* Aplica un borde verde al pasar el mouse */
   }
-  
+ 
+  .carousel-caption {
+    position: static;
+    right: 15%;
+    bottom: 3.25rem;
+    left: 17%;
+    padding-top: 1.25rem;
+    padding-bottom: 3rem;
+    color: #fff;
+    text-align: center
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #864ba8 0%, #f69950 100%); 
+  border-color: #582e6d;
+}

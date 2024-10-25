@@ -1,36 +1,28 @@
 <div class="hk-pg-wrapper pb-0">
     <div class="hk-pg-body py-0">
         <div class="fmapp-wrap fmapp-sidebar-toggle" #infoDiv id="info">
-          
-             														
-           
-                                                                                                                            
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="1500" data-bs-pause="hover">
                 <ol class="carousel-indicators">
-                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
-                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
-                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
+                    <li *ngFor="let publicidad of global.filteredPublicidad; let i = index" 
+                        [attr.data-bs-target]="'#carouselExampleIndicators'" 
+                        [attr.data-bs-slide-to]="i" 
+                        [class.active]="i === 0">
+                    </li>
                 </ol>
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img class="d-block w-100" src="assets/jampack/dist/img/slide1.jpg" alt="First slide">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5 class="text-white">First Slide Label</h5>
-                            <p>This is content paragraph enough to say.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="assets/jampack/dist/img/slide2.jpg" alt="Second slide">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5 class="text-white">Second Slide Label</h5>
-                            <p>This is content paragraph enough to say.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="assets/jampack/dist/img/slide3.jpg" alt="Third slide">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5 class="text-white">Third Slide Label</h5>
-                            <p>This is content paragraph enough to say.</p>
+                    <div *ngFor="let publicidad of global.filteredPublicidad; let i = index" class="carousel-item" [class.active]="i === 0">
+                        <div class="row">
+                            <div class=" text-center" >
+                                <div class=" mt-2 box-image" *ngIf="publicidad.files.length > 0">
+                                    <img [src]="publicidad.files[0]" alt="img" class="img-fluid" style="max-height: 200px; width: auto;">
+                                </div>
+                                <div class=" carousel-caption d-md-block">
+                                    <h5 class="text-white">{{publicidad.subject}}</h5>
+                                    <p class="text-white">{{publicidad.description}}</p>
+                                    <a href="https://wa.me/1234567890" target="_blank" class="btn btn-success">Solicite aquí</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -43,96 +35,11 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-	
-    														
-
-													
-               														
-<!-- <div id="owl_demo_4" class="owl-carousel owl-theme">
-	<div class="item">
-		<div class="card">
-			<img class="card-img-top" src="assets/jampack/dist/img/slide1.jpg" alt="Card image cap">
-			<div class="card-body">
-				<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-			</div>
-		</div>
-	</div>
-	<div class="item">
-		<div class="card">
-			<img class="card-img-top" src="assets/jampack/dist/img/slide2.jpg" alt="Card image cap">
-			<div class="card-body">
-				<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-			</div>
-		</div>
-	</div>
-	<div class="item">
-		<div class="card">
-			<img class="card-img-top" src="assets/jampack/dist/img/slide3.jpg" alt="Card image cap">
-			<div class="card-body">
-				<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-			</div>
-		</div>
-	</div>
-	<div class="item">
-		<div class="card">
-			<img class="card-img-top" src="assets/jampack/dist/img/slide4.jpg" alt="Card image cap">
-			<div class="card-body">
-				<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-			</div>
-		</div>
-	</div>
-</div> -->
-													                                         
+            
+            
             <div class="fmapp-content">
                 <div class="fmapp-detail-wrap">
-                    <header class="fm-header">
-                        <div class="d-flex align-items-center flex-grow-1">
-                            <a class="fmapp-title dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#"
-                                role="button" aria-haspopup="true" aria-expanded="false">
-                                <h1>{{ global.selectedTema ? global.selectedTema.name : 'Todos los temas' }}</h1>
-                            </a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" *ngFor="let tema of global.temas"
-                                    (click)="global.selectTema(tema)">
-                                    <span class="feather-icon dropdown-icon"><i data-feather="file"></i></span>
-                                    <span>{{ tema.name }}</span>
-                                </a>
-                            </div>
-                            <form class="mx-3 flex-grow-1 mw-400p" role="search"
-                                (submit)="global.searchDocuments($event)">
-                                <input type="text" class="form-control" placeholder="Buscar entre los documentos"
-                                    [(ngModel)]="global.searchQuery" (ngModelChange)="global.applyFilters()"
-                                    name="searchQuery">
-
-                                <!-- <input type="text" class="form-control" placeholder="Buscar entre los documentos" [(ngModel)]="global.searchQuery"> -->
-                            </form>
-                        </div>
-                        <div class="d-flex align-items-center flex-grow-1">
-                            <a class="fmapp-title dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#"
-                                role="button" aria-haspopup="true" aria-expanded="false">
-                                <h1>{{ global.selectedYear ? global.selectedYear : 'Todos los años' }}</h1>
-                            </a>
-                            <div class="dropdown-menu" style="max-height: 300px; overflow-y: auto;">
-                                <a class="dropdown-item" *ngFor="let year of years" (click)="global.selectYear(year)">
-                                    <span class="feather-icon dropdown-icon"><i data-feather="file"></i></span>
-                                    <span>{{ year }}</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="fm-options-wrap">
-                            <a class="btn btn-icon btn-flush-dark btn-rounded flush-soft-hover fmapp-info-toggle"
-                                href="#"><span class="icon"><span class="feather-icon"><i
-                                            data-feather="info"></i></span></span></a>
-                            <a class="btn btn-icon btn-flush-dark btn-rounded flush-soft-hover hk-navbar-togglable d-lg-inline-block d-none"
-                                href="#" data-bs-toggle="tooltip" data-bs-placement="top" title=""
-                                data-bs-original-title="Collapse">
-                                <span class="icon">
-                                    <span class="feather-icon"><i data-feather="chevron-up"></i></span>
-                                    <span class="feather-icon d-none"><i data-feather="chevron-down"></i></span>
-                                </span>
-                            </a>
-                        </div>
-                    </header>
+                    
                     <div class="fm-body">
                         <div data-simplebar class="nicescroll-bar">
                             <div class="file-card-view">
@@ -140,124 +47,181 @@
                                     role="alert">
                                     <span class="alert-icon-wrap"><i class="ri-alert-line"></i></span>
                                     <div class="d-flex align-items-center flex-wrap flex-sm-nowrap">
-                                        You must provide value for account name.
-                                        <a href="#"
+                                        Bienvendos a VENDRICOM
+                                        <!-- <a href="#"
                                             class="btn btn-sm btn-warning ms-sm-auto mt-sm-0 mt-2 flex-shrink-0">Upgrade
-                                            Storage</a>
+                                            Storage</a> -->
                                     </div>
                                     <button type="button" class="btn-close" data-bs-dismiss="alert"
                                         aria-label="Close"></button>
                                 </div>
-                                <!-- <div class="collapse-simple mt-4">
-                                    <div class="card">
-                                        <div class="swiper-container">
-                                            <div class="swiper-wrapper">
-                                                <div (click)="setPrev(tema)" class="swiper-slide" *ngFor="let tema of global.temas"
-                                                  >
-                                                  {{tema.name}}
-                                                  </div>
-                                                </div>
-                                                </div>
-                                                <div class="swiper-button-prev"></div>
-                                                <div class="swiper-button-next"></div>
+                                <div class="alert alert-warning alert-wth-icon alert-dismissible fade show"
+                                    role="alert">
+                                    <span class="alert-icon-wrap"><i class="ri-alert-line"></i></span>
+                                    <div class="d-flex align-items-center flex-wrap flex-sm-nowrap">
+                                        Bienvenido, aqui un mensaje de actualización de perfil
+                                        <a href="#"
+                                            class="btn btn-sm btn-warning ms-sm-auto mt-sm-0 mt-2 flex-shrink-0">Actualizar
+                                            información</a>
                                     </div>
-                                    </div> -->
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <a role="button" data-bs-toggle="collapse" href="#fm_collapse_1"
-                                                aria-expanded="true">
-                                                <h5 class="mb-0" style="color: white;">Repositorios de Documentos</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                                
+                                <div class="card" *ngIf="!global.selectedRepositorio"> <!-- Se oculta si hay un repositorio seleccionado -->
+                                    <div class="card-header">
+                                        <a role="button" data-bs-toggle="collapse" href="#fm_collapse_1" aria-expanded="true">
+                                            <h5 class="mb-0" style="color: white;">Repositorios de Documentos</h5>
+                                        </a>
+                                    </div>
+                                    <div id="fm_collapse_1" class="collapse show">
+                                        <div class="row gx-3 row-cols-xxl-4 row-cols-xl-4 row-cols-lg-4 row-cols-md-2 row-cols-1 mt-3">
+                                            <div class="col" *ngFor="let repositorio of global.repositorios" (click)="onRepositorioSelect(repositorio)">
+                                                <div class="card file-card card-border document" style="background: #d8d8d8;">
+                                                    <div class="card-footer">
+                                                        <div class="d-flex justify-content-between align-items-start">
+                                                            <div>
+                                                                <div class="file-name" style="font-size: 20px; color: #262a2e;">{{repositorio.name}}</div>
+                                                                <div class="text-truncate fs-8 mb-2"> ..</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card" *ngIf="global.selectedRepositorio"> <!-- Muestra solo si hay un repositorio seleccionado -->
+                                    <div class="card-header">
+                                        <h5 class="mb-0" style="color: white;">Documentos de repositorio</h5>
+                                    </div>
+                                    <header class="fm-header">
+                                        <div class="d-flex align-items-center flex-grow-1">
+                                            <a class="fmapp-title dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#"
+                                                role="button" aria-haspopup="true" aria-expanded="false">
+                                                <h1>{{ global.selectedTema ? global.selectedTema.name : 'Todos los temas' }}</h1>
+                                            </a>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" *ngFor="let tema of global.temas"
+                                                    (click)="global.selectTema(tema)">
+                                                    <span class="feather-icon dropdown-icon"><i data-feather="file"></i></span>
+                                                    <span>{{ tema.name }}</span>
+                                                </a>
+                                            </div>
+                                            <form class="mx-3 flex-grow-1 mw-400p" role="search"
+                                                (submit)="global.searchDocuments($event)">
+                                                <input type="text" class="form-control" placeholder="Buscar entre los documentos"
+                                                    [(ngModel)]="global.searchQuery" (ngModelChange)="global.applyFilters()"
+                                                    name="searchQuery">
+
+                                            </form>
+                                        </div>
+                                        <div class="d-flex align-items-center flex-grow-1">
+                                            <a class="fmapp-title dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#"
+                                                role="button" aria-haspopup="true" aria-expanded="false">
+                                                <h1>{{ global.selectedYear ? global.selectedYear : 'Todos los años' }}</h1>
+                                            </a>
+                                            <div class="dropdown-menu" style="max-height: 300px; overflow-y: auto;">
+                                                <a class="dropdown-item" *ngFor="let year of years" (click)="global.selectYear(year)">
+                                                    <span class="feather-icon dropdown-icon"><i data-feather="file"></i></span>
+                                                    <span>{{ year }}</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="fm-options-wrap">
+                                            <a class="btn btn-icon btn-flush-dark btn-rounded flush-soft-hover fmapp-info-toggle"
+                                                href="#"><span class="icon"><span class="feather-icon"><i
+                                                            data-feather="info"></i></span></span></a>
+                                            <a class="btn btn-icon btn-flush-dark btn-rounded flush-soft-hover hk-navbar-togglable d-lg-inline-block d-none"
+                                                href="#" data-bs-toggle="tooltip" data-bs-placement="top" title=""
+                                                data-bs-original-title="Collapse">
+                                                <span class="icon">
+                                                    <span class="feather-icon"><i data-feather="chevron-up"></i></span>
+                                                    <span class="feather-icon d-none"><i data-feather="chevron-down"></i></span>
+                                                </span>
                                             </a>
                                         </div>
+                                    </header>
+                                    <div class="card-footer">
+                                        <button class="btn btn-primary" (click)="onBackToRepositories()">Volver a Repositorios</button>
+                                    </div>
+                                    <div class="card">
+                                        <!-- <div class="card-header">
+                                            <a role="button" data-bs-toggle="collapse" href="#fm_collapse_1"
+                                                aria-expanded="true">
+                                                <h5 class="mb-0" style="color: white;">Documentos recientes</h5>
+                                            </a>
+                                        </div> -->
                                         <div id="fm_collapse_1" class="collapse show">
                                             <div class="row gx-3 row-cols-xxl-4 row-cols-xl-4 row-cols-lg-4 row-cols-md-2 row-cols-1 mt-3">
-                                                <div class="col" *ngFor="let repositorio of global.repositorios">
-                                                    <div class="card file-card card-border document">
+                                                <div class="col" *ngFor="let document of global.filteredDocuments" (click)="setPreview(document)"
+                                                    [hidden]="filtered && document.temas">
+                                                    <div class="card file-card card-border document"
+                                                        [ngClass]="{'documentSelected': docummentSelected.id === document.id}">
                                                         <div class="card-body fmapp-info-trigger" style="min-height: 0px;">
-                                                            <!-- <i class="ri-file-pdf-fill text-blue"></i> -->
+                                                       
                                                         </div>
                                                         <div class="card-footer">
                                                             <div class="d-flex justify-content-between align-items-start">
                                                                 <div>
-                                                                    <div class="file-name" style="font-size: 20px;"> {{repositorio.name}}</div>
-                                                                    <div class="text-truncate fs-8 mb-2"> ..</div>
+                                                                    <div class="file-name" style="font-size: 20px;"> {{document.subject}}</div>
+                                                                    <div class="text-truncate fs-8 mb-2"> {{document.receiver}}</div>
                                                                 </div>
-                                                              
+                                                                <div class="d-flex">
+                                                                    <a class="btn btn-xs btn-icon btn-flush-dark btn-rounded flush-soft-hover flex-shrink-0"
+                                                                        href="#" data-bs-toggle="dropdown" role="button" aria-haspopup="true"
+                                                                        aria-expanded="false">
+                                                                        <span class="icon">
+                                                                            <span class="feather-icon">
+                                                                                <i data-feather="more-horizontal"></i>
+                                                                            </span>
+                                                                        </span>
+                                                                    </a>
+                                                                    <div class="dropdown-menu">
+                                                                        <a class="dropdown-item" href="#">
+                                                                            <span class="feather-icon dropdown-icon">
+                                                                                <i data-feather="link-2"></i>
+                                                                            </span>
+                                                                            <span>Compartir Link</span>
+                                                                        </a>
+                                                                        <div class="dropdown-divider"></div>
+                                                                        <a class="dropdown-item" href="#">
+                                                                            <span class="feather-icon dropdown-icon">
+                                                                                <i data-feather="info"></i>
+                                                                            </span>
+                                                                            <span>Ver</span>
+                                                                        </a>
+                                                                        <a class="dropdown-item" href="#">
+                                                                            <span class="feather-icon dropdown-icon">
+                                                                                <i data-feather="download"></i>
+                                                                            </span>
+                                                                            <span>Download</span>
+                                                                        </a>
+                                                                        <a class="dropdown-item" href="#">
+                                                                            <span class="feather-icon dropdown-icon">
+                                                                                <i data-feather="trash-2"></i>
+                                                                            </span>
+                                                                            <span>Borrar</span>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
                                                             </div>
+                                                            <p class="text-truncate p-xs">Expedido: {{document.issue}}</p>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>                                    
-                                    </div>
-                                <div class="card">
-                                    <div class="card-header">
-                                        <a role="button" data-bs-toggle="collapse" href="#fm_collapse_1"
-                                            aria-expanded="true">
-                                            <h5 class="mb-0" style="color: white;">Documentos recientes</h5>
-                                        </a>
-                                    </div>
-                                    <div id="fm_collapse_1" class="collapse show">
-                                        <div class="row gx-3 row-cols-xxl-4 row-cols-xl-4 row-cols-lg-4 row-cols-md-2 row-cols-1 mt-3">
-                                            <div class="col" *ngFor="let document of global.filteredDocuments" (click)="setPreview(document)"
-                                                [hidden]="filtered && document.temas">
-                                                <div class="card file-card card-border document"
-                                                    [ngClass]="{'documentSelected': docummentSelected.id === document.id}">
-                                                    <div class="card-body fmapp-info-trigger" style="min-height: 0px;">
-                                                        <!-- <i class="ri-file-pdf-fill text-blue"></i> -->
-                                                    </div>
-                                                    <div class="card-footer">
-                                                        <div class="d-flex justify-content-between align-items-start">
-                                                            <div>
-                                                                <div class="file-name" style="font-size: 20px;"> {{document.subject}}</div>
-                                                                <div class="text-truncate fs-8 mb-2"> {{document.receiver}}</div>
-                                                            </div>
-                                                            <div class="d-flex">
-                                                                <a class="btn btn-xs btn-icon btn-flush-dark btn-rounded flush-soft-hover flex-shrink-0"
-                                                                    href="#" data-bs-toggle="dropdown" role="button" aria-haspopup="true"
-                                                                    aria-expanded="false">
-                                                                    <span class="icon">
-                                                                        <span class="feather-icon">
-                                                                            <i data-feather="more-horizontal"></i>
-                                                                        </span>
-                                                                    </span>
-                                                                </a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="dropdown-item" href="#">
-                                                                        <span class="feather-icon dropdown-icon">
-                                                                            <i data-feather="link-2"></i>
-                                                                        </span>
-                                                                        <span>Compartir Link</span>
-                                                                    </a>
-                                                                    <div class="dropdown-divider"></div>
-                                                                    <a class="dropdown-item" href="#">
-                                                                        <span class="feather-icon dropdown-icon">
-                                                                            <i data-feather="info"></i>
-                                                                        </span>
-                                                                        <span>Ver</span>
-                                                                    </a>
-                                                                    <a class="dropdown-item" href="#">
-                                                                        <span class="feather-icon dropdown-icon">
-                                                                            <i data-feather="download"></i>
-                                                                        </span>
-                                                                        <span>Download</span>
-                                                                    </a>
-                                                                    <a class="dropdown-item" href="#">
-                                                                        <span class="feather-icon dropdown-icon">
-                                                                            <i data-feather="trash-2"></i>
-                                                                        </span>
-                                                                        <span>Borrar</span>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <p class="text-truncate p-xs">Expedido: {{document.issue}}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>                                    
+                                    </div> 
+                                 
+                                    
+                                  
+                                    
                                 </div>
+                                
+                                
+                                
                                
                             </div>
                         </div>
@@ -347,42 +311,7 @@
                                             </div>
                                             <div id="act_info2" class="collapse show">
                                                 <div class="card-body">
-                                                    <!-- <ul class="activity-list list-group list-group-flush">
-                                                        <li class="list-group-item">
-                                                            <div class="media">
-                                                                <div class="media-head">
-                                                                    <div class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="assets/jampack/dist/img/avatar15.jpg"
-                                                                            alt="user" class="avatar-img">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <p><span class="text-dark">lalala</span> is
-                                                                        working on <a href="#"
-                                                                            class="link-url"><u>https://assets.adobe.com/id/urn:aaid:sc:AP:5cebaf53-ca19-420a-aeeb-1517b04ab8c0?view=file</u></a>
-                                                                    </p>
-                                                                    <div class="last-activity-time">3:15 PM</div>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="list-group-item">
-                                                            <div class="media">
-                                                                <div class="media-head">
-                                                                    <div class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="assets/jampack/dist/img/avatar12.jpg"
-                                                                            alt="user" class="avatar-img">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <p><span class="text-dark">Morgan Fregman</span>
-                                                                        completed react conversion of <a href="#"
-                                                                            class="link-default"><u>components</u></a>
-                                                                    </p>
-                                                                    <div class="last-activity-time">3:15 PM</div>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    </ul> -->
+                                                  
                                                 </div>
                                             </div>
                                         </div>
@@ -398,173 +327,5 @@
     </div>
     <!-- /Page Body -->
     <!-- Chat Popup -->
-    <div class="hk-chatbot-popup d-md-block d-flex">
-        <header>
-            <div class="chatbot-head-top">
-                <a class="btn btn-sm btn-icon btn-dark btn-rounded" href="javascript:void(0);" data-bs-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    <span class="icon"><span class="feather-icon"><i data-feather="more-horizontal"></i></span></span>
-                </a>
-                <!-- <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#"><i
-                            class="dropdown-icon zmdi zmdi-notifications-active"></i><span>Send push
-                            notifications</span></a>
-                    <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-volume-off"></i><span>Mute
-                            Chat</span></a>
-                </div> -->
-                <span class="text-white">Chatea con nosotros</span>
-                <a id="minimize_chatbot" href="javascript:void(0);" class="btn btn-sm btn-icon btn-dark btn-rounded">
-                    <span class="icon"><span class="feather-icon"><i data-feather="minus"></i></span></span>
-                </a>
-            </div>
-
-        </header>
-        <div class="chatbot-popup-body" style="padding-top: 15%;">
-            <div data-simplebar class="nicescroll-bar">
-                <div >
-                    <div class="init-content-wrap">
-                        <div class="card card-shadow">
-                            <div class="card-body">
-                                <p class="card-text">Bienvenido a VENDRICOM 💬<br>En que podemos
-                                    ayudarte?<br><br></p>
-                            </div>
-                        </div>
-                        <div class="btn-wrap">
-                            <button (click)="setSelectedTema(tema.name)" *ngFor="let tema of global.temas"
-                                class="btn btn-soft-primary text-nonecase btn-rounded start-conversation">
-                                <span>
-                                    <span class="icon">
-                                        <span class="feather-icon"><i data-feather="eye"></i></span>
-                                    </span>
-                                    <span class="btn-text" style="font-size: medium;">{{tema.name}}</span>
-                                </span>
-                            </button>
-
-                        </div>
-
-                    </div>
-                    <ul class="list-unstyled d-none">
-                        <li class="media sent">
-                            <div class="media-body">
-                                <div class="msg-box">
-                                    <div>
-                                        <p><span style="font-weight: bold;">
-                                                Tema:
-                                            </span>
-                                            {{global.selectedTema}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="media received">
-                            <div class="avatar avatar-xs avatar-soft-primary avatar-icon avatar-rounded">
-                                <span class="initial-wrap">
-                                    <i class="ri-customer-service-2-line"></i>
-                                </span>
-                            </div>
-                            <div class="media-body">
-                                <div class="msg-box">
-                                    <div>
-                                        <p>Bienvenido!<br>Indiqueme por favor su requerimiento?</p>
-                                    </div>
-                                </div>
-                                <div class="msg-box typing-wrap">
-                                    <div>
-                                        <div class="typing">
-                                            <div class="dot"></div>
-                                            <div class="dot"></div>
-                                            <div class="dot"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <footer>
-            <div class="chatbot-intro-text fs-7">
-                <div class="separator-full separator-light"></div>
-                <p class="mb-2">Selecciona un tema y abre un caso de soporte.
-                </p>
-                <!-- <a class="d-block mb-2" href="#"><u>Give Feedback</u></a> -->
-            </div>
-            <div class="input-group d-none">
-                <div class="input-group-text overflow-show border-0">
-                    <button class="btn btn-icon btn-flush-dark flush-soft-hover btn-rounded dropdown-toggle no-caret"
-                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="icon"><span class="feather-icon"><i data-feather="share"></i></span></span>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">
-                            <div class="d-flex align-items-center">
-                                <div class="avatar avatar-icon avatar-xs avatar-soft-primary avatar-rounded me-3">
-                                    <span class="initial-wrap">
-                                        <i class="ri-image-line"></i>
-                                    </span>
-                                </div>
-                                <div>
-                                    <span class="h6 mb-0">Photo or Video Library</span>
-                                </div>
-                            </div>
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            <div class="d-flex align-items-center">
-                                <div class="avatar avatar-icon avatar-xs avatar-soft-info avatar-rounded me-3">
-                                    <span class="initial-wrap">
-                                        <i class="ri-file-4-line"></i>
-                                    </span>
-                                </div>
-                                <div>
-                                    <span class="h6 mb-0">Documentos</span>
-                                </div>
-                            </div>
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            <div class="d-flex align-items-center">
-                                <div class="avatar avatar-icon avatar-xs avatar-soft-success avatar-rounded me-3">
-                                    <span class="initial-wrap">
-                                        <i class="ri-map-pin-line"></i>
-                                    </span>
-                                </div>
-                                <div>
-                                    <span class="h6 mb-0">Location</span>
-                                </div>
-                            </div>
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            <div class="d-flex align-items-center">
-                                <div class="avatar avatar-icon avatar-xs avatar-soft-blue avatar-rounded me-3">
-                                    <span class="initial-wrap">
-                                        <i class="ri-contacts-line"></i>
-                                    </span>
-                                </div>
-                                <div>
-                                    <span class="h6 mb-0">Contact</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <input type="text" id="input_msg_chat_popup" name="send-msg"
-                    class="input-msg-send form-control border-0 shadow-none" placeholder="Escribe aqui...">
-                <div class="input-group-text overflow-show border-0">
-                    <button class="btn btn-icon btn-flush-dark flush-soft-hover btn-rounded">
-                        <span class="icon"><span class="feather-icon"><i data-feather="smile"></i></span></span>
-                    </button>
-                </div>
-            </div>
-            <div class="footer-copy-text">Powered by <a class="brand-link" href="#"><img
-                        src="assets/jampack/dist/img/logo-light.png" alt="logo-brand"></a></div>
-        </footer>
-    </div>
-    <a href="#" class="btn btn-icon btn-floating btn-primary btn-lg btn-rounded btn-popup-open">
-        <span class="icon">
-            <span class="feather-icon"><i data-feather="message-circle"></i></span>
-        </span>
-    </a>
-    <div class="chat-popover shadow-xl">
-        <p>Chatea con nosotros y recibe asesoramiento en cualquier tema de tu interés!</p>
-    </div>
+    
 </div>

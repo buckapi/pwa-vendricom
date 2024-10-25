@@ -54,3 +54,173 @@
     </div>
   </div>
 </div>
+
+<div class="hk-chatbot-popup d-md-block d-flex">
+  <header>
+      <div class="chatbot-head-top">
+          <a class="btn btn-sm btn-icon btn-dark btn-rounded" href="javascript:void(0);" data-bs-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <span class="icon"><span class="feather-icon"><i data-feather="more-horizontal"></i></span></span>
+          </a>
+          <!-- <div class="dropdown-menu">
+              <a class="dropdown-item" href="#"><i
+                      class="dropdown-icon zmdi zmdi-notifications-active"></i><span>Send push
+                      notifications</span></a>
+              <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-volume-off"></i><span>Mute
+                      Chat</span></a>
+          </div> -->
+          <span class="text-white">Chatea con nosotros</span>
+          <a id="minimize_chatbot" href="javascript:void(0);" class="btn btn-sm btn-icon btn-dark btn-rounded">
+              <span class="icon"><span class="feather-icon"><i data-feather="minus"></i></span></span>
+          </a>
+      </div>
+
+  </header>
+  <div class="chatbot-popup-body" style="padding-top: 15%;">
+      <div data-simplebar class="nicescroll-bar">
+          <div >
+              <div class="init-content-wrap">
+                  <div class="card card-shadow">
+                      <div class="card-body">
+                          <p class="card-text">Bienvenido a VENDRICOM 💬<br>En que podemos
+                              ayudarte?<br><br></p>
+                      </div>
+                  </div>
+                  <div class="btn-wrap">
+                      <button (click)="setSelectedTema(tema.name)" *ngFor="let tema of global.temas"
+                          class="btn btn-soft-primary text-nonecase btn-rounded start-conversation">
+                          <span>
+                              <span class="icon">
+                                  <span class="feather-icon"><i data-feather="eye"></i></span>
+                              </span>
+                              <span class="btn-text" style="font-size: medium;">{{tema.name}}</span>
+                          </span>
+                      </button>
+
+                  </div>
+
+              </div>
+              <ul class="list-unstyled d-none">
+                  <li class="media sent">
+                      <div class="media-body">
+                          <div class="msg-box">
+                              <div>
+                                  <p><span style="font-weight: bold;">
+                                          Tema:
+                                      </span>
+                                      {{global.selectedTema}}</p>
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+                  <li class="media received">
+                      <div class="avatar avatar-xs avatar-soft-primary avatar-icon avatar-rounded">
+                          <span class="initial-wrap">
+                              <i class="ri-customer-service-2-line"></i>
+                          </span>
+                      </div>
+                      <div class="media-body">
+                          <div class="msg-box">
+                              <div>
+                                  <p>Bienvenido!<br>Indiqueme por favor su requerimiento?</p>
+                              </div>
+                          </div>
+                          <div class="msg-box typing-wrap">
+                              <div>
+                                  <div class="typing">
+                                      <div class="dot"></div>
+                                      <div class="dot"></div>
+                                      <div class="dot"></div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </div>
+  <footer>
+      <div class="chatbot-intro-text fs-7">
+          <div class="separator-full separator-light"></div>
+          <p class="mb-2">Selecciona un tema y abre un caso de soporte.
+          </p>
+          <!-- <a class="d-block mb-2" href="#"><u>Give Feedback</u></a> -->
+      </div>
+      <div class="input-group d-none">
+          <div class="input-group-text overflow-show border-0">
+              <button class="btn btn-icon btn-flush-dark flush-soft-hover btn-rounded dropdown-toggle no-caret"
+                  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="icon"><span class="feather-icon"><i data-feather="share"></i></span></span>
+              </button>
+              <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">
+                      <div class="d-flex align-items-center">
+                          <div class="avatar avatar-icon avatar-xs avatar-soft-primary avatar-rounded me-3">
+                              <span class="initial-wrap">
+                                  <i class="ri-image-line"></i>
+                              </span>
+                          </div>
+                          <div>
+                              <span class="h6 mb-0">Photo or Video Library</span>
+                          </div>
+                      </div>
+                  </a>
+                  <a class="dropdown-item" href="#">
+                      <div class="d-flex align-items-center">
+                          <div class="avatar avatar-icon avatar-xs avatar-soft-info avatar-rounded me-3">
+                              <span class="initial-wrap">
+                                  <i class="ri-file-4-line"></i>
+                              </span>
+                          </div>
+                          <div>
+                              <span class="h6 mb-0">Documentos</span>
+                          </div>
+                      </div>
+                  </a>
+                  <a class="dropdown-item" href="#">
+                      <div class="d-flex align-items-center">
+                          <div class="avatar avatar-icon avatar-xs avatar-soft-success avatar-rounded me-3">
+                              <span class="initial-wrap">
+                                  <i class="ri-map-pin-line"></i>
+                              </span>
+                          </div>
+                          <div>
+                              <span class="h6 mb-0">Location</span>
+                          </div>
+                      </div>
+                  </a>
+                  <a class="dropdown-item" href="#">
+                      <div class="d-flex align-items-center">
+                          <div class="avatar avatar-icon avatar-xs avatar-soft-blue avatar-rounded me-3">
+                              <span class="initial-wrap">
+                                  <i class="ri-contacts-line"></i>
+                              </span>
+                          </div>
+                          <div>
+                              <span class="h6 mb-0">Contact</span>
+                          </div>
+                      </div>
+                  </a>
+              </div>
+          </div>
+          <input type="text" id="input_msg_chat_popup" name="send-msg"
+              class="input-msg-send form-control border-0 shadow-none" placeholder="Escribe aqui...">
+          <div class="input-group-text overflow-show border-0">
+              <button class="btn btn-icon btn-flush-dark flush-soft-hover btn-rounded">
+                  <span class="icon"><span class="feather-icon"><i data-feather="smile"></i></span></span>
+              </button>
+          </div>
+      </div>
+      <div class="footer-copy-text">Desarrollado por <a class="brand-link" href="#"><img
+                  src="assets/jampack/dist/img/logo-light.png" alt="logo-brand"></a></div>
+  </footer>
+</div>
+<a href="#" class="btn btn-icon btn-floating btn-primary btn-lg btn-rounded btn-popup-open">
+  <span class="icon">
+      <span class="feather-icon"><i data-feather="message-circle"></i></span>
+  </span>
+</a>
+<div class="chat-popover shadow-xl">
+  <p>Chatea con nosotros y recibe asesoramiento en cualquier tema de tu interés!</p>
+</div>

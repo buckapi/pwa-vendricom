@@ -80,6 +80,8 @@ docummentSelected: DocumentInterface = {
 };
   dropdownSettings: IDropdownSettings = {};
   formData: any = {};
+  public filteredTemas: any[] = []; // para almacenar los temas filtrados
+
   public captions: UploaderCaptions = {
     dropzone: {
       title: 'Imágenes del producto',
@@ -96,6 +98,9 @@ docummentSelected: DocumentInterface = {
     },
   };
   adapter = new DemoFilePickerAdapter(this.http, this._butler, this.global);
+  selectedCategory: any; // La categoría seleccionada
+  filteredRepositorios: any[] = []; // Para guardar los repositorios filtrados
+  selectedRepositorio: any = null; // Para guardar el repositorio seleccionado
 
   constructor(
     public imageUpload: ImageUploadService,
@@ -142,7 +147,85 @@ docummentSelected: DocumentInterface = {
       this.years.push(currentYear - i);
     }
   }
+  onCategoryChange(selectedCategory: any): void {
+    if (selectedCategory && selectedCategory.length > 0) {
+      console.log('Categoría seleccionada: ' + JSON.stringify(selectedCategory));
+      this.global.categorySelected = true;
+      
+      // Asegúrate de que el objeto tenga la propiedad 'id'
+      if (selectedCategory[0] && selectedCategory[0].id) {
+        let idCategorySelected = selectedCategory[0].id;
+        this.global.filteredRepositorios = [];
   
+        for (let repository of this.global.repositorios) {
+          console.log(
+            'Comparando [' + idCategorySelected + '] con [' + repository.idFhater + ']'
+          );
+          if (idCategorySelected === repository.idFhater) {
+            console.log('Repositorio agregado al array: ' + JSON.stringify(repository));
+            this.global.filteredRepositorios.push(repository);
+          }
+        }
+      } else {
+        console.error('El objeto de la categoría seleccionada no tiene un id válido.');
+      }
+    } else {
+      this.global.categorySelected = false;
+      this.global.filteredRepositorios = [];
+    }
+  }
+  
+  
+  filterRepositoriosByCategory() {
+    if (this.selectedCategory) {
+      this.global.filteredRepositorios = this.global.repositorios.filter(repo => 
+        repo.categoryId === this.selectedCategory.id
+      );
+    } else {
+      this.global.filteredRepositorios = this.global.repositorios;
+    }
+  }
+  
+  onRepositorioChange(selectedRepositorio: any): void { 
+    if (selectedRepositorio && selectedRepositorio.length > 0) {
+      console.log('Repositorio seleccionado: ' + JSON.stringify(selectedRepositorio));
+      this.global.repositorioSelected = true;
+      let idrepositorioSelected = selectedRepositorio[0].id; // Suponiendo que es un array
+  
+      this.global.filteredTemas = []; // Reinicia el array
+  
+      for (let tema of this.global.temas) { // Asegúrate de usar `global.temas` para filtrar
+        console.log(
+          'Comparando [' + idrepositorioSelected + '] con [' + tema.idFhater + ']'
+        );
+        // Asegúrate de que ambos son del mismo tipo
+        if (idrepositorioSelected === tema.idFhater) {
+          console.log('Tema agregado al array: ' + JSON.stringify(tema));
+          this.global.filteredTemas.push(tema);
+        }
+      }
+  
+      // Verificar si se agregaron temas y actualizar el estado
+      this.global.temaSelected = this.global.filteredTemas.length > 0;
+      
+    } else {
+      this.global.repositorioSelected = false;
+      this.global.filteredTemas = []; // Limpiar si no hay repositorio seleccionado
+      this.global.temaSelected = false; // Asegúrate de limpiar el estado
+    }
+  }
+  
+
+  filterTemasByRepositorios() {
+    if (this.selectedRepositorio) {
+      this.global.filteredTemas = this.global.temas.filter(repo => 
+        repo.temasId === this.selectedRepositorio.id
+      );
+    } else {
+      this.global.filteredTemas = this.global.temas;
+    }
+  }
+
   submitForm() {
     // Aquí puedes manejar los datos del formulario, por ejemplo, enviarlos a un servicio o imprimirlos en la consola.
     console.log(this.formData);
@@ -209,6 +292,11 @@ docummentSelected: DocumentInterface = {
     // Limpia el formulario después de enviarlo.
     this.formData = {};
   }
+ /*  onCategorySelect(event: any) {
+    this.selectedCategory = event; // Asumiendo que el objeto `event` contiene la categoría seleccionada
+    this.global.applyFilterRepositorios(); // Actualiza los repositorios filtrados según la categoría seleccionada
+  } */
+  
   updateDocument (document: any)
   {
     const documentId = document.id;
@@ -228,6 +316,9 @@ docummentSelected: DocumentInterface = {
         this.global.documents = [...this.global.documents];
         this.global.filteredDocuments = this.global.documents;
         this.global.filteredDocuments = [...this.global.filteredDocuments];
+        this.global.filteredRepositorios = [...this.global.filteredRepositorios];
+
+
       }
   
      /*  this.resetForm(); */

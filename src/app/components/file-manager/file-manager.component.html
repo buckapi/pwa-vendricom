@@ -15,7 +15,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="menu-group" *ngIf="isEditMode">
+                        <!-- <div class="menu-group" *ngIf="isEditMode">
                             <ul class="nav nav-light navbar-nav flex-column">
                                 <li class="nav-item">
                                     <a class="nav-link" href="javascript:void(0);">                                    
@@ -23,7 +23,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
                         <form (ngSubmit)="submitForm()" *ngIf="!isEditMode">
                             <div class="form-group">
                                 <label for="asunto">Asunto:</label>
@@ -60,14 +60,24 @@
                                                     <line x1="5" y1="12" x2="19" y2="12"></line>
                                                 </svg></span></span></a>
                                 </div>
-                                <ng-multiselect-dropdown [ngModelOptions]="{standalone: true}"
-                                    [placeholder]="'Selecciona una'" [data]="global.categories"
-                                    [(ngModel)]="data.categories" [settings]="dropdownSettings">
-                                </ng-multiselect-dropdown>
+                                <ng-multiselect-dropdown 
+                                    [ngModelOptions]="{standalone: true}"
+                                    name="categories"
+                                    [(ngModel)]="data.categories"
+                                    [placeholder]="'Selecciona una'" 
+                                    [data]="global.categories"
+                                    [disabled]="false"
+                                    [ngClass]="{'border-class': true, 'background-class': true}"
+                                    [settings]="dropdownSettings"                                    
+                                    (ngModelChange)="onCategoryChange($event)">
+                                    
+                                </ng-multiselect-dropdown>                               
+
                             </div>
                             <div class="form-group">
-                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="d-flex align-items-center justify-content-between mb-2" [hidden]="!global.repositorioSelected">
                                     <label for="nombreReceptor">Repositorio:</label>
+                                    
                                     <a (click)="open('repositorio')" style="cursor: pointer;"
                                         class="btn btn-xs btn-icon btn-rounded btn-light" data-bs-toggle="modal"
                                         data-bs-target="#add_fav_board"><span class="icon" data-bs-toggle="tooltip"
@@ -80,31 +90,43 @@
                                                     <line x1="5" y1="12" x2="19" y2="12"></line>
                                                 </svg></span></span></a>
                                 </div>
-                                <ng-multiselect-dropdown [ngModelOptions]="{standalone: true}"
-                                    [placeholder]="'Selecciona un'" [data]="global.repositorios"
-                                    [(ngModel)]="data.repositorios" [settings]="dropdownSettings">
+                                <ng-multiselect-dropdown 
+                                [ngModelOptions]="{standalone: true}"
+                                name="repositorios"
+                                [placeholder]="'Seleccione un repositorio'" 
+                                [data]="global.filteredRepositorios"
+                                [(ngModel)]="data.repositorios"
+                                [disabled]="false"
+                                [settings]="dropdownSettings">
                                 </ng-multiselect-dropdown>
                             </div>
                             <div class="form-group">
-                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div class="d-flex align-items-center justify-content-between mb-2" [hidden]="!global.temaSelected">
                                     <label for="nombreReceptor">Tema:</label>
                                     <a (click)="open('tema')" style="cursor: pointer;"
-                                        class="btn btn-xs btn-icon btn-rounded btn-light" data-bs-toggle="modal"
-                                        data-bs-target="#add_fav_board"><span class="icon" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" title="" data-bs-original-title="Add Board"><span
-                                                class="feather-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                    class="feather feather-plus">
-                                                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                                </svg></span></span></a>
+                                    class="btn btn-xs btn-icon btn-rounded btn-light" data-bs-toggle="modal"
+                                    data-bs-target="#add_fav_board"><span class="icon" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="" data-bs-original-title="Add Board"><span
+                                            class="feather-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                class="feather feather-plus">
+                                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            </svg></span></span></a>
                                 </div>
-                                <ng-multiselect-dropdown [ngModelOptions]="{standalone: true}"
-                                    [placeholder]="'Seleccione un tema'" [data]="global.temas" [(ngModel)]="data.temas"
-                                    [settings]="dropdownSettings">
+                                <ng-multiselect-dropdown
+                                [ngModelOptions]="{standalone: true}"
+                                name="temas"
+                                [placeholder]="'Seleccione un tema'" 
+                                [data]="global.filteredTemas"
+                                [(ngModel)]="data.temas"
+                                [disabled]="false"
+                                [settings]="dropdownSettings">
                                 </ng-multiselect-dropdown>
+
                             </div>
+
                             <div class="d-flex align-items-center justify-content-between mb-2">
 
                             </div>
@@ -114,77 +136,7 @@
                                     [(ngModel)]="formData.serial" required>
                             </div>
                         </form>
-                        <form (ngSubmit)="submitForm()" *ngIf="isEditMode">
-                            <div class="form-group">
-                                <label for="asunto">Asunto:</label>
-                                <input type="text" class="form-control" id="asunto" name="asunto"
-                                    [(ngModel)]="formData.asunto" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="fechaEmision">Fecha de Emisión:</label>
-                                <input type="date" class="form-control" id="fechaEmision" name="fechaEmision"
-                                    [(ngModel)]="formData.fechaEmision" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="entidadRegulatoria">Entidad Regulatoria:</label>
-                                <input type="text" class="form-control" id="entidadRegulatoria"
-                                    name="entidadRegulatoria" [(ngModel)]="formData.entidadRegulatoria" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="nombreReceptor">Nombre de la Persona Receptora:</label>
-                                <input type="text" class="form-control" id="nombreReceptor" name="nombreReceptor"
-                                    [(ngModel)]="formData.nombreReceptor" required>
-                            </div>
-                            <div class="form-group">
-                                <div class="d-flex align-items-center justify-content-between mb-2">
-                                    <label for="nombreReceptor">Categoría:</label>
-                                    <a (click)="open('categoria')" style="cursor: pointer;"
-                                        class="btn btn-xs btn-icon btn-rounded btn-light" data-bs-toggle="modal"
-                                        data-bs-target="#add_fav_board"><span class="icon" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" title="" data-bs-original-title="Add Board"><span
-                                                class="feather-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                    class="feather feather-plus">
-                                                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                                </svg></span></span></a>
-                                </div>
-                                <ng-multiselect-dropdown [ngModelOptions]="{standalone: true}"
-                                    [placeholder]="'Selecciona una'" [data]="global.categories"
-                                    [(ngModel)]="data.categories" [settings]="dropdownSettings">
-                                </ng-multiselect-dropdown>
-                            </div>
-                            
-                            <div class="form-group">
-                                <div class="d-flex align-items-center justify-content-between mb-2">
-                                    <label for="nombreReceptor">Tema:</label>
-                                    <a (click)="open('tema')" style="cursor: pointer;"
-                                        class="btn btn-xs btn-icon btn-rounded btn-light" data-bs-toggle="modal"
-                                        data-bs-target="#add_fav_board"><span class="icon" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" title="" data-bs-original-title="Add Board"><span
-                                                class="feather-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                    class="feather feather-plus">
-                                                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                                </svg></span></span></a>
-                                </div>
-                                <ng-multiselect-dropdown [ngModelOptions]="{standalone: true}"
-                                    [placeholder]="'Seleccione un tema'" [data]="global.temas" [(ngModel)]="data.temas"
-                                    [settings]="dropdownSettings">
-                                </ng-multiselect-dropdown>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-between mb-2">
-
-                            </div>
-                            <div class="form-group">
-                                <label for="serial">Serial:</label>
-                                <input type="text" class="form-control" id="serial" name="serial"
-                                    [(ngModel)]="formData.serial" required>
-                            </div>
-                        </form>
+                   
                         <div class="separator separator-light"></div>
                         <div class="menu-group">
 

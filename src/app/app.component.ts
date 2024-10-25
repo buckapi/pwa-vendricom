@@ -93,8 +93,7 @@ export class AppComponent {
       this.global.getConfig().subscribe(
         (data) => {
           this.global.configs = data;
-           // Asigna los registros obtenidos a la variable 'registros'
-          // console.log(data); // respuesta
+       
         },
         (error) => {
           console.error(error); // Manejo de errores si la solicitud falla
@@ -194,8 +193,21 @@ export class AppComponent {
           console.error(error); // Manejo de errores si la solicitud falla
         }
       );
+      this.global.getPublicidades().subscribe(
+        (data) => {
+          this.global.publicidades = data.items; // Asigna los registros obtenidos a la variable 'registros'
+          this.global.publicidades = data.items.reverse(); // Invierte el orden de los registros obtenidos y los asigna a la variable 'registros'
+          this.global.filteredPublicidad=this.global.publicidades;
+          // console.log(data); // respuesta
+        },
+        (error) => {
+          console.error(error); // Manejo de errores si la solicitud falla
+        }
+      );
     }
-    
+    setSelectedTema(tema:any){
+      this.global.selectedTema=tema;
+    }
     toggleLayoutStyle() {
       if (this.layoutStyle === "default") {
         this.layoutStyle = "collapsed";

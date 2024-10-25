@@ -29,17 +29,17 @@
                                     [(ngModel)]="formData.fechaEmision" required>
                             </div>
                             <div class="form-group">
-                                <label for="entidadRegulatoria">Numero de Whatsapp:</label>
-                                <input type="text" class="form-control" id="entidadRegulatoria"
-                                    name="entidadRegulatoria" [(ngModel)]="formData.entidadRegulatoria" required>
+                                <label for="whatsapp">Numero de Whatsapp:</label>
+                                <input type="text" class="form-control" id="whatsapp"
+                                    name="whatsapp" [(ngModel)]="formData.whatsapp" required>
                             </div>
                             <div class="d-flex align-items-center justify-content-between mb-2">
 
                             </div>
                             <div class="form-group">
-                                <label for="serial">Breve descripción:</label>
-                                <input type="text" class="form-control" id="serial" name="serial"
-                                    [(ngModel)]="formData.serial" required>
+                                <label for="description">Breve descripción:</label>
+                                <input type="text" class="form-control" id="description" name="description"
+                                    [(ngModel)]="formData.description" required>
                             </div>
                         </form>
 
@@ -64,7 +64,7 @@
                     <div class="fm-body">
                         <div data-simplebar class="nicescroll-bar">
                             <div class="file-card-view">
-                                <div class="alert alert-warning alert-wth-icon alert-dismissible fade show"
+                               <!--  <div class="alert alert-warning alert-wth-icon alert-dismissible fade show"
                                     role="alert">
                                     <span class="alert-icon-wrap"><i class="ri-alert-line"></i></span>
                                     <div class="d-flex align-items-center flex-wrap flex-sm-nowrap">
@@ -75,7 +75,7 @@
                                     </div>
                                     <button type="button" class="btn-close" data-bs-dismiss="alert"
                                         aria-label="Close"></button>
-                                </div>
+                                </div> -->
                                 <div class="collapse-simple mt-4">
                                     <div class="card">
                                         <div class="card-header">
@@ -86,8 +86,8 @@
                                         </div>
                                         <div id="fm_collapse_1" class="collapse show">
                                             <div class="row gx-3 row-cols-xxl-4 row-cols-xl-4 row-cols-lg-4 row-cols-md-2 row-cols-1 mt-3">
-                                                <div class="col" *ngFor="let boletin of global.filteredBoletines"
-                                                    (click)="setPreview(boletin)">
+                                                <div class="col" *ngFor="let publicidad of global.filteredPublicidad"
+                                                    (click)="setPreview(publicidad)">
                                                     <div class="card file-card card-border">
                                                         <div class="card-body fmapp-info-trigger">
                                                             <!-- <i class="svg-icon"></i> -->
@@ -97,9 +97,9 @@
                                                             <div
                                                                 class="d-flex justify-content-between align-items-start">
                                                                 <div>
-                                                                    <div class="file-name">{{boletin.subject}}</div>
+                                                                    <div class="file-name">{{publicidad.subject}}</div>
                                                                     <div class="text-truncate fs-8 mb-2">
-                                                                        {{boletin.receiver}}</div>
+                                                                        {{publicidad.receiver}}</div>
                                                                 </div>
                                                                 <div class="d-flex">
 
@@ -129,7 +129,7 @@
                                                                 </div>
                                                             </div>
                                                             <p class="text-truncate p-xs">Fecha de expedición:
-                                                                {{boletin.issue}}</p>
+                                                                {{publicidad.issue}}</p>
                                                         </div>
                                                     </div>
                                                 </div>

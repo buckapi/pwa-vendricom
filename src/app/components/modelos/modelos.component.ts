@@ -149,7 +149,7 @@ docummentSelected: ModelosInterface = {
       (response) => {
         this.global.modelos.push(this.data);
         this.global.modelos=[...this.global.modelos];
-        this.global.filteredModelos=this.global.jurisprudencias;
+        this.global.filteredModelos=this.global.modelos;
         this.global.filteredModelos=[...this.global.filteredModelos];
         this.data = {
           categories: [],
@@ -165,7 +165,7 @@ docummentSelected: ModelosInterface = {
         };  
         // this.temas = [...this.temas];
         this._butler.uploaderImages=[];
-        console.log('Jurisprudencia cargada con éxito:', response);
+        console.log('Modelo cargado con éxito:', response);
         // Agregar la marca de la respuesta al array de marcas, si es necesario
 
         // Limpiar los valores para futuros usos

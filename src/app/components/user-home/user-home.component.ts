@@ -114,6 +114,7 @@ export class UserHomeComponent implements AfterViewInit {
   filtered=false;
   public isError = false;
   adapter = new  DemoFilePickerAdapter(this.http,this._butler,this.global);
+  
   constructor(
     private formBuilder: FormBuilder, 
     public AuthRESTService: AuthRESTService,
@@ -250,6 +251,19 @@ ngAfterViewInit() {
       console.error('Error al actualizar el registro:', error);
     }
   }
+  onRepositorioSelect(repositorio: any) {
+    this.global.selectedRepositorio = repositorio;
+
+    // Filtra los documentos según el repositorio seleccionado
+    this.global.filteredDocuments = this.global.documents.filter(document => 
+      document.repositorioId === repositorio.id // Asegúrate de que 'repositorioId' esté en tus documentos
+    );
+  }
+  onBackToRepositories() {
+    this.global.selectedRepositorio = null;
+    // Opcionalmente, puedes volver a cargar la lista de repositorios o hacer otras acciones aquí
+}
+
   
 
 }

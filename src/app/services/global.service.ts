@@ -14,12 +14,28 @@ import { Butler } from './butler.service';
 interface Tema {
   id: string;
   name: string;
+
+}
+interface Category {
+  id: string;
+  idFather: string;
+  name: string;
+  repositories: Repository[];
+}
+interface Repository {
+  id: string;
+  name: string;
+  repositories: Repository[];
+  idFather: string;
+
 }
 
 interface Document {
   created: string;
   subject: string;
   temas: Tema[];
+  repositories: Repository[];
+  categorias: Category[]
   // otros campos según tu estructura de datos
 }
 interface Normativa {
@@ -56,6 +72,7 @@ export class GlobalService {
   isInfoActive=false;
   private apirestUrl = 'https://db.buckapi.com:8090/api/';
   clientes: any[] = [];
+
   documents: any[] = [];
   filteredDocuments: any[] = [];
   normativas: any[] = [];
@@ -66,9 +83,15 @@ export class GlobalService {
   filteredModelos: any[] = [];
   boletines: any[] = [];
   filteredBoletines: any[] = [];
+  filteredPublicidad: any[] = [];
+  categoryFiltered: any[] = [];
+  categorySelected: any = false;
+  repositorioSelected: any = false;
+  temaSelected: any = false;
+
   configs: any[] = [];
   // selectedTema="";
-status:string="";
+  status:string="";
   info: any[] = [];
 
   selectedTema: any = "";
@@ -79,12 +102,19 @@ status:string="";
   // selectedYear: any = null;
   searchQuery: string = '';
   selectedCategory: string = '';
+  selectedRepositorio: any = "";
+  selectedCategoryId: any = "";// Para guardar el id de la categoría seleccionada
   // selectedTema: string = '';
   searchText: string = '';
   
   categories: any[] = [];
   temas: any[] = [];
   repositorios: any[] = [];
+  publicidades: any[] = [];
+  filteredRepositorios: any[] = [];
+  filteredCategories: any[] = [];
+  filteredTemas: any[] = [];
+
   currentPage: number = 1;
   clients: any;
   device: string = '';
@@ -113,7 +143,11 @@ status:string="";
   
 
   //################## INICIO FUNCIONES NUEVAS ########################################################################
- 
+  onCategorySelect(item: any) {
+    // Aquí `item` debería ser el objeto de la categoría seleccionada
+    this.selectedCategoryId = item.id;
+  }
+  
   getConfig(): Observable<any | boolean> {
     return this.http.get<any>(this.apirestUrl + 'configs').pipe(
       map(response => {
@@ -148,6 +182,9 @@ status:string="";
   }
   getModelos(): Observable<any> {
     return this.http.get<any>(this.apirestUrl + 'collections/vendricomModelos/records');
+  }
+  getPublicidades(): Observable<any> {
+    return this.http.get<any>(this.apirestUrl + 'collections/vendricomPublicidad/records');
   }
  uploadDocument(){
   
@@ -199,26 +236,52 @@ status:string="";
       }
     );
   }
-  saveRepositorio() {
+/*    saveRepositorio() {
+    
     let repositorio = { name: this.newRepositorio };
 
     this.dataApiService.saveRepositorio(repositorio).subscribe(
       (response) => {
         console.log("Repositorio guardado correctamente:", JSON.stringify(response));
-        // Agregar la marca de la respuesta al array de marcas
         this.repositorios.push(response);
         this.repositorios = [...this.repositorios];
-
-        // console.log(JSON.stringify(this.yeoman.brands))
-        // Limpiar los valores para futuros usos
         this.newRepositorio = "";
-        // this.activeModal.close();
       },
       (error) => {
         console.error("Error al guardar el tema:", error);
       }
     );
+  }  *//* funcion de junior*/
+  saveRepositorio() {
+    const idFather = this.selectedCategoryId; // Asegúrate de que esto es el id de la categoría
+    console.log("idFather:", idFather); // Verifica que idFather tiene el valor esperado
+  
+    let repositorio = { 
+      name: this.newRepositorio, 
+      idFather: idFather // Asigna el idFather al nuevo repositorio
+    };
+  
+    console.log("Repositorio a guardar:", repositorio); // Verifica el objeto que estás enviando
+  
+    this.dataApiService.saveRepositorio(repositorio).subscribe(
+      (response) => {
+        console.log("Repositorio guardado correctamente:", JSON.stringify(response));
+  
+        // Agregar el repositorio guardado al array de repositorios
+        this.repositorios.push(response);
+        this.repositorios = [...this.repositorios];
+  
+        // Limpiar los valores para futuros usos
+        this.newRepositorio = "";
+      },
+      (error) => {
+        console.error("Error al guardar el repositorio:", error);
+      }
+    );
   }
+  
+  
+  
 
   getClass(){
     return {
@@ -339,7 +402,7 @@ status:string="";
       this.yeoman.config.clientSelected = i;
     });
   }
-
+ 
   applyFilters() {
     this.filteredDocuments = this.documents.filter((doc: Document) => {
       // Verificar si selectedTema no está vacío y si es así, comprobar que coincide con algún tema del documento
